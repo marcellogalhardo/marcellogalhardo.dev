@@ -1,0 +1,13 @@
+---
+title: "About"
+date: 2020-01-01T09:02:50+01:00
+draft: false
+---
+
+Software engineer with over 5 years of experience with Android. I am a moderator of the Android Dev BR community, the largest network of Android developers in Brazil. 
+
+### Contact me
+
+- Email: [marcello.galhardo@gmail.com](mailto:marcello.galhardo@gmail.com)
+- Twitter: [@marcellogalhard](https://twitter.com/marcellogalhard)
+- [LinkedIn](https://www.linkedin.com/in/marcellogalhardo/)
