@@ -4,5 +4,5 @@ avatar = "https://avatars3.githubusercontent.com/u/4348197?s=460&v=4" # used for
 description = "Marcello's Personal Blog"
 dateFormat = "2006-01-02"
 paginationSinglePost = true
-style = "auto" # https://themes.gohugo.io/hugo-theme-anubis/#dark-mode
+style = "light-without-switcher" # https://themes.gohugo.io/hugo-theme-anubis/#dark-mode
 readMore = false
