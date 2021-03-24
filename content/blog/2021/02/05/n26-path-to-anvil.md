@@ -30,11 +30,11 @@ We were happy with the result. We decided to be more ambitious: we selected our 
 
 To be sure we were on the right path, we mapped the relationship of a few of our most complex modules before and after adopting Anvil. For a matter of company's privacy, all text is blurred, but you can still see the positive impact by noting the arrows:
 
-![Before and After](https://dev-to-uploads.s3.amazonaws.com/i/5mwhivwsc02r0w8z8rrx.png)
+![Before and After](/static/images/2021/02/05/before-and-after.png)
 
 Finally, we decided to go full Anvil: we turned on [Anvil's Dagger Factory generation](https://github.com/square/anvil#dagger-factory-generation) in all modules that we could (20+ at the time). We identified build times improvements of ~50% for individual modules build times, ~10% for Sample Apps, and because Anvil does not rely on KAPT, we never saw any KAPT issue again on those modules.
 
-![Benchmark](https://dev-to-uploads.s3.amazonaws.com/i/pozrcji1hz1w6kn5vcj7.png)
+![Benchmark](/static/images/2021/02/05/benchmark.png)
 
 Many improvements, but we believed we could take it further: let's take the good things from Hilt and bring it to Anvil.
 
@@ -96,7 +96,7 @@ For `ViewModels` a simple `Provider<ViewModel>` or `AssistedInject`, if you need
 
 And finally, testing: Anvil offers a [replace module feature](https://github.com/square/anvil#exclusions) that is handful to provide new dependencies during tests. For that, we create helper modules called `testing` and we provide fake dependencies of those replacing the production modules. Developers that include the `testing` in their test classpath can automatically interact with our testing utilities (or create their own, if required). To be completely honest here, it is more of an ongoing process.
 
-![General Structure](https://dev-to-uploads.s3.amazonaws.com/i/qy6625r4e0n4qucacvtm.png)
+![Module Structure](/static/images/2021/02/05/module-structure.png)
 
 # Conclusion
 
@@ -104,7 +104,7 @@ Anvil is a robust and straightforward solution. It does what it suppose to do an
 
 Also, the fact it does not rely on KAPT is a **tremendous advantage** for large projects and should be kept in mind while deciding between Anvil or Hilt. I'm delighted with the overall experience, and I enjoy seeing how many feature developers started to migrate away from KAPT to Anvil proactively:
 
-![Kill KAPT](https://dev-to-uploads.s3.amazonaws.com/i/g1w7vh4g3sylpkl2syyd.png)
+![Kill KAPT](/static/images/2021/02/05/no-more-kapt.png)
 
 Finally, as you can see above, many of the Hilt's features can be implemented in Anvil. However, it is vital to keep in mind Anvil is not a silver bullet. It is essential to have people in your team that understand Dagger and Dependency Injection to build the integrations you might need.
 
