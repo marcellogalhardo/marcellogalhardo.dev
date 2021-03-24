@@ -7,7 +7,7 @@ style = "light-without-switcher" # https://themes.gohugo.io/hugo-theme-anubis/#d
 readMore = false
 
 # Subtitle for home
-homeSubtitle = "Lead Android Engineer @ Platform, N26"
+homeSubtitle = "Lead Android Engineer @ N26"
 
 # Set disableReadOtherPosts to true in order to hide the links to other posts.
 disableReadOtherPosts = false
