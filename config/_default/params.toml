@@ -2,7 +2,19 @@ author = "Marcello Galhardo"
 email = "marcello.galhardo@gmail.com" # used for microformats
 avatar = "https://avatars3.githubusercontent.com/u/4348197?s=460&v=4" # used for microformats
 description = "Marcello's Personal Blog"
-dateFormat = "2006-01-02"
 paginationSinglePost = true
 style = "light-without-switcher" # https://themes.gohugo.io/hugo-theme-anubis/#dark-mode
 readMore = false
+
+# Subtitle for home
+homeSubtitle = "Lead Android Engineer @ Platform, N26"
+
+# Set disableReadOtherPosts to true in order to hide the links to other posts.
+disableReadOtherPosts = false
+
+# Enable sharing buttons, if you like
+enableSharingButtons = true
+
+# Metadata mostly used in document's head
+keywords = "homepage, blog"
+images = [""]
