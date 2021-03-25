@@ -1,7 +1,7 @@
 ---
 title: "Dagger, ViewModels and Fragments"
 date: 2020-01-01T09:02:50+01:00
-draft: false
+draft: true
 ---
 
 Dagger is a powerful DI framework but when combined with Architecture Components from Android it might cause some boilerplate: mainly when using ViewModels and Fragments with constructor injection.
