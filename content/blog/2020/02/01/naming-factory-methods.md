@@ -80,12 +80,12 @@ fun main() {
 
 ## Fake Constructors (aka, Factory Methods)
 
-Sometimes you need to provide a secondary constructor that takes advantage of `inline` or `reified`. Those are not available for a constructor, but it does not mean we can't use them for constructing objects. Let's have a look into [MutableStateFlow](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/common/src/flow/StateFlow.kt#L187).
+Sometimes you need to provide a secondary constructor that takes advantage of `reified` or exposes an interface as a concrete type and hides the implementation: we can use a function named a class. Let's have a look into [MutableStateFlow](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/common/src/flow/StateFlow.kt#L187).
 
 ```kotlin
-public interface MutableStateFlow<T> {
-    public override var value: T
-    public fun compareAndSet(expect: T, update: T): Boolean
+interface MutableStateFlow<T> {
+    var value: T
+    fun compareAndSet(expect: T, update: T): Boolean
 }
 
 fun <T> MutableStateFlow(value: T): MutableStateFlow<T> {
