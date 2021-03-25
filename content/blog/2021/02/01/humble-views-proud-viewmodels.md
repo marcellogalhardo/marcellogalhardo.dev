@@ -6,7 +6,7 @@ draft: false
 
 The Android Community has long advocated that Activities and Fragments were views  -  but this perception has changed over time. For good. Let's dive deep into how to design views and view models, how they wire to a LifecycleOwner, and how this can positively impact your's app testability.
 
-![Sign-Up Form](https://dev-to-uploads.s3.amazonaws.com/i/vh4on41q7srqns01vp9r.png)
+![Sign-Up Form](/images/2021/02/01/sign-up-form.png)
 
 To better describe how to build humble views we will be developing an elementary Sign-Up form with an email, a password text field and two buttons: a cancel that pops the user's back stack and a sign up that creates an account and moves the user to the home screen.
 
