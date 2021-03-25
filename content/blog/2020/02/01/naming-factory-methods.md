@@ -12,7 +12,7 @@ If you intend to get a given instance and adapt to one different object to follo
 
 Here is an example on how it could look like:
 ```kotlin
-fun <VM : ViewModel> Provider<out VM>.asViewModelFactory(): ViewModelProvider.Factory {
+fun <VM : ViewModel> Provider<out VM>.asViewModelProviderFactory(): ViewModelProvider.Factory {
     return object : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             @Suppress("UNCHECKED_CAST")
