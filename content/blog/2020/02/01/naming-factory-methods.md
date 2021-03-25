@@ -33,7 +33,7 @@ fun UserDto.toUser(): User {
             first = this.firstName,
             last = this.lastName
         ),
-        email = Email(this.email)
+        email = Email(this.email),
         age = this.age
     )
 }
@@ -58,13 +58,22 @@ inline fun buildImageLoader(
     builderAction: ImageLoaderBuilder.() -> Unit
 ): String
 
+data class ImageLoaderBuilder(
+    var uri: URI,
+    @DrawableRes var loadingPlaceholder: Int?,
+    @DrawableRes var loadingPlaceholder: Int?,
+    // ...
+)
+
+class ImageLoader
+
 // usage example
 fun main() {
     val imageLoader = buildImageLoader {
-        uri = validUri // receives a valid URI object
+        uri = validUri
         loadingPlaceholder = R.drawable.loading_placeholder
         errorPlaceholder = R.drawable.error_placeholder
-        // Many other possibilities.
+        // ...
     }
 }
 ```
