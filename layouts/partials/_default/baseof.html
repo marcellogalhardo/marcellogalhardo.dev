@@ -2,7 +2,7 @@
 <html lang="{{ .Site.Language }}">
 <head>
     {{ if .Site.Params.GoogleAnalyticsID }}
-    {{ partial "_default/analytics-gtag.html" . }}
+    {{ partial "analytics-gtag.html" . }}
     {{ end }}
     {{ partial "head.html" . }}
 </head>
@@ -18,9 +18,9 @@
         {{ block "main" . }}{{ end }}
     </div>
 
-<!--    {{ block "footer" . }}-->
-<!--    {{ partial "footer.html" . }}-->
-<!--    {{ end }}-->
+    {{ block "footer" . }}
+    {{ partial "footer.html" . }}
+    {{ end }}
 </div>
 
 {{ partial "javascript.html" . }}

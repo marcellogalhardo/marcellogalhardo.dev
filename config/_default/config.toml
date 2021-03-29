@@ -2,13 +2,12 @@ baseURL = "https://marcellogalhardo.dev/"
 languageCode = "en-us"
 theme = "hello-friend-ng" # "anubis"
 paginate = 10
-googleAnalytics = "G-7LK7ENB813"
 enableRobotsTXT = true
 
 [languages]
   [languages.en]
     title = "Marcello Galhardo"
-    subtitle = "Senior Software Engineer @ N26"
+    subtitle = "Lead Android Engineer @ N26"
     keywords = ""
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
