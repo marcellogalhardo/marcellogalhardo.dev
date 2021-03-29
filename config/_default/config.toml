@@ -2,7 +2,7 @@ baseURL = "https://marcellogalhardo.dev/"
 languageCode = "en-us"
 theme = "hello-friend-ng" # "anubis"
 paginate = 10
-googleAnalytics = "UA-123-45"
+googleAnalytics = "G-7LK7ENB813"
 enableRobotsTXT = true
 
 [languages]
