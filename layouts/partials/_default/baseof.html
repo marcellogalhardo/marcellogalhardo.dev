@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language }}">
-<head>
-    {{ if .Site.Params.GoogleAnalyticsID }}
-    {{ partial "analytics-gtag.html" . }}
+    <head>
+        {{ template "_internal/google_analytics.html" . }}
+        {{ partial "head.html" . }}
+    </head>
+
+    {{ block "body" . }}
+        <body>
     {{ end }}
-    {{ partial "head.html" . }}
-</head>
+    
+        <div class="container">
+            {{ partial "header.html" . }}
 
-{{ block "body" . }}
-<body>
-{{ end }}
+            <div class="content">
+                {{ block "main" . }}{{ end }}
+            </div>
 
-<div class="container">
-    {{ partial "header.html" . }}
+            {{ block "footer" . }}
+                {{ partial "footer.html" . }}
+            {{ end }}
+        </div>
 
-    <div class="content">
-        {{ block "main" . }}{{ end }}
-    </div>
-
-    {{ block "footer" . }}
-    {{ partial "footer.html" . }}
-    {{ end }}
-</div>
-
-{{ partial "javascript.html" . }}
-</body>
+        {{ partial "javascript.html" . }}
+    </body>
 </html>
