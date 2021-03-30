@@ -1,5 +1,5 @@
 ---
-title: "Using Compose on Android Studio 4.1"
+title: "Using Compose Beta on Android Studio 4.1"
 date: 2021-03-30T17:01:50+01:00
 draft: false
 ---
