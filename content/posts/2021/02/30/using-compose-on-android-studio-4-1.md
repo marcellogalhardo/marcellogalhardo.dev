@@ -4,7 +4,7 @@ date: 2021-02-30T09:02:50+01:00
 draft: false
 ---
 
-Jetpack Compose hit Beta! Many teams are excited to experiment with Compose Beta, but as you might know, since [1.0.0-alpha04](https://developer.android.com/jetpack/androidx/releases/compose-compiler#compiler-1.0.0-alpha04
+Jetpack Compose hit Beta! Many teams are excited to experiment with Compose, but as you might know, since [1.0.0-alpha04](https://developer.android.com/jetpack/androidx/releases/compose-compiler#compiler-1.0.0-alpha04
 ), the compiler has been refactored to a new group and became incompatible with the current Android Studio (AS) 4.1 stable:
 
 > Compose Version `1.0.0-alpha04` is only compatible with Android Studio 4.2 Canary 13 and later.
