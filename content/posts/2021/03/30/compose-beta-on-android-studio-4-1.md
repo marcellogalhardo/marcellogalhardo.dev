@@ -1,9 +1,15 @@
 ---
-title: "Compose Beta on Android Studio 4.1"
-date: 2021-03-30T17:01:50+01:00
+title: "Compose Beta on Android Studio 4 1"
+date: 2021-03-30T17:37:41+02:00
 draft: false
-categories: [software development]
-tags: [android,compose,gradle]
+toc: false
+images:
+categories:
+  - software development
+tags:
+  - android
+  - compose
+  - gradle
 ---
 
 Jetpack Compose hit Beta! Many teams are excited to experiment with Compose, but as you might know, since [1.0.0-alpha04](https://developer.android.com/jetpack/androidx/releases/compose-compiler#compiler-1.0.0-alpha04

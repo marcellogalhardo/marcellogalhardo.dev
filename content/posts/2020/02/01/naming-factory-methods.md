@@ -2,8 +2,13 @@
 title: "Naming Factory Methods"
 date: 2020-02-01T09:02:50+01:00
 draft: false
-categories: [software development]
-tags: [android,kotlin]
+toc: false
+images:
+categories:
+  - software development
+tags:
+  - android
+  - kotlin
 ---
 
 When talking about Factory Methods, extension functions tend to be favored in Kotlin - but it might be a challenge to name these functions in a discoverable way without polluting your project's namespace. A good source of inspiration is Kotlin's Standard library: it contains many examples we can use as a base when deciding how to design a function.
