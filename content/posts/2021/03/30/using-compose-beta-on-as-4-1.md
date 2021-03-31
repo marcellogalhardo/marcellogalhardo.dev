@@ -18,7 +18,7 @@ Jetpack Compose hit Beta! Many teams are excited to experiment with Compose, but
  
 Been forced to use a Beta version of AS is a real bummer. There are cases in which you want to explore Compose in a real-world application (e.g., converting a Design System to Compose) while letting developers work in parallel using the stable version 4.1 to ship production code. Happily, Compose is a standard Kotlin Compiler Plugin, and it is pretty straightforward to apply it directly to your project:
 1. Select the module you want to use Compose.
-2. Remove the default configuration from Compose docs, as we will set it up manually.
+2. Remove the [default configuration](https://developer.android.com/jetpack/compose/setup#add-compose) from Compose docs, as we will set it up manually.
 3. Apply the compiler plugin and include the runtime to your module.
 
 As an example, let's configure Gradle with the latest Compose (`1.0.0-beta03`):
@@ -59,7 +59,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     doFirst {
        if (!pluginConfiguration.isEmpty()) {
             def composePlugin = pluginConfiguration.files.find { File file ->
-                file.path.contains("/androidx.compose.compiler/compiler/${composePlugin}/")
+                file.path.contains("/androidx.compose.compiler/compiler/${composeVersion}/")
             }
             if (composePlugin != null) {
                 kotlinOptions.freeCompilerArgs += "-Xplugin=${composePlugin}"
@@ -69,7 +69,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 }
 ```
 
-Now you can [add Jetpack Compose toolkit dependencies](https://developer.android.com/jetpack/compose/setup?authuser=1) as established in the official docs:
+Now you can [add Jetpack Compose toolkit dependencies](https://developer.android.com/jetpack/compose/setup#compose-compiler) as established in the official docs:
 
 ```groovy
 dependencies {
