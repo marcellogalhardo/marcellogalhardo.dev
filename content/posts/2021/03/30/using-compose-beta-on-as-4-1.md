@@ -25,7 +25,6 @@ As an example, let's configure Gradle with the latest Compose (`1.0.0-beta03`):
 
 ```groovy
 android {
-
     defaultConfig {
         minSdkVersion 21
     }
