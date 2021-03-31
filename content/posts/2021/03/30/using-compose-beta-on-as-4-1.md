@@ -23,47 +23,81 @@ Been forced to use a Beta version of AS is a real bummer. Happily, Compose is a 
 2. Remove the default configuration from Compose docs, as we will set it up manually.
 3. Apply the compiler plugin and include the runtime to your module.
 
-As an example, I will set up the latest Compose (`1.0.0-beta03`) with Material and ViewModel artefacts:
+As an example, let's configure Gradle with the latest Compose (`1.0.0-beta03`):
 
 ```groovy
+android {
+
+    defaultConfig {
+        minSdkVersion 21
+    }
+
+    // Set both the Java and Kotlin compilers to target Java 8.
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        useIR = true
+    }
+}
+
 configurations {
     kotlinPlugin
 }
 
-dependencies {
-    def composeVersion = "1.0.0-beta03"
-    
+def composeVersion = "1.0.0-beta03"
+
+dependencies {    
     kotlinPlugin "androidx.compose.compiler:compiler:${composeVersion}"
-
-    // Compose
     implementation "androidx.compose.runtime:runtime:${composeVersion}"
-    implementation "androidx.compose.ui:ui:${composeVersion}"
-    implementation "androidx.compose.ui:ui-tooling:${composeVersion}"
-    implementation "androidx.compose.foundation:foundation:${composeVersion}"
-    implementation "androidx.compose.material:material:${composeVersion}"
-    implementation "androidx.compose.material:material-icons-core:${composeVersion}"
-    implementation "androidx.compose.material:material-icons-extended:${composeVersion}"
-    androidTestImplementation "androidx.compose.ui:ui-test:${composeVersion}"
-
-    // Jetpack Libs
-    implementation "androidx.activity:activity-compose:1.3.0-alpha05"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03"
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    kotlinOptions {
-        useIR = true
-    }
     def pluginConfiguration = configurations.kotlinPlugin
     dependsOn(pluginConfiguration)
     doFirst {
-        if (!pluginConfiguration.isEmpty()) {
-            kotlinOptions.freeCompilerArgs += "-Xplugin=${pluginConfiguration.files.first()}"
+       if (!pluginConfiguration.isEmpty()) {
+            def composePlugin = pluginConfiguration.files.find { File file ->
+                file.name == "compiler-${composeVersion}.jar"
+            }
+            if (composePlugin != null) {
+                kotlinOptions.freeCompilerArgs += "-Xplugin=${composePlugin}"
+            }
         }
     }
+}
+```
+
+Now you can [add Jetpack Compose toolkit dependencies](https://developer.android.com/jetpack/compose/setup?authuser=1) as established in the official docs:
+
+```groovy
+dependencies {
+    def composeVersion = "1.0.0-beta03"
+
+    implementation "androidx.compose.ui:ui:${composeVersion}"
+    // Tooling support (Previews, etc.)
+    implementation "androidx.compose.ui:ui-tooling:${composeVersion}"
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation "androidx.compose.foundation:foundation:${composeVersion}"
+    // Material Design
+    implementation "androidx.compose.material:material:${composeVersion}"
+    // Material design icons
+    implementation "androidx.compose.material:material-icons-core:${composeVersion}"
+    implementation "androidx.compose.material:material-icons-extended:${composeVersion}"
+    // Integration with activities
+    implementation "androidx.activity:activity-compose:1.3.0-alpha05"
+    // Integration with ViewModels
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03"
+
+    // UI Tests
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:${composeVersion}"
 }
 ``` 
 
 Once it is in place, you can build Compose Apps in your AS 4.1 stable. Note that you will not be able to use the basic IDE tooling (e.g., Preview) without opening your project in a higher version of Android Studio. Nevertheless, if you do not upgrade Android Gradle Plugin, this set-up enables you to switch between AS 4.1 and Arctic Fox and build the project with success. Keep in mind you should remove those manual configurations once you migrate to AS 4.2 or above.
  
-Credits to [Jake Wharton](https://twitter.com/JakeWharton) which replied [my question on Android Study Group](https://androidstudygroup.slack.com/archives/CJH03QASH/p1603978103094800) with the above solution.
+Credits to [Jake Wharton](https://twitter.com/JakeWharton) which replied [my question on Android Study Group](https://androidstudygroup.slack.com/archives/CJH03QASH/p1603978103094800) with the presented solution.
