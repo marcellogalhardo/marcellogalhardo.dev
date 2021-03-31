@@ -62,7 +62,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     doFirst {
        if (!pluginConfiguration.isEmpty()) {
             def composePlugin = pluginConfiguration.files.find { File file ->
-                file.name == "compiler-${composeVersion}.jar"
+                file.path.contains("/androidx.compose.compiler/compiler/${Versions.compose}/")
             }
             if (composePlugin != null) {
                 kotlinOptions.freeCompilerArgs += "-Xplugin=${composePlugin}"
