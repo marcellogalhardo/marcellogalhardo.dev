@@ -74,8 +74,6 @@ Now you can [add Jetpack Compose toolkit dependencies](https://developer.android
 
 ```groovy
 dependencies {
-    def composeVersion = "1.0.0-beta03"
-
     implementation "androidx.compose.ui:ui:${composeVersion}"
     // Tooling support (Previews, etc.)
     implementation "androidx.compose.ui:ui-tooling:${composeVersion}"
