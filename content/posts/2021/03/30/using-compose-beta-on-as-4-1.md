@@ -35,15 +35,13 @@ android {
 
     // Set both the Java and Kotlin compilers to target Java 8.
 
-    def javaVersion = JavaVersion.VERSION_1_8
-
     compileOptions {
-        sourceCompatibility javaVersion
-        targetCompatibility javaVersion
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = javaVersion.toString()
+        jvmTarget = "1.8"
         useIR = true
     }
 }
