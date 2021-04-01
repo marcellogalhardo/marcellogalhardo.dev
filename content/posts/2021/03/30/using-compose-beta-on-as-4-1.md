@@ -21,6 +21,8 @@ Been forced to use a Beta version of AS is a real bummer. There are cases in whi
 2. Remove the [default configuration](https://developer.android.com/jetpack/compose/setup#add-compose) from Compose docs, as we will set it up manually.
 3. Apply the compiler plugin and include the runtime to your module.
 
+**Heads-up**: the following code snippets assume you are using Groovy, but you can also do it with KTS. For more details, see [Gradle KTS Differences](#Gradle-KTS-Differences).
+
 As an example, let's configure Gradle with the latest Compose (`1.0.0-beta03`):
 
 ```groovy
@@ -83,7 +85,25 @@ dependencies {
 ``` 
 
 Once it is in place, you can build Compose Apps in your AS 4.1 stable. Note that you will not be able to use the basic IDE tooling (e.g., Preview) without opening your project in a higher version of Android Studio. Nevertheless, if you do not upgrade Android Gradle Plugin, this set-up enables you to switch between AS 4.1 and Arctic Fox and build the project with success. Keep in mind you should remove those manual configurations once you migrate to AS 4.2 or later.
- 
+
+# Gradle KTS Differences
+
+As pointed out by [John O.Reilly](https://twitter.com/joreilly?s=20), if you use `gradle.kts` the `KotlinPluginKt` import will fail, and instead, you must import directly `PLUGIN_CLASSPATH_CONFIGURATION_NAME` as following:
+
+```kotlin
+import org.jetbrains.kotlin.gradle.plugin.PLUGIN_CLASSPATH_CONFIGURATION_NAME
+
+//...
+
+dependencies {
+    val composeVersion = "1.0.0-beta03"
+
+    add(PLUGIN_CLASSPATH_CONFIGURATION_NAME, "androidx.compose.compiler:compiler:${Versions.compose}")
+
+    //...
+}
+```
+
 # Update 2021.04.01
 
 Simplified the code snippet on how to add a Kotlin Compiler Plugins with tips provided by [Jake Wharton](https://twitter.com/JakeWharton). For a matter of history, here is the previous solution:
@@ -112,6 +132,8 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     }
 }
 ```
+
+All other aspects of the code snippet remain the same.
 
 # Credits
 
