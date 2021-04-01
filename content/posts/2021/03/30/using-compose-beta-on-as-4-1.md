@@ -46,9 +46,9 @@ android {
     }
 }
 
-def composeVersion = "1.0.0-beta03"
-
 dependencies {
+    def composeVersion = "1.0.0-beta03"
+
     add(KotlinPluginKt.PLUGIN_CLASSPATH_CONFIGURATION_NAME, "androidx.compose.compiler:compiler:${composeVersion}")
     implementation "androidx.compose.runtime:runtime:${composeVersion}"
 }
@@ -58,6 +58,10 @@ Now you can [add Jetpack Compose toolkit dependencies](https://developer.android
 
 ```groovy
 dependencies {
+    def composeVersion = "1.0.0-beta03"
+    
+    // ...compiler and runtime from previous code snippet
+
     implementation "androidx.compose.ui:ui:${composeVersion}"
     // Tooling support (Previews, etc.)
     implementation "androidx.compose.ui:ui-tooling:${composeVersion}"
@@ -82,7 +86,7 @@ Once it is in place, you can build Compose Apps in your AS 4.1 stable. Note that
  
 # Update 2021.04.01
 
-Updated the code snippet to improve how to include a Kotlin Compiler Plugins with tips provided by [Jake Wharton](https://twitter.com/JakeWharton). For a matter of history, here is the previous solution:
+Simplified the code snippet on how to add a Kotlin Compiler Plugins with tips provided by [Jake Wharton](https://twitter.com/JakeWharton). For a matter of history, here is the previous solution:
 
 ```groovy
 configurations {
@@ -111,6 +115,6 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 
 # Credits
 
-Special thanks to [Jake Wharton](https://twitter.com/JakeWharton) for answering my question about the subject with the idea that originated this post, and [Colton Idle](https://twitter.com/ColtonIdle) for informing me about the simpler way to include a Kotlin Compiler Plugins.
+Special thanks to [Jake Wharton](https://twitter.com/JakeWharton) for answering my question about the subject with the idea that originated this post, and [Colton Idle](https://twitter.com/ColtonIdle) for informing me about the simpler way to include a Kotlin Compiler Plugin.
 
 If you like my posts, follow me on Twitter: [@marcellogalhard](https://twitter.com/marcellogalhard)
