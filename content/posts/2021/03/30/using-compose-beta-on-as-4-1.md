@@ -24,6 +24,8 @@ Been forced to use a Beta version of AS is a real bummer. There are cases in whi
 As an example, let's configure Gradle with the latest Compose (`1.0.0-beta03`):
 
 ```groovy
+import org.jetbrains.kotlin.gradle.plugin.KotlinPluginKt
+
 android {
     defaultConfig {
         minSdkVersion 21
