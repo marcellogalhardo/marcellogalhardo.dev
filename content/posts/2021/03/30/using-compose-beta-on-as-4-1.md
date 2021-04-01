@@ -31,41 +31,24 @@ android {
 
     // Set both the Java and Kotlin compilers to target Java 8.
 
+    def javaVersion = JavaVersion.VERSION_1_8
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility javaVersion
+        targetCompatibility javaVersion
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = javaVersion.toString()
         useIR = true
     }
 }
 
-configurations {
-    kotlinPlugin
-}
-
 def composeVersion = "1.0.0-beta03"
 
-dependencies {    
-    kotlinPlugin "androidx.compose.compiler:compiler:${composeVersion}"
+dependencies {
+    add(KotlinPluginKt.PLUGIN_CLASSPATH_CONFIGURATION_NAME, "androidx.compose.compiler:compiler:${composeVersion}")
     implementation "androidx.compose.runtime:runtime:${composeVersion}"
-}
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    def pluginConfiguration = configurations.kotlinPlugin
-    dependsOn(pluginConfiguration)
-    doFirst {
-       if (!pluginConfiguration.isEmpty()) {
-            def composePlugin = pluginConfiguration.files.find { File file ->
-                file.path.contains("/androidx.compose.compiler/compiler/${composeVersion}/")
-            }
-            if (composePlugin != null) {
-                kotlinOptions.freeCompilerArgs += "-Xplugin=${composePlugin}"
-            }
-        }
-    }
 }
 ```
 
@@ -95,4 +78,37 @@ dependencies {
 
 Once it is in place, you can build Compose Apps in your AS 4.1 stable. Note that you will not be able to use the basic IDE tooling (e.g., Preview) without opening your project in a higher version of Android Studio. Nevertheless, if you do not upgrade Android Gradle Plugin, this set-up enables you to switch between AS 4.1 and Arctic Fox and build the project with success. Keep in mind you should remove those manual configurations once you migrate to AS 4.2 or later.
  
+# Update 2021.04.01
+
+Updated the code snippet to improve how to include a Kotlin Compiler Plugins with tips provided by [Jake Wharton](https://twitter.com/JakeWharton). For a matter of history, here is the previous solution:
+
+```groovy
+configurations {
+    kotlinPlugin
+}
+
+dependencies {
+    kotlinPlugin "androidx.compose.compiler:compiler:${composeVersion}"
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    def pluginConfiguration = configurations.kotlinPlugin
+    dependsOn(pluginConfiguration)
+    doFirst {
+       if (!pluginConfiguration.isEmpty()) {
+            def composePlugin = pluginConfiguration.files.find { File file ->
+                file.path.contains("/androidx.compose.compiler/compiler/${composeVersion}/")
+            }
+            if (composePlugin != null) {
+                kotlinOptions.freeCompilerArgs += "-Xplugin=${composePlugin}"
+            }
+        }
+    }
+}
+```
+
+# Credits
+
 Credits to [Jake Wharton](https://twitter.com/JakeWharton), for answering my question about the subject with the idea that originated this post.
+
+If you like my posts, follow me on Twitter: [@marcellogalhard](https://twitter.com/marcellogalhard)
