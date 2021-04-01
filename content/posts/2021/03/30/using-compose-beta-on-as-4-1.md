@@ -102,6 +102,8 @@ dependencies {
 }
 ```
 
+All other aspects remain the same.
+
 # Update 2021.04.01
 
 Simplified the code snippet on how to add a Kotlin Compiler Plugins with tips provided by [Jake Wharton](https://twitter.com/JakeWharton). For a matter of history, here is the previous solution:
@@ -130,8 +132,6 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     }
 }
 ```
-
-All other aspects of the code snippet remain the same.
 
 # Credits
 
