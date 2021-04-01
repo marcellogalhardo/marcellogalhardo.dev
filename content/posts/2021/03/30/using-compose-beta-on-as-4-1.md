@@ -111,6 +111,6 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 
 # Credits
 
-Credits to [Jake Wharton](https://twitter.com/JakeWharton), for answering my question about the subject with the idea that originated this post.
+Special thanks to [Jake Wharton](https://twitter.com/JakeWharton) for answering my question about the subject with the idea that originated this post, and [Colton Idle](https://twitter.com/ColtonIdle) for informing me about the simpler way to include a Kotlin Compiler Plugins.
 
 If you like my posts, follow me on Twitter: [@marcellogalhard](https://twitter.com/marcellogalhard)
