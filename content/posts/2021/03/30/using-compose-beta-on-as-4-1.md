@@ -16,7 +16,7 @@ Jetpack Compose hit Beta! Many teams are excited to experiment with Compose, but
 
 > Compose Version `1.0.0-alpha04` is only compatible with Android Studio 4.2 Canary 13 and later.
  
-Been forced to use a Beta version of AS is a real bummer. There are cases in which you want to explore Compose in a real-world application (e.g., converting a Design System to Compose) while letting developers work in parallel using the stable version 4.1 to ship production code. Happily, Compose is a standard Kotlin Compiler Plugin, and it is pretty straightforward to apply it directly to your project:
+Been forced to use a Canary version of AS is a real bummer. There are cases in which you want to explore Compose in a real-world application (e.g., converting a Design System to Compose) while letting developers work in parallel using the stable version 4.1 to ship production code. Happily, Compose is a standard Kotlin Compiler Plugin, and it is pretty straightforward to apply it directly to your project:
 1. Select the module you want to use Compose.
 2. Remove the [default configuration](https://developer.android.com/jetpack/compose/setup#add-compose) from Compose docs, as we will set it up manually.
 3. Apply the compiler plugin and include the runtime to your module.
