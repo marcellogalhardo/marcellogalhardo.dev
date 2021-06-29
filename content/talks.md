@@ -3,6 +3,7 @@ title: "Talks"
 draft: false
 ---
 
+- April 29, 2021: [Anvil na Prática (PT-BR)](https://www.youtube.com/watch?v=AVZlStXTJJg)
 - June 05, 2019: [Railway Oriented Programming with Kotlin](https://speakerdeck.com/marcellogalhardo/railway-oriented-programming-with-kotlin)
 - April 17, 2019: [Effective Kotlin](https://speakerdeck.com/marcellogalhardo/effective-kotlin)
 - March 01, 2019: [Modularizing Legacy Apps](https://speakerdeck.com/marcellogalhardo/modularizing-legacy-apps)
