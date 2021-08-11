@@ -82,7 +82,7 @@ dependencies {
 }
 ``` 
 
-Once it is in place, you can build Compose Apps in your AS 4.1 stable. Note that you will not be able to use the basic IDE tooling (e.g., Preview) without opening your project in a higher version of Android Studio. Nevertheless, if you do not upgrade Android Gradle Plugin, this set-up enables you to switch between AS 4.1 and Arctic Fox and build the project with success. Keep in mind you should remove those manual configurations once you migrate to AS 4.2 or later.
+Once it is in place, you can build Compose Apps in your AS 4.1 stable. Note that you will not be able to use the basic IDE tooling (e.g., Preview) without opening your project in a higher version of Android Studio. Nevertheless, if you do not upgrade Android Gradle Plugin, this set-up enables you to switch between AS 4.1 and Arctic Fox and build the project with success. Keep in mind you should remove those manual configurations once you migrate to AS Arctic Fox or later.
 
 ## Gradle KTS Differences {#gradle-kts-differences}
 
