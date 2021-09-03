@@ -17,3 +17,4 @@ draft: false
 - Window Manager: [Tiles](https://freemacsoft.net/tiles)
 - Diagrams: [Diagrams](https://diagrams.app)
 - IDE: [IntelliJ IDEA](https://www.jetbrains.com/idea)
+- Daily Planner: [Sunsama](https://sunsama.com)
