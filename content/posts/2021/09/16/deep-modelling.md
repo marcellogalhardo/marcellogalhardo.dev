@@ -14,7 +14,7 @@ tags:
 
 WARNING: THAT IS A DRAFT, PLEASE DO NOT SHARE WITHOUT PERMISSION.
 
-Modelling is critical in Software Development: good models reduce the risk of bugs, increase readability and maintainability. Unfortunately, most software have seen in my career relies on shallow modelling and developers quite often underestimate how important modelling can be.
+Modelling is critical in Software Development: good models reduce the risk of bugs, increase readability and improve maintainability. Unfortunately, most software have seen in my career relies on shallow modelling and developers quite often underestimate how important modelling can be.
 
 **Heads-up:** this article expects you to be familiar with Dagger, Retrofit and Coroutines.
 
