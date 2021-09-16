@@ -95,9 +95,8 @@ value class OrderItemId(val value: String) {
 @JvmInline
 value class OrderItemName(val value: String) {
     init {
-        require(value.isNotBlank()) {
-            "OrderItemName should not be blank."
-        }
+        require(value.isNotBlank()) { "OrderItemName should not be blank." }
+        require(value.length < 200) { "OrderItemName length should be smaller than 200 but found: ${value.length} with content: $value."}
     }
 }
 
@@ -105,7 +104,7 @@ value class OrderItemName(val value: String) {
 value class OrderItemQuantity(val value: Int) {
     init {
         require(value < 0) { "OrderItemQuantity should not be negative but found: $value." }
-        require(value > 99) { "OrderItemQuantity should not be bigger than 99 but found: $value." }
+        require(value > 99) { "OrderItemQuantity should not be higher than 99 but found: $value." }
     }
 }
 
