@@ -80,7 +80,7 @@ value class AccountId(val value: String) {
 data class OrderItem(
     val id: OrderItemId,
     val name: OrderItemName,
-    val quantity: Int,
+    val quantity: OrderItemQuantity,
     val price: BigDecimal,
 )
 
