@@ -81,7 +81,7 @@ data class OrderItem(
     val id: OrderItemId,
     val name: OrderItemName,
     val quantity: OrderItemQuantity,
-    val price: BigDecimal,
+    val price: OrderItemPrice,
 )
 
 @JvmInline
