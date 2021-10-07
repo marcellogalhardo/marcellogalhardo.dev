@@ -12,10 +12,4 @@ min_version = "0.57.1"
 
 [author]
   name = "nanxiaobei"
-  homepage = "https://mrlee.me/"
-
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
+  homepage = "https://lee.so/"

@@ -12,6 +12,7 @@ Anubis is a simple minimalist theme for [Hugo blog engine](https://gohugo.io/).
 - Archive
 - Open Graph and Twitter Cards support
 - Mobile support
+- Social icons
 - Google Analytics
 - Disqus
 - Utteranc.es
@@ -49,8 +50,8 @@ baseUrl: ""
 title: "Anubis"
 theme: "anubis"
 paginate: 10
-disqusShortname: yourdiscussshortname
-googleAnalytics: UA-123-45
+disqusShortname: "yourdiscussshortname"
+googleAnalytics: "G-12345"
 enableRobotsTXT: true
 
 menu:
@@ -66,16 +67,18 @@ params:
   email: mail@example.org # used for microformats
   avatar: "/images/me.png" # used for microformats
   description: ""
-  images:
-    - images/og-featured.png # relative path to "static" directory
-  customCSS:
-    - css/my.css # relative path to "assets" directory (don't use main.css filename)
-  customJS:
-    - js/main.js # relative path to "assets" directory
+  # Uncomment if you need this
+  # images:
+  #   - images/og-featured.png # relative path to "static" directory
+  # customCSS:
+  #   - css/my.css # relative path to "assets" directory (don't use main.css filename)
+  # customJS:
+  #   - js/main.js # relative path to "assets" directory
   dateFormat: "2006-01-02"
   paginationSinglePost: true
   style: light-without-switcher
   readMore: false
+  disableSummary: false
   # utteranc.es support
   utterancesRepo: ""  # mandatory
   utterancesTheme: "" # optional
@@ -85,6 +88,12 @@ params:
     url: https://yourdomain.com/webemntions/receive
     login: hugo-theme-anubis
     pingback: true
+  social:
+  - id: github
+    name: gohugoio
+#  - id: hugo
+#    url: "https://gohugo.io/"
+#    icon: "hugo"
 
 markup:
   goldmark:
@@ -112,10 +121,53 @@ Options:
 - `dark` - dark theme by default, can be switched by user to light theme and back. Theme settings are saved for user 
 - `auto` - theme based on user system settings by default, can be switched by user to dark/light theme. Theme settings are saved for user 
 
+### Social icons
+#### Predefined icons
+To add icon from predefined list, add to `params.social` config:
+- id of social network
+- name for placeholder (usually it's your nickname or login)  
+
+Predefined list:
+ - email
+ - facebook
+ - github
+ - instagram
+ - linkedin
+ - patreon
+ - reddit
+ - snapchat
+ - soundcloud
+ - spotify
+ - telegram
+ - twitch
+ - twitter
+ - vk
+ - youtube
+
+Example:
+```
+  - id: github
+    name: gohugoio
+```
+Config like this generate github icon with "https://github.com/gohugoio" url.
+
+#### Custom icons
+To add custom icon, add to `params.social` config:
+- id of social network/site
+- full url to your network/site
+Also you need to create directory `static/fa-icons` and add svg icon of your network/site with name equals to `id` from config.
+
+Example:
+```
+  - id: google
+    url: "https://www.google.com/search?q=I'm+lucky"
+```
+Icon should be "static/fa-icons/google.svg"
+
+If you want font awesome icons, download "Font Awesome For Desktop" and open svg directory.
+
 ### Google Analytics
-Only works for production environment. You either build your site with variable like
-`HUGO_ENV=production hugo --minify`
-or just put `env: production` to `params` section of config.
+Only works for production environment.
 
 ### Multilingual mode 
 Check config/example usage in [exampleSiteMultilingual](https://github.com/Mitrichius/hugo-theme-anubis/tree/master/exampleSiteMultilingual) directory and documentation on [Hugo site](https://gohugo.io/content-management/multilingual/).
