@@ -96,7 +96,7 @@ value class OrderItemName(val value: String) {
 @JvmInline
 value class OrderItemQuantity(val value: Int) {
     init {
-        require(value > 0) { "OrderItemQuantity should not be negative but found: $value." }
+        require(value >= 0) { "OrderItemQuantity should not be negative but found: $value." }
         require(value < 99) { "OrderItemQuantity should not be higher than 99 but found: $value." }
     }
 }
