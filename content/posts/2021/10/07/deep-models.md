@@ -1,6 +1,6 @@
 ---
 title: "Deep Models"
-date: 2021-10-07T17:37:41+02:00
+date: 2021-10-07T09:02:50+01:00
 draft: false
 toc: false
 images:
