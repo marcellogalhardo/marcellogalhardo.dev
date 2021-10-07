@@ -1,0 +1,19 @@
+profileMode:
+  enabled: true
+  title: "Marcello Galhardo"
+  subtitle: "Software Engineer (Android)"
+  imageUrl: "https://avatars.githubusercontent.com/u/4348197?s=400&u=c27e3f938a61471e2eebc00d6c8ab8826b0af816&v=4"
+  imageTitle: "Profile Picture"
+  imageWidth: 120
+  imageHeight: 120
+  buttons:
+    - name: Posts
+      url: "/posts"
+
+socialIcons:
+  - name: "twitter"
+    url: "https://twitter.com/marcellogalhard"
+  - name: "github"
+    url: "https://github.com/marcellogalhardo/"
+  - name: "linkedin"
+    url: "https://www.linkedin.com/in/marcellogalhardo/"
