@@ -115,7 +115,7 @@ The new API makes it impossible to create an invalid instance of an `Order`. It 
 
 1. What about the number of classes?
 
-Good models often will involve more classes and specific validations - but keep in mind those are already in our code. Remember all those checks to verify if the parameter of `findOrderById` is valid? Or that `InvalidArgumentException` when the expected quantity but received a negative number? Now they are explicitly defined in our domain and can be easily found.
+Good models often will involve more classes and specific validations - but keep in mind those are already in our code. Remember all those checks to verify if the parameter of `findOrderById` is valid? Or that `IllegalArgumentException` when you expected a quantity but received a negative number? Now they are explicitly defined in our domain and can be easily found.
 
 2. What about the number of lines of code?
 
