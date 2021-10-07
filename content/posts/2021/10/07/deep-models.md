@@ -41,7 +41,7 @@ At first glance, these models will look good, but let's have a closer look.
 2. [Absence of Invariants](https://medium.com/code-design/invariants-in-code-design-557c7864a047): it is unrealistic to define a quantity as a number between `-2147483648` and `2147483647`. What is a quantity `-1`?
 3. [Error Prone](https://www.youtube.com/watch?v=t3DBzaeid74): what happens if you create an `Order` with an empty `accountId`? What will happen if you call `findOrderById` with an `OrderItem.id` by mistake?
 
-Good models get out of developers' way by making it impossible to be in an invalid state. More than that, it leverages the compiler to not allow human's mistake (e.g., an `OrderItemId` should not be used as an `OrderId`).
+Good models get out of developers' way by making invalid state impossible. More than that, it leverages the compiler to not allow human's mistake (e.g., an `OrderItemId` should not be used as an `OrderId`).
 
 Let's redesign the previous model.
 
