@@ -1,5 +1,5 @@
 ---
-title: "Deep Models"
+title: "Deep Modeling"
 date: 2021-10-07T17:37:41+02:00
 draft: false
 toc: false
