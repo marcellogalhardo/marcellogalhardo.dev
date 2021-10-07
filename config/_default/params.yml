@@ -1,5 +1,5 @@
-defaultTheme: auto
-disableThemeToggle: true
+defaultTheme: dark
+disableThemeToggle: false
 
 profileMode:
   enabled: true
