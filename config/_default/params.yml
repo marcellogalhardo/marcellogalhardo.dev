@@ -1,3 +1,6 @@
+defaultTheme: auto
+disableThemeToggle: true
+
 profileMode:
   enabled: true
   title: "Marcello Galhardo"
