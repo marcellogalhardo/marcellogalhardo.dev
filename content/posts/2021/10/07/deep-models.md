@@ -5,11 +5,11 @@ draft: false
 toc: false
 images:
 categories:
-- software development
-  tags:
-- android
-- compose
-- gradle
+  - software development
+tags:
+  - android
+  - compose
+  - gradle
 ---
 
 Modeling is a critical task in Software Development: good models reduce the risk of bugs, increase readability and improve maintainability. However, I often see developers focusing on "How can I code this?" - and they are done when they find a way to code it. That inherently reduces the domain modeling to the abuse of primitives and shallow design where any inconsistent state is allowed.
@@ -125,7 +125,7 @@ It is true that now you need to cover more ground, but it is also true that you 
 
 3. Should I have a class for each property?
 
-Not really. Modeling requires a lot of thinking and analysis. You must identify the essential concepts of your domain that must be assertive and ensure those are deep. For that, [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html) might help you.
+Probably not. Modeling requires a lot of analysis. You must identify the essential concepts of your domain that must be assertive and ensure those are deep. For that, [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html) might help you.
 
 # Credits
 
