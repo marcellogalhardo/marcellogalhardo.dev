@@ -8,7 +8,7 @@ enableRobotsTXT = true
 [languages]
   [languages.en]
     title = "Marcello Galhardo"
-    subtitle = "Lead Android Engineer @ N26"
+    subtitle = "Software Engineer (Android)"
     keywords = ""
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
