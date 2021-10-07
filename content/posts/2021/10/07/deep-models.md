@@ -38,8 +38,8 @@ data class OrderItem(
 
 At first glance, these models will look good, but let's have a closer look.
 1. [Primitive Obsession](https://refactoring.guru/smells/primitive-obsession): almost all types are String, and the compiler is incapable of verifying their integrity.
-2. [Absence of Invariants](https://medium.com/code-design/invariants-in-code-design-557c7864a047): it is unrealistic to define a quantity as a number between `-2147483648` and `2147483647`.
-3. [Error Prone](https://www.youtube.com/watch?v=t3DBzaeid74): what happens if you create an `Order` with an empty `accountId`? What will happen if you call `findOrderById` with an `ItemId` by mistake?
+2. [Absence of Invariants](https://medium.com/code-design/invariants-in-code-design-557c7864a047): it is unrealistic to define a quantity as a number between `-2147483648` and `2147483647`. What is a quantity `-1`?
+3. [Error Prone](https://www.youtube.com/watch?v=t3DBzaeid74): what happens if you create an `Order` with an empty `accountId`? What will happen if you call `findOrderById` with an `OrderItemId` by mistake?
 
 Good models get out of developers' way by making it impossible to be in an invalid state. More than that, it leverages the compiler to not allow human's mistake (e.g., an `OrderItemId` should not be used as an `OrderId`).
 
@@ -63,7 +63,7 @@ value class OrderId(val value: String) {
 }
 
 @JvmInline
-value class AccountId(val value: String) {
+value class OrderAccountId(val value: String) {
     init {
         runCatching { UUID.fromString(value) }
             .onFailure { e -> error("AccountId should be a valid UUID but found: $value.") }
@@ -96,15 +96,15 @@ value class OrderItemName(val value: String) {
 @JvmInline
 value class OrderItemQuantity(val value: Int) {
     init {
-        require(value < 0) { "OrderItemQuantity should not be negative but found: $value." }
-        require(value > 99) { "OrderItemQuantity should not be higher than 99 but found: $value." }
+        require(value > 0) { "OrderItemQuantity should not be negative but found: $value." }
+        require(value < 99) { "OrderItemQuantity should not be higher than 99 but found: $value." }
     }
 }
 
 @JvmInline
 value class OrderItemPrice(val value: BigDecimal) {
     init {
-        require(value < 0) { "OrderItemPrice should not be negative but found: $value." }
+        require(value > BigDecimal.ZERO) { "OrderItemPrice should not be negative but found: $value." }
     }
 }
 ```
