@@ -4,8 +4,6 @@ theme = "paper" # "paper" # "hello-friend-ng" # "anubis"
 paginate = 10
 googleAnalytics = "G-7LK7ENB813"
 enableRobotsTXT = true
-twitter = 'https://twitter.com/marcellogalhard'
-github = 'https://github.com/marcellogalhardo'
 
 [languages]
   [languages.en]

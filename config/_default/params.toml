@@ -6,6 +6,9 @@ avatar = "https://avatars3.githubusercontent.com/u/4348197?s=460&v=4" # used for
 #style = "light-without-switcher" # https://themes.gohugo.io/hugo-theme-anubis/#dark-mode
 #readMore = false
 
+twitter = 'https://twitter.com/marcellogalhard'
+github = 'https://github.com/marcellogalhardo'
+
 # Subtitle for home
 #homeSubtitle = "Software Engineer (Android)"
 
