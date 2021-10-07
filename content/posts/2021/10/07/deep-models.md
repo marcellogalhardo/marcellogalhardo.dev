@@ -39,7 +39,7 @@ data class OrderItem(
 At first glance, these models will look good, but let's have a closer look.
 1. [Primitive Obsession](https://refactoring.guru/smells/primitive-obsession): almost all types are String, and the compiler is incapable of verifying their integrity.
 2. [Absence of Invariants](https://medium.com/code-design/invariants-in-code-design-557c7864a047): it is unrealistic to define a quantity as a number between `-2147483648` and `2147483647`. What is a quantity `-1`?
-3. [Error Prone](https://www.youtube.com/watch?v=t3DBzaeid74): what happens if you create an `Order` with an empty `accountId`? What will happen if you call `findOrderById` with an `OrderItemId` by mistake?
+3. [Error Prone](https://www.youtube.com/watch?v=t3DBzaeid74): what happens if you create an `Order` with an empty `accountId`? What will happen if you call `findOrderById` with an `OrderItem.id` by mistake?
 
 Good models get out of developers' way by making it impossible to be in an invalid state. More than that, it leverages the compiler to not allow human's mistake (e.g., an `OrderItemId` should not be used as an `OrderId`).
 
@@ -119,7 +119,7 @@ Good models often will involve more classes and specific validations - but keep 
 
 2. What about the number of lines of code?
 
-It is true that now you need to cover more ground, but it is also true that you reduced the number of corner cases. Before, your tests had to cover if the `findOrderByid` parameter is valid. Now, the compiler will ensure the parameter is always correct - if the code compiles, you know you are receiving a correct `UUID`. In the end, you are making safer code and reducing the number of tests you will need.
+It is true that now you need to cover more ground, but it is also true that you reduced the number of corner cases. Before, your tests had to cover if the `findOrderById` parameter is valid. Now, the compiler will ensure the parameter is always correct - if the code compiles, you know you are receiving a correct `UUID`. In the end, you are making safer code and reducing the number of tests you will need.
 
 3. Should I have a class for each property?
 
