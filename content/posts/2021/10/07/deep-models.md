@@ -5,11 +5,9 @@ draft: false
 toc: false
 images:
 categories:
-- software development
-  tags:
-- android
-- compose
-- gradle
+  - software development 
+tags:
+  - kotlin
 ---
 
 Modeling is a critical task in Software Development: good models reduce the risk of bugs, increase readability and improve maintainability. However, I often see developers focusing on "How can I code this?" - and they are done when they find a way to code it. That inherently reduces the domain modeling to the abuse of primitives and shallow design where any inconsistent state is allowed.
