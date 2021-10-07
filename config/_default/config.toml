@@ -1,6 +1,6 @@
 baseURL = "https://marcellogalhardo.dev/"
 languageCode = "en-us"
-theme = "hello-friend-ng" # "paper" # "hello-friend-ng" # "anubis"
+theme = "paper" # "paper" # "hello-friend-ng" # "anubis"
 paginate = 10
 googleAnalytics = "G-7LK7ENB813"
 enableRobotsTXT = true
