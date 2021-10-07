@@ -10,7 +10,7 @@ tags:
   - kotlin
 ---
 
-Modeling is a critical task in Software Development: good models reduce the risk of bugs, increase readability and improve maintainability. However, I often see developers focusing on "How can I code this?" - and they are done when they find a way to code it. That inherently reduces the domain modeling to the abuse of primitives and shallow design where any inconsistent state is allowed.
+Modeling is a critical task in Software Development: good models reduce the risk of bugs, increase readability and improve maintainability. However, we can often see developers focusing on *"How can I code this?"*, and they are done with their task when they find a way to code it. This inherently reduces the domain modeling to the abuse of primitives and shallow design where any inconsistent state is allowed.
 
 To better explain, let's consider the hypothetical requirements:
 - Your team is developing a feature to order items in e-commerce.
@@ -41,7 +41,7 @@ At first glance, these models will look good, but let's have a closer look.
 2. [Absence of Invariants](https://medium.com/code-design/invariants-in-code-design-557c7864a047): it is unrealistic to define a quantity as a number between `-2147483648` and `2147483647`.
 3. [Error Prone](https://www.youtube.com/watch?v=t3DBzaeid74): what happens if you create an `Order` with an empty `accountId`? What will happen if you call `findOrderById` with an `ItemId` by mistake?
 
-Good models get out of developers' way by making it impossible to be in an invalid state and by leveraging the compiler not to allow human's mistake (e.g., an `OrderItemId` should not be used as an `OrderId`).
+Good models get out of developers' way by making it impossible to be in an invalid state. More than that, it leverages the compiler to not allow human's mistake (e.g., an `OrderItemId` should not be used as an `OrderId`).
 
 Let's redesign the previous model.
 
