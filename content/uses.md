@@ -15,6 +15,8 @@ draft: false
 ### Software
 - File Manager: [Marta](https://marta.sh)
 - Window Manager: [Tiles](https://freemacsoft.net/tiles)
-- Diagrams: [Diagrams](https://diagrams.app)
-- IDE: [IntelliJ IDEA](https://www.jetbrains.com/idea)
-- Daily Planner: [Sunsama](https://sunsama.com)
+- Diagrams, Quick: [Diagrams](https://diagrams.app)
+- Diagrams, Work: [PlantUML](https://plantuml.com)
+- IDE: [IntelliJ IDEA](https://www.jetbrains.com/idea) with [Dracula Pro](https://draculatheme.com/pro)
+- Knowledge Management: [Obsidian](https://obsidian.md) with [Zettelkasten](https://en.wikipedia.org/wiki/Zettelkasten)
+- Terminal: [Warp](https://www.warp.dev)
