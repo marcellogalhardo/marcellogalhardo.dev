@@ -52,10 +52,6 @@ One important principle in any good software is [cohesion](https://en.wikipedia.
 - Classes not reused together belong in separate modules.
 - Classes reused together belong in the same module.
 
-## Infrastructure Matters
-
-Modularization requires strong infrastructure in place. 
-
 ## API Modules
 
 ### Separate Abstractions from Implementations
