@@ -130,4 +130,4 @@ Thanks to [Maria Chietera](https://twitter.com/maryte_chietera), [Rafael Araujo]
 
 And a special thank you to [Ralf Wondratschek](https://twitter.com/vRallev) for early feedback and creating Anvil! :knife:
 
-If you like my posts, follow me on Twitter: [@marcellogalhard](https://twitter.com/marcellogalhard)
+> ℹ️ To stay up to date with my writing, follow me on [Mastodon](http://androiddev.social/@mg) or [Twitter](https://twitter.com/marcellogalhard). If you have any questions, feel free to reach me out! ℹ️

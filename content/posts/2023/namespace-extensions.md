@@ -58,4 +58,4 @@ A pattern I find helpful is: {Context}{Receiver}s, where:
 
 If you find yourself creating extensions that should be limited in access, consider creating a namespace object for them.
 
-> :bell: To stay up to date with my writing, follow me on [Mastodon](http://androiddev.social/@mg) or [Twitter](https://twitter.com/marcellogalhard). If you have any questions, feel free to reach me out!
+> ℹ️ To stay up to date with my writing, follow me on [Mastodon](http://androiddev.social/@mg) or [Twitter](https://twitter.com/marcellogalhard). If you have any questions, feel free to reach me out! ℹ️
