@@ -4,7 +4,7 @@ disableThemeToggle: true
 profileMode:
   enabled: true
   title: "Marcello Galhardo"
-  subtitle: "Software Engineer (Android)"
+  subtitle: "Android Software Engineer"
   imageUrl: "https://avatars.githubusercontent.com/u/4348197?s=400&u=c27e3f938a61471e2eebc00d6c8ab8826b0af816&v=4"
   imageTitle: "Profile Picture"
   imageWidth: 120
