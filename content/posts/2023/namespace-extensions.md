@@ -1,7 +1,7 @@
 ---
 title: "Namespace Extensions"
 date: 2023-03-25T09:02:50+01:00
-draft: false
+draft: true
 toc: false
 images:
 categories:
