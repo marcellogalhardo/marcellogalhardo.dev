@@ -20,3 +20,6 @@ socialIcons:
     url: "https://github.com/marcellogalhardo/"
   - name: "linkedin"
     url: "https://www.linkedin.com/in/marcellogalhardo/"
+
+cover:
+  image: "/avatar.png"
