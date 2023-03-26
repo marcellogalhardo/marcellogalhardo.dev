@@ -57,4 +57,4 @@ Avoid using `MyTrampolineActivity` in every situation (or even better, use a [Si
 * When you want to modify parameters before passing them to the next Activity.
 * When you need to perform conditional routing logic between two activities.
 
-> ℹ️ To stay up to date with my writing, follow me on [Mastodon](http://androiddev.social/@mg) or [Twitter](https://twitter.com/marcellogalhard). If you have any questions, feel free to reach me out! ℹ️
+> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions, feel free to reach out to me! ℹ️

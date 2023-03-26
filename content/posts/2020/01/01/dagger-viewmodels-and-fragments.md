@@ -208,3 +208,5 @@ class MyActivity : AppCompatActivity() {
 As you can see it is easy to support the Architecture Components combining Dagger with Kotlin features. I personally prefer the composite approach where we can fully hide the implementation details from the production code - Activities and Fragments aren't aware of the `javax.inject.Provider` interface - and the "glue" code is done inside Dagger modules with @ClassKey annotation style. Therefore, the additional might be an overkill for use cases where you want only one ViewModel or Fragment and these extension functions can be very handy if you don't care to use the Provider directly.
 
 **Disclaimer:** Note that you must connected the `CompositeViewModelFactoryModule` and `CompositeFragmentFactoryModule` to your Component. I propositally ommited this part to keep this tutorial short - if you need more information, check the [Dagger documentation](https://dagger.dev/).
+
+> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions, feel free to reach out to me! ℹ️
