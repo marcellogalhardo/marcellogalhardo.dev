@@ -46,15 +46,15 @@ Note that the `NoDisplay` theme means no UI, including toasts or dialogs. If you
 >
 > The reason the platform in M is now crashing the app if it doesn't use this is because not using it would previously break in very subtle and mysterious ways. For example, you would sometimes end up with your app ANRing for no reason.
 
-If you want a transparent `Activity`, consider using Translucent theme instead.
+If you want a transparent `Activity`, consider using the `Translucent` theme instead.
 
 ---
 
 ## When should you use a Trampoline Activity?
 
-Avoid using `MyTrampolineActivity` in every situation (or even better, use a [Single Activity](https://www.youtube.com/watch?v=2k8x8V77CrU)) and consider alternative solutions before relying on them. However, there are some scenarios in which it can be helpful, including:
-* When you need to access Activity context APIs from a different context.
-* When you want to modify parameters before passing them to the next Activity.
-* When you need to perform conditional routing logic between two activities.
+Avoid using Trampoline Activities in every situation (or even better, use a [Single Activity](https://www.youtube.com/watch?v=2k8x8V77CrU)) and always consider alternative solutions before relying on them. However, there are some scenarios in which it can be helpful, including:
+* When you need to access Activity context APIs, from a different context.
+* When you want to transform or sanitize parameters, before passing them forward to the next Activity.
+* When you need to perform conditional routing logic between multiple activities.
 
 > ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions, feel free to reach out to me! ℹ️
