@@ -10,7 +10,7 @@ tags:
   - android
 ---
 
-Today, I came across the term "Trampoline Activities". Although it's not an official name ([or is it](https://developer.android.com/about/versions/12/behavior-changes-12#notification-trampolines)?), I've noticed it is a typical pattern and I have decided to make a "How To" guide.
+Today, I came across the term "Trampoline Activities". Although it's not an official name ([or is it](https://developer.android.com/about/versions/12/behavior-changes-12#notification-trampolines)?), I've noticed it is a typical pattern and have decided to make a "How To" guide.
 
 ## What are Trampoline Activities?
 
