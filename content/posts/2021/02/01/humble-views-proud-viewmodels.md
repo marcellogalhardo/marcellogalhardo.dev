@@ -249,4 +249,4 @@ I used [Retained](http://github.com/marcellogalhardo/retained) library to keep t
 
 Special thanks to [Maria Chietera](https://twitter.com/maryte_chietera), [Tiago Dávila](https://twitter.com/TiagoDvl), [Rafael Araujo](https://twitter.com/orafaaraujo), [Tiago Cunha](https://twitter.com/laggedHero), [Felipe Pedroso](https://twitter.com/felipeapedroso), and [Stojan Anastasov](https://twitter.com/s_anastasov) proofread review! 🔍
 
-> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions, feel free to reach out to me! ℹ️
+> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
