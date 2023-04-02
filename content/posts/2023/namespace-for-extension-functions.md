@@ -10,13 +10,13 @@ tags:
   - kotlin
 ---
 
-A few weeks ago, I had to create an extension function - a prevalent task for any Kotlin developer. But there were a few limitations:
+A few weeks ago, I had to create an extension function - a usual task for any Kotlin developer. But there were a few limitations:
 * The receiver was a common type, polluted with methods.
 * The extension function was only relevant to my feature package.
 * Creating a ~~Gradle~~ module was out of scope.
 * Introducing a new type to hold the function felt like too much.
 
-Trying to be a good citizen, I asked myself: how can I have the advantages of using extension functions but avoid these issues?
+So how can I have the advantages of using extension functions but avoid these issues?
 
 One way is to use objects as namespace for extension functions.
 
