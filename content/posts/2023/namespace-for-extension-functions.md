@@ -27,7 +27,7 @@ Here is an example:
 // feature/MyFeatureActivityManagers.kt
 
 // Namespace object.
-object MyFeatureActivityManagers {
+internal object MyFeatureActivityManagers {
 
   // Extension functions that are only interested to my feature.
   fun ActivityManager.doSomethingThatOnlyYouCare() = TODO("")
