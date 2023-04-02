@@ -48,10 +48,10 @@ fun myFeature(activityManager: ActivityManager) {
 
 It didn't change much but the approach has a few advantages:
 * It ensures that code in the same package can only access the extension function with a direct import;
-* It helps humans (and tools) to identify what file the extension is coming from;
+* It helps humans, and tools, to identify what file the extension is coming from;
 * But most important, it has the right level of discoverability*.
 
-What I mean with discoverability is that IntelliJ IDEA has a hierarchy for suggesting auto-complete in the following order:
+What I mean with discoverability is that IntelliJ IDEA seems to have a hierarchy for suggesting auto-complete in the following order:
 - Member functions
 - Global extensions
 - Object extensions
@@ -72,6 +72,10 @@ A pattern I find useful is: `{Context}{Receiver}s`, where:
 
 ---
 
-If you find yourself creating extensions that should be limited in access, consider creating a namespace object for them.
+If you find yourself creating extensions that should be limited in access, consider creating a namespace object for them. That will help your project with organization and readability.
+
+# Credits
+
+Thanks to [Jacob Rein](https://twitter.com/deathssouls) proofread review! 🔍
 
 > ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
