@@ -13,7 +13,7 @@ tags:
 A few weeks ago, I had to create an extension function - a prevalent task for any Kotlin developer. But there were a few limitations:
 * The receiver was a common type, polluted with methods.
 * The extension function was only relevant to my feature package.
-* Creating a ~Gradle~ module was out of scope.
+* Creating a ~~Gradle~~ module was out of scope.
 * Introducing a new type to hold the function felt too much.
 
 Trying to be a good citizen, I asked myself: how can I have the advantages of using extension functions but avoid these issues?
