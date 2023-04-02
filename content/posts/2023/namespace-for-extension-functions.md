@@ -15,6 +15,7 @@ A few weeks ago, I had to create an extension function - a usual task for any Ko
 * The extension function was only relevant to my feature package.
 * Creating a ~~Gradle~~ module was out of scope.
 * Introducing a new type to hold the function felt like too much.
+* [Kotlin doesn't support package-private](https://youtrack.jetbrains.com/issue/KT-29227/Provide-package-private-visibility-modifier-or-another-scope-reducing-mechanism), yet.
 
 So how can I have the advantages of using extension functions but avoid these issues?
 
