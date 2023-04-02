@@ -51,7 +51,7 @@ It didn't change much but the approach has a few advantages:
 * It helps humans (and tools) to identify what file the extension is coming from;
 * But most important, it has the right level of discoverability*.
 
-*: IntelliJ IDEA has a hierarchy for suggesting auto-complete in the following order:
+What I mean with discoverability is that IntelliJ IDEA has a hierarchy for suggesting auto-complete in the following order:
 - Member functions
 - Global extensions
 - Object extensions
