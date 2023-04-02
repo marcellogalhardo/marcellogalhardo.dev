@@ -35,6 +35,7 @@ internal object MyFeatureActivityManagers {
 }
 ```
 
+
 And here is the usage:
 
 ```kotlin
@@ -46,6 +47,7 @@ fun myFeature(activityManager: ActivityManager) {
     activityManager.doSomethingThatOnlyYouCare()
 }
 ```
+
 
 It didn't change much but the approach has a few advantages:
 * It ensures that code in the same package can only access the extension function with a direct import;
