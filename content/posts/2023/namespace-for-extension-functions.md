@@ -60,11 +60,11 @@ Hence, IDEA will only suggest to other developers your shiny function if they ar
 
 ---
 
-**What about the naming of your namespace object?**
+**What's up with the naming?**
 
 I want to indicate why these particular functions are related, given the infinite number of possible extensions I could write.
 
-A pattern I find helpful is: {Context}{Receiver}s, where:
+A pattern I find useful is: {Context}{Receiver}s, where:
 
 - `Context` groups the functions based on their relevance.
 - `Receiver` refers to the type of the receiver for these functions.
