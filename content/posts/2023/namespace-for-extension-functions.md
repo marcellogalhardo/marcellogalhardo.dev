@@ -74,7 +74,7 @@ If you find yourself creating extensions that should be limited in access, consi
 
 # Credits
 
-Thanks to [Jacob Rein](https://twitter.com/deathssouls) proofread review! 🔍
+Special thanks to [Maria Chietera](https://twitter.com/maryte_chietera), and [Jacob Rein](https://twitter.com/deathssouls) proofread review! 🔍
 
 ---
 
