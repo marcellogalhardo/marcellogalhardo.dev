@@ -104,4 +104,4 @@ fun <T> MutableStateFlow(value: T): MutableStateFlow<T> {
 
 As you can see, the Kotlin Standard library can be a good source of inspiration when designing code aiming for better discoverability between Kotlin Developers. Kotlin is a consistent language, and we can use it in our favor. Why not take advantage of that?
 
-> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions, feel free to reach out to me! ℹ️
+> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
