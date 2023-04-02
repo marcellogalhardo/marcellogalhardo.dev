@@ -1,5 +1,5 @@
 ---
-title: "Namespace Extensions"
+title: "Extension Namespace"
 date: 2023-03-25T09:02:50+01:00
 draft: true
 toc: false
@@ -9,22 +9,35 @@ categories:
 tags:
   - kotlin
 ---
+
 A few days ago, I had to create an extension function - a prevalent task for any Kotlin developer. But there were a few problems:
 * The receiver was a common type, polluted with methods.
 * The extension function was only relevant to my feature package.
-* Creating a Gradle module was out of scope.
+* Creating a ~Gradle~ module was out of scope.
+* Introducing a new type to hold the function felt too much.
 
 Trying to be a good citizen, I asked myself (not literally): how can I have the advantages of using extension functions but avoid these issues?
 
 One way is to use objects to namespace extension functions.
 
 ```kotlin
+// MyFeatureActivityManagers.kt
 // Namespace object.
 object MyFeatureActivityManagers {
 
-  // Extensions functions that are not interested to everyone.
-  fun ActivityManager.doSomethingButOnlyYouCare() = TODO("")
-  fun ActivityManager.doSomethingButOnlyYouCareToo() = TODO("")
+  // Extension functions that are only interested to my feature.
+  fun ActivityManager.doSomethingThatOnlyYouCare() = TODO("")
+  fun ActivityManager.doSomethingThatOnlyYouCareToo() = TODO("")
+}
+```
+
+Now to use:
+
+```kotlin
+import MyFeatureActivityManagers.doSomethingThatOnlyYouCare
+
+fun myFeature(activityManager: ActivityManager) {
+    activityManager.doSomethingThatOnlyYouCare()
 }
 ```
 
