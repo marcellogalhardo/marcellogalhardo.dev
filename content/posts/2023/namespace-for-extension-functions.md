@@ -68,7 +68,7 @@ A pattern I find useful is: `{Context}{Receiver}s`, where:
 - `Receiver` refers to the type of the receiver for these functions.
 - `s` represents the collection of extensions.
 
-## Conclusion
+## Wrapping up
 
 If you find yourself creating extensions that should be limited in access, consider creating a namespace object for them. That will help your project with organization and readability.
 
