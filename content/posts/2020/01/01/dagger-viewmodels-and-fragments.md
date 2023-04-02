@@ -209,4 +209,6 @@ As you can see it is easy to support the Architecture Components combining Dagge
 
 **Disclaimer:** Note that you must connected the `CompositeViewModelFactoryModule` and `CompositeFragmentFactoryModule` to your Component. I propositally ommited this part to keep this tutorial short - if you need more information, check the [Dagger documentation](https://dagger.dev/).
 
+---
+
 > ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️

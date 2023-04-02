@@ -129,4 +129,6 @@ Probably not. Modeling requires a lot of analysis. You must identify the essenti
 
 Special credits for [Secure By Design](https://www.manning.com/books/secure-by-design) (Chapter 2: Shallow Modeling) and [A Philosophy of Software Design](https://www.amazon.de/-/en/John-Ousterhout/dp/1732102201) (Chapter 4: Modules should be deep) where I learnt about Deep and Shallow modeling, both exceptional books.
 
+---
+
 > ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️

@@ -58,9 +58,7 @@ What I mean with discoverability is that IntelliJ IDEA seems to have a hierarchy
 
 Hence, IDEA will only suggest to other developers your shiny function if they are actively looking for it.
 
----
-
-**What's up with the naming?**
+## What's up with the naming?
 
 I want to indicate why these particular functions are related, given the infinite number of possible extensions I could write.
 
@@ -70,12 +68,14 @@ A pattern I find useful is: `{Context}{Receiver}s`, where:
 - `Receiver` refers to the type of the receiver for these functions.
 - `s` represents the collection of extensions.
 
----
+## Conclusion
 
 If you find yourself creating extensions that should be limited in access, consider creating a namespace object for them. That will help your project with organization and readability.
 
 # Credits
 
 Thanks to [Jacob Rein](https://twitter.com/deathssouls) proofread review! 🔍
+
+---
 
 > ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️

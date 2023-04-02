@@ -57,4 +57,6 @@ Avoid using Trampoline Activities in every situation (or even better, use a [Sin
 * When you want to transform or sanitize parameters, before passing them forward to the next Activity.
 * When you need to perform conditional routing logic between multiple activities.
 
+---
+
 > ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
