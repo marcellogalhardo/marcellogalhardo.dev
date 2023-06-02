@@ -4,7 +4,7 @@ date: 2023-03-06T09:02:50+01:00
 draft: false
 toc: false
 images:
-- /images/logo.jpg
+- /logo.png
 categories:
 - software development
 tags:
