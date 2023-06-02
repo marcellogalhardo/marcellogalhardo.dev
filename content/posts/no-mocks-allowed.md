@@ -10,14 +10,14 @@ tags:
 - kotlin
 ---
 
-There is a simple rule I have been using to help me design better software: any "new" code should be unit testable without requiring any additional library.
+There is a simple rule I follow to improve my code design: any "new" code I should be unit testable without requiring any additional library.
 
-What do I mean with additional library?
+In other words:
 
 1. You must be able to test a piece of code without using any Mocking or Assertion library.
 2. You may use an xUnit Library (i.e., JUnit).
 
-That may be limiting or intimidating at first, but bear with me while I guide you in a step by step example.
+That may sound intimidating at first, but bear with me while I guide you in a step by step example.
 
 Heads-up: I will be using source code I got from [Now In Android](https://github.com/android/nowinandroid).
 
