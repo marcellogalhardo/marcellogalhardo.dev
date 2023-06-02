@@ -6,7 +6,8 @@ toc: false
 images:
 categories:
 - software development
-tags:
+  tags:
+- android
 - kotlin
 ---
 
@@ -31,34 +32,34 @@ Here's how you can use it.
 ```kotlin
 class MyAppComponentFactory : AppComponentFactory() {
 
-		// Customize the instantiation of Application class here
-		override fun instantiateApplication(
-				classLoader: ClassLoader,
-				className: String,
-		): Application = when (className) {
-				MyApplication::class.java.name -> MyApplication()
+    // Customize the instantiation of Application class here
+    override fun instantiateApplication(
+        classLoader: ClassLoader,
+        className: String,
+    ): Application = when (className) {
+        MyApplication::class.java.name -> MyApplication()
 
-				// Fallback to Android's default implementation.
-				else -> super.instantiateApplication(cl, className)
-		}
+        // Fallback to Android's default implementation.
+        else -> super.instantiateApplication(cl, className)
+    }
 
-		// Customize the instantiation of Activity class here
-		override fun instantiateActivity(
-				classLoader: ClassLoader,
-				className: String,
-				intent: Intent,
-		): Activity = when (className) {
-				MyActivity::class.java.name -> MyActivity()
+    // Customize the instantiation of Activity class here
+    override fun instantiateActivity(
+        classLoader: ClassLoader,
+        className: String,
+        intent: Intent,
+    ): Activity = when (className) {
+        MyActivity::class.java.name -> MyActivity()
 
-				// Fallback to Android's default implementation.
-				else -> super.instantiateActivity(cl, className, intent)
-		}
+        // Fallback to Android's default implementation.
+        else -> super.instantiateActivity(cl, className, intent)
+    }
 
-		// Override other `instantiate*` methods here
+    // Override other `instantiate*` methods here
 }
 ```
 
-1. Declare your custom `AppComponentFactory` in the `AndroidManifest.xml` file by adding the `android:appComponentFactory` attribute to the `<application>` tag.
+2. Declare your custom `AppComponentFactory` in the `AndroidManifest.xml` file by adding the `android:appComponentFactory` attribute to the `<application>` tag.
 
 ```xml
 <application android:appComponentFactory=".MyAppComponentFactory" />
@@ -79,34 +80,34 @@ class MyLayoutInflaterFactory : LayoutInflater.Factory2 {
 
     // Create and return a custom View based on the parent, name, context, and attributes
     override fun onCreateView(
-				parent: View?,
-				name: String,
-				context: Context,
-				attrs: AttributeSet,
-		): View? = when (name) {
-				MyCustomView::class.java.name -> MyCustomView(context, attrs, /* defStyleAttr = */ null),
+        parent: View?,
+        name: String,
+        context: Context,
+        attrs: AttributeSet,
+    ): View? = when (name) {
+        MyCustomView::class.java.name -> MyCustomView(context, attrs, /* defStyleAttr = */ null)
 
-				// Return null to fallback to Android's default implementation.
-				else -> null
-		}
+        // Return null to fallback to Android's default implementation.
+        else -> null
+    }
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? =
-				onCreateView(null, name, context, attrs)
+        onCreateView(null, name, context, attrs)
 }
 ```
 
-1. Set your custom `LayoutInflater.Factory2` on your `Activity` .
+2. Set your custom `LayoutInflater.Factory2` on your `Activity` .
 
 ```kotlin
 class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-				layoutInflater.factory2 = MyLayoutInflaterFactory()
+        layoutInflater.factory2 = MyLayoutInflaterFactory()
         super.onCreate(savedInstanceState)
 
         // Your activity initialization and logic here
     }
-    
+
     // Other overridden methods and custom methods here
 }
 ```
@@ -116,73 +117,71 @@ class MainActivity : Activity() {
 Setting a custom `LayoutInflater.Factory2` will crash if you use `AppCompat` (for example, `AppCompatActivity`).
 
 > java.lang.IllegalStateException: A factory has already been set on this LayoutInflater.
-> 
+>
 
- That is by design. `AppCompat` relies on a custom `LayoutInflater.Factory2` that must be set to work as expected.
+That is by design. `AppCompat` relies on a custom `LayoutInflater.Factory2` that must be set to work as expected.
 
 Here's a workaround.
 
 1. Remove the previous code from from your Activity's `onCreate`.
-2. Create a new class that implements `LayoutInflater.Factory2`, and receives 2 `LayoutInflater.Factor2` as parameters: 
-    1. `base` to handle your custom views with constructor injector.
-    2. `fallback` which will be used to handle all other views.
+2. Create a new class that implements `LayoutInflater.Factory2`, and receives 2 `LayoutInflater.Factor2` as parameters:
+   -  `base` to handle your custom views with constructor injector.
+   - `fallback` which will be used to handle all other views.
 
 ```kotlin
-class LayoutInflaterFactory2Wrapper
-constructor(
+class LayoutInflaterFactory2Wrapper(
     val base: LayoutInflater.Factory2?,
     val fallback: LayoutInflater.Factory2?,
 ) : LayoutInflater.Factory2 {
 
-	  override fun onCreateView(
+    override fun onCreateView(
         parent: View?,
         name: String?,
         context: Context?,
         attrs: AttributeSet?,
-    ): View? = base?.onCreateView(parent, name, context, attrs) 
-				?: fallback?.onCreateView(parent, name, context, attrs)
+    ): View? = base?.onCreateView(parent, name, context, attrs)
+        ?: fallback?.onCreateView(parent, name, context, attrs)
 
     override fun onCreateView(
-            name: String,
-            context: Context,
-            attrs: AttributeSet?,
+        name: String,
+        context: Context,
+        attrs: AttributeSet?,
     ): View? = onCreateView(/* parent = */ null, name, context, attrs)
 }
 ```
 
-1. Create a new class that extends `ContextWrapper`, and override the `getSystemService` method.
+3. Create a new class that extends `ContextWrapper`, and override the `getSystemService` method.
 
 ```kotlin
-class MyContextWrapper
-constructor(
+class MyContextWrapper(
     base: Context,
     private val baseFactory: LayoutInflater.Factory2,
 ) : ContextWrapper(base) {
 
     private val inflater: LayoutInflater by lazy {
         LayoutInflater
-						.from(baseContext)
-						.cloneInContext(/* newContext = */ this)
-						.apply { factory = LayoutInflaterFactory2Wrapper(baseFactory, factory2) }
+            .from(baseContext)
+            .cloneInContext(/* newContext = */ this)
+            .apply { factory = LayoutInflaterFactory2Wrapper(baseFactory, factory2) }
     }
 
     override fun getSystemService(name: String): Any? =
         if (LAYOUT_INFLATER_SERVICE != name) {
-						super.getSystemService(name) 
-				} else {
-						inflater
-				}
+            super.getSystemService(name)
+        } else {
+            inflater
+        }
 }
 ```
 
-1. Set your custom `ContextWrapper` on your `Activity` .
+4. Set your custom `ContextWrapper` on your `Activity` .
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context) {
-				val factory = MyLayoutInflaterFactory()
-				val wrapper = MyContextWrapper(newBase, factory)
+        val factory = MyLayoutInflaterFactory()
+        val wrapper = MyContextWrapper(newBase, factory)
         super.attachBaseContext(wrapper);
     }
 }
@@ -200,18 +199,18 @@ Here's how you can use it.
 class MyFragmentFactory : FragmentFactory() {
 
     override fun instantiate(
-				classLoader: ClassLoader,
-				className: String,
-		): Fragment = when (className) {
-				MyFragment::class.java.name -> MyFragment()
+        classLoader: ClassLoader,
+        className: String,
+    ): Fragment = when (className) {
+        MyFragment::class.java.name -> MyFragment()
 
-				// Fallback to Android's default implementation.
+        // Fallback to Android's default implementation.
         else -> super.instantiate(classLoader, className)
     }
 }
 ```
 
-1. Set your custom `FragmentFactory` instance on your `FragmentActivity` (or `Fragment`) before any fragment operations are performed.
+2. Set your custom `FragmentFactory` instance on your `FragmentActivity` (or `Fragment`) before any fragment operations are performed.
 
 ```kotlin
 class MyActivity : FragmentActivity() {
@@ -222,7 +221,7 @@ class MyActivity : FragmentActivity() {
 
         // Your activity initialization and logic here
     }
-    
+
     // Other overridden methods and custom methods here
 }
 ```
@@ -238,18 +237,18 @@ Here's how you can use it.
 ```kotlin
 class MyViewModelFactory : ViewModelProvider.Factory {
 
-		@Suppress("UNCHECKED_CAST")
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(
-				modelClass: Class<T>,
-				extras: CreationExtras,
-		): T = when (modelClass) {
-				is MyViewModel::class.java -> MyViewModel(extras.createSavedStateHandle())
-				else -> error("Unknown ViewModel class: $modelClass")
-		} as T
+        modelClass: Class<T>,
+        extras: CreationExtras,
+    ): T = when (modelClass) {
+        MyViewModel::class.java -> MyViewModel(extras.createSavedStateHandle())
+        else -> error("Unknown ViewModel class: $modelClass")
+    } as T
 }
 ```
 
-1. When you need to create an instance of `MyViewModel`,  use the `MyViewModelFactory`.
+2. When you need to create an instance of `MyViewModel`,  use the `MyViewModelFactory`.
 
 ```kotlin
 val viewModel by viewModels { MyViewModelFactory() }
@@ -273,17 +272,17 @@ class MyWorkerFactory : WorkerFactory() {
         workerClassName: String,
         workerParameters: WorkerParameters,
     ): ListenableWorker? = when (workerClassName) {
-          MyWorker::class.java.name -> MyWorker(appContext, workerParameters),
+        MyWorker::class.java.name -> MyWorker(appContext, workerParameters),
 
-					// Return null to fallback to Android's default implementation.
-          else -> null,
+            // Return null to fallback to Android's default implementation.
+        else -> null,
     }
 }
 ```
 
 In the `createWorker` method, you can inspect the `workerClassName` and `workerParameters` to determine the appropriate worker instance to create. Return `null` if you don't want to handle the given `workerClassName` and let the default factory handle it.
 
-1. Set the custom `WorkerFactory` to WorkManager: In your application's initialisation code, before using WorkManager, set your custom `WorkerFactory` using `Configuration`:
+3. Set the custom `WorkerFactory` to WorkManager: In your application's initialisation code, before using WorkManager, set your custom `WorkerFactory` using `Configuration`:
 
 ```kotlin
 val configuration = Configuration.Builder()
