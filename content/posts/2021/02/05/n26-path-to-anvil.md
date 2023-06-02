@@ -3,13 +3,14 @@ title: "N26 Path to Anvil"
 date: 2021-02-05T09:02:50+01:00
 draft: false
 toc: false
-images: /images/logo.jpg
+images:
+- /images/logo.jpg
 categories:
-  - software development
+- software development
 tags:
-  - android
-  - dagger
-  - anvil
+- android
+- dagger
+- anvil
 ---
 
 This post represents my personal experience while working at N26. I do not speak for the company nor by other employees.

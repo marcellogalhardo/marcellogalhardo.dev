@@ -3,11 +3,12 @@ title: "Deep Models"
 date: 2021-10-07T09:02:50+01:00
 draft: false
 toc: false
-images: /images/logo.jpg
+images:
+- /images/logo.jpg
 categories:
-  - software development
+- software development
 tags:
-  - kotlin
+- kotlin
 ---
 
 Modeling is a critical task in Software Development: good models reduce the risk of bugs, increase readability and improve maintainability. However, we can often see developers focusing on *"How can I code this?"*, and they are done with their task when they find a way to code it. This inherently reduces the domain modeling to the abuse of primitives and shallow design where any inconsistent state is allowed.

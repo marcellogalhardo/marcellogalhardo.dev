@@ -3,11 +3,12 @@ title: "Namespace for Extension Functions"
 date: 2023-03-25T09:02:50+01:00
 draft: false
 toc: false
-images: /images/logo.jpg
+images:
+- /images/logo.jpg
 categories:
-  - software development
+- software development
 tags:
-  - kotlin
+- kotlin
 ---
 
 A few weeks ago, I had to create an extension function - a usual task for any Kotlin developer. But there were a few limitations:

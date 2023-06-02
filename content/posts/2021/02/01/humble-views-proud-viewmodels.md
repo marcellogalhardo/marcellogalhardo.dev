@@ -3,12 +3,13 @@ title: "Humble Views, Proud ViewModels"
 date: 2021-02-01T09:02:50+01:00
 draft: false
 toc: false
-images: /images/logo.jpg
+images:
+- /images/logo.jpg
 categories:
-  - software development
+- software development
 tags:
-  - android
-  - kotlin
+- android
+- kotlin
 ---
 
 The Android Community has long advocated that Activities and Fragments were views  -  but this perception has changed over time. For good. Let's dive deep into how to design views and view models, how they wire to a LifecycleOwner, and how this can positively impact your's app testability.

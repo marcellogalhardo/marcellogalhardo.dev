@@ -3,7 +3,8 @@ title: "No Mocks Allowed"
 date: 2023-05-01T09:02:50+01:00
 draft: true
 toc: false
-images: /images/logo.jpg
+images:
+- /images/logo.jpg
 categories:
 - software development
 tags:
