@@ -5,6 +5,10 @@ paginate = 10
 googleAnalytics = "G-7LK7ENB813"
 enableRobotsTXT = true
 
+[params]
+  # Just a custom image variable, please define it in .md files for content.
+  image = "/logo.png"
+
 [languages]
   [languages.en]
     title = "Marcello Galhardo"
@@ -15,11 +19,7 @@ enableRobotsTXT = true
 
     [languages.en.params.logo]
       logoText = "marcellogalhardo.dev"
-      logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
+      logoHomeLink = "/logo.png"
 
 [menu]
   [[menu.main]]
