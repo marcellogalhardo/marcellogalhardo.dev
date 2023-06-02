@@ -6,7 +6,7 @@ toc: false
 images:
 categories:
 - software development
-  tags:
+tags:
 - android
 - kotlin
 ---
