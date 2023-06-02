@@ -160,7 +160,9 @@ class MyContextWrapper(
         LayoutInflater
             .from(baseContext)
             .cloneInContext(/* newContext = */ this)
-            .apply { factory = LayoutInflaterFactory2Wrapper(baseFactory, factory2) }
+            .apply {
+               factory = LayoutInflaterFactory2Wrapper(baseFactory, factory2)
+            }
     }
 
     override fun getSystemService(name: String): Any? =
