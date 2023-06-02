@@ -1,5 +1,6 @@
 defaultTheme: dark
 disableThemeToggle: true
+image: "/logo.png"
 
 profileMode:
   enabled: true
