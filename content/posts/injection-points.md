@@ -11,8 +11,6 @@ tags:
 - kotlin
 ---
 
-# Injection Points
-
 Android has made significant progress in becoming a [DI-Friendly Framework](https://blog.ploeh.dk/2014/05/19/di-friendly-framework/). Throughout the years, new APIs like `AppComponentFactory` and `FragmentFactory` have been introduced, allowing apps to incorporate their own custom constructors and facilitating the development of testable code.
 
 Please keep in mind that I will not delve into the concept of DI, SL, specific libraries or its significance. Instead, the focus will be solely on the Android APIs that enable constructor injection. If you are interested in learning more about the concepts of DI, I recommend exploring resources on [Dependency Injection in Android](https://developer.android.com/training/dependency-injection).
