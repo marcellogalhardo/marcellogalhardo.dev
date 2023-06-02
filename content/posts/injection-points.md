@@ -13,11 +13,11 @@ tags:
 
 Android has made significant progress in becoming a [DI-Friendly Framework](https://blog.ploeh.dk/2014/05/19/di-friendly-framework/). Throughout the years, new APIs like `AppComponentFactory` and `FragmentFactory` have been introduced, allowing apps to incorporate their own custom constructors and facilitating the development of testable code.
 
+The purpose of this article is to highlight some of the Android APIs that are utilised behind the scenes. By exploring these APIs, developers can gain a better understanding of the underlying mechanisms employed such libraries.
+
 Please keep in mind that I will not delve into the concept of DI, SL, specific libraries or its significance. Instead, the focus will be solely on the Android APIs that enable constructor injection. If you are interested in learning more about the concepts of DI, I recommend exploring resources on [Dependency Injection in Android](https://developer.android.com/training/dependency-injection).
 
-Additionally, it is important to note that [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) and [Koin Android](https://insert-koin.io/docs/quickstart/android/) simplifies the dependency wiring process by handling almost it all for you.
-
-The purpose of this article is to highlight some of the Android APIs that are utilised behind the scenes. By exploring these APIs, developers can gain a better understanding of the underlying mechanisms employed such libraries.
+Additionally, it is important to note that [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android) and [Koin Android](https://insert-koin.io/docs/quickstart/android/) simplifies the dependency wiring process by handling _almost_ it all for you.
 
 ## AppComponentFactory
 
