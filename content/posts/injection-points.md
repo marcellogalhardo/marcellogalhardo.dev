@@ -95,13 +95,13 @@ class MyLayoutInflaterFactory : LayoutInflater.Factory2 {
 }
 ```
 
-1. Set your custom `LayoutInflater.Factory2` in the `Activity` .
+1. Set your custom `LayoutInflater.Factory2` on your `Activity` .
 
 ```kotlin
 class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-				LayoutInflater.from(context).factory2 = MyLayoutInflaterFactory()
+				layoutInflater.factory2 = MyLayoutInflaterFactory()
         super.onCreate(savedInstanceState)
 
         // Your activity initialization and logic here
@@ -139,8 +139,8 @@ constructor(
         name: String?,
         context: Context?,
         attrs: AttributeSet?,
-    ): View? = base?.onCreateView(name, context, attrs) 
-				?: fallback?.onCreateView(name, context, attrs)
+    ): View? = base?.onCreateView(parent, name, context, attrs) 
+				?: fallback?.onCreateView(parent, name, context, attrs)
 
     override fun onCreateView(
             name: String,
@@ -175,7 +175,7 @@ constructor(
 }
 ```
 
-1. Set your custom `LayoutInflater.Factory2` in the `Activity` .
+1. Set your custom `ContextWrapper` on your `Activity` .
 
 ```kotlin
 class MainActivity : AppCompatActivity() {
