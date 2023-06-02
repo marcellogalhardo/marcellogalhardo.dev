@@ -29,7 +29,7 @@ Here's how you can use it.
 ```kotlin
 class MyAppComponentFactory : AppComponentFactory() {
 
-    // Customize the instantiation of Application class here
+    // Customize the instantiation of Application class here.
     override fun instantiateApplication(
         classLoader: ClassLoader,
         className: String,
@@ -40,7 +40,7 @@ class MyAppComponentFactory : AppComponentFactory() {
         else -> super.instantiateApplication(cl, className)
     }
 
-    // Customize the instantiation of Activity class here
+    // Customize the instantiation of Activity class here.
     override fun instantiateActivity(
         classLoader: ClassLoader,
         className: String,
@@ -52,7 +52,7 @@ class MyAppComponentFactory : AppComponentFactory() {
         else -> super.instantiateActivity(cl, className, intent)
     }
 
-    // Override other `instantiate*` methods here
+    // Override other `instantiate*` methods here.
 }
 ```
 
@@ -75,7 +75,7 @@ Here's how you can use it.
 ```kotlin
 class MyLayoutInflaterFactory : LayoutInflater.Factory2 {
 
-    // Create and return a custom View based on the parent, name, context, and attributes
+    // Create and return a custom View based on the parent, name, context, and attributes.
     override fun onCreateView(
         parent: View?,
         name: String,
@@ -102,10 +102,10 @@ class MyActivity : Activity() {
         layoutInflater.factory2 = MyLayoutInflaterFactory()
         super.onCreate(savedInstanceState)
 
-        // Your activity initialization and logic here
+        // Your activity initialization and logic here.
     }
 
-    // Other overridden methods and custom methods here
+    // Other overridden methods and custom methods here.
 }
 ```
 
@@ -218,10 +218,10 @@ class MyActivity : FragmentActivity() {
         supportFragmentManager.fragmentFactory = MyFragmentFactory()
         super.onCreate(savedInstanceState)
 
-        // Your activity initialization and logic here
+        // Your activity initialization and logic here.
     }
 
-    // Other overridden methods and custom methods here
+    // Other overridden methods and custom methods here.
 }
 ```
 
@@ -265,17 +265,17 @@ Here's how you can use it.
 ```kotlin
 class MyWorkerFactory : WorkerFactory() {
 
-    // Customize the creation of your worker based on the workerClassName and workerParameters
-    override fun createWorker(
-        appContext: Context,
-        workerClassName: String,
-        workerParameters: WorkerParameters,
-    ): ListenableWorker? = when (workerClassName) {
-        MyWorker::class.java.name -> MyWorker(appContext, workerParameters),
+   // Customize the creation of your worker based on the workerClassName and workerParameters.
+   override fun createWorker(
+      appContext: Context,
+      workerClassName: String,
+      workerParameters: WorkerParameters,
+   ): ListenableWorker? = when (workerClassName) {
+      MyWorker::class.java.name -> MyWorker(appContext, workerParameters)
 
-            // Return null to fallback to Android's default implementation.
-        else -> null,
-    }
+      // Return null to fallback to Android's default implementation.
+      else -> null
+   }
 }
 ```
 
