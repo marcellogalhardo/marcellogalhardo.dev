@@ -247,7 +247,7 @@ Other than testing, projects that use this approach can easily compose more comp
 
 I used [Retained](http://github.com/marcellogalhardo/retained) library to keep the state of the `ViewModel` in configuration changes. I also published all the helper functions as [Github GISTs](https://gist.github.com/marcellogalhardo/a9985f7b3875fa41c379a2ba65d8ac9c), so you can use them as you please.
 
-Special thanks to [Maria Chietera](https://twitter.com/maryte_chietera), [Tiago Dávila](https://twitter.com/TiagoDvl), [Rafael Araujo](https://twitter.com/orafaaraujo), [Tiago Cunha](https://twitter.com/laggedHero), [Felipe Pedroso](https://twitter.com/felipeapedroso), and [Stojan Anastasov](https://twitter.com/s_anastasov) proofread review! 🔍
+Special thanks to [Maria Chietera](https://twitter.com/mchietera), [Tiago Dávila](https://twitter.com/TiagoDvl), [Rafael Araujo](https://twitter.com/orafaaraujo), [Tiago Cunha](https://twitter.com/laggedHero), [Felipe Pedroso](https://twitter.com/felipeapedroso), and [Stojan Anastasov](https://twitter.com/s_anastasov) proofread review! 🔍
 
 ---
 

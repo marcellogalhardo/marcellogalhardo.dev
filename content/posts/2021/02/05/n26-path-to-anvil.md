@@ -126,7 +126,7 @@ Updated `MultibindingFragmentFactory` example and [showcase project](https://git
 
 # Credits
 
-Thanks to [Maria Chietera](https://twitter.com/maryte_chietera), [Rafael Araujo](https://twitter.com/orafaaraujo), [Tiago Cunha](https://twitter.com/laggedHero), [Fabio Carballo](https://twitter.com/fabiocarballo), and [Stojan Anastasov](https://twitter.com/s_anastasov) proofread review! 🔍
+Thanks to [Maria Chietera](https://twitter.com/mchietera), [Rafael Araujo](https://twitter.com/orafaaraujo), [Tiago Cunha](https://twitter.com/laggedHero), [Fabio Carballo](https://twitter.com/fabiocarballo), and [Stojan Anastasov](https://twitter.com/s_anastasov) proofread review! 🔍
 
 And a special thank you to [Ralf Wondratschek](https://twitter.com/vRallev) for early feedback and creating Anvil! :knife:
 
