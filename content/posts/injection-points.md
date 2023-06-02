@@ -95,7 +95,7 @@ class MyLayoutInflaterFactory : LayoutInflater.Factory2 {
 2. Set your custom `LayoutInflater.Factory2` on your `Activity` .
 
 ```kotlin
-class MainActivity : Activity() {
+class MyActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         layoutInflater.factory2 = MyLayoutInflaterFactory()
@@ -175,7 +175,7 @@ class MyContextWrapper(
 4. Set your custom `ContextWrapper` on your `Activity` .
 
 ```kotlin
-class MainActivity : AppCompatActivity() {
+class MyActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context) {
         val factory = MyLayoutInflaterFactory()
