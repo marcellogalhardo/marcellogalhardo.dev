@@ -65,7 +65,7 @@ class MyAppComponentFactory : AppComponentFactory() {
 
 **Disclaimer:** contrary to the belief of many, the latest Android API Version Distribution, last updated on January 6th, 2023, reveals that API 28 and above comprise a significant majority of the Android market, accounting for approximately 81%.
 
-## LayoutInflater.Factory and View
+## LayoutInflater.Factory and Views
 
 Starting from [API Level 11](https://developer.android.com/reference/android/view/LayoutInflater.Factory2), you can use the `LayoutInflater.Factory2` interface to customise the inflation of a `View` instance.
 
