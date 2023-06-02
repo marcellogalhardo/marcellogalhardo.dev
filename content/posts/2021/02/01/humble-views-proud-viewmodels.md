@@ -3,7 +3,7 @@ title: "Humble Views, Proud ViewModels"
 date: 2021-02-01T09:02:50+01:00
 draft: false
 toc: false
-images:
+images: /images/logo.jpg
 categories:
   - software development
 tags:

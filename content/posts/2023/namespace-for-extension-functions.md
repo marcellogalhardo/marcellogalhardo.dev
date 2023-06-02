@@ -3,7 +3,7 @@ title: "Namespace for Extension Functions"
 date: 2023-03-25T09:02:50+01:00
 draft: false
 toc: false
-images:
+images: /images/logo.jpg
 categories:
   - software development
 tags:
