@@ -168,7 +168,7 @@ class MyContextWrapper(
     }
 
     override fun getSystemService(name: String): Any? =
-        if (LAYOUT_INFLATER_SERVICE == name) {
+        if (name == LAYOUT_INFLATER_SERVICE) {
            inflater
         } else {
            super.getSystemService(name)
