@@ -183,7 +183,7 @@ class MyActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context) {
         val baseFactory = MyLayoutInflaterFactory()
-        val wrapper = MyContextWrapper(baseFactory, fallback = LayoutInflater.from(newBase))
+        val wrapper = MyContextWrapper(newBase, baseFactory)
         super.attachBaseContext(wrapper);
     }
 }
