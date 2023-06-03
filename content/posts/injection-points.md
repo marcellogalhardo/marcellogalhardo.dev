@@ -88,8 +88,11 @@ class MyLayoutInflaterFactory : LayoutInflater.Factory2 {
         else -> null
     }
 
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? =
-        onCreateView(null, name, context, attrs)
+   override fun onCreateView(
+      name: String,
+      context: Context,
+      attrs: AttributeSet?,
+   ): View? = onCreateView(/* parent = */ null, name, context, attrs)
 }
 ```
 
@@ -121,8 +124,8 @@ That is by design. `AppCompat` relies on a custom `LayoutInflater.Factory2` that
 Here's a workaround.
 
 1. Remove the previous code from from your Activity's `onCreate`.
-2. Create a new class that implements `LayoutInflater.Factory2`, and receives 2 `LayoutInflater.Factor2` as parameters:
-   -  `base` to handle your custom views with constructor injector.
+2. Create a new class that implements `LayoutInflater.Factory2`, and receives 2 `LayoutInflater.Factory2` as parameters:
+   - `base` to handle your custom views with constructor injector.
    - `fallback` which will be used to handle all other views.
 
 ```kotlin
@@ -293,7 +296,7 @@ WorkManager.initialize(context, configuration)
 
 # Wrapping Up
 
-In conclusion, Android has made notable strides in becoming a DI-friendly framework by introducing various APIs that enable dependency injection.
+In conclusion, Android has made notable strides in becoming a DI-friendly framework by introducing various APIs that enable constructor injection.
 
 The article covered several key APIs used by the two most popular DI frameworks for Android.
 
