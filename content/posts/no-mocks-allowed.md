@@ -129,7 +129,8 @@ val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 		val findEmployeeNamesBornToday = suspend {
 			val today = LocalDateTime.now()
 			repository
-				.findEmployeesBornOn(today.month, day = today.day)
+				.findEmployees()
+				.filter { it.month == month && it.day == day }
 				.map { it.name }
 		}
 		
