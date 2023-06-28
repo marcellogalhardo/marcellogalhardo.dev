@@ -13,7 +13,6 @@ I am a moderator of the [Android Dev BR](https://androiddevbr.org) community, th
 
 ### Contact me
 
-- [Email](mailto:marcello.galhardo@gmail.com)
 - [Mastodon](https://androiddev.social/@mg)
 - [Twitter](https://twitter.com/marcellogalhard)
 - [LinkedIn](https://www.linkedin.com/in/marcellogalhardo/)
