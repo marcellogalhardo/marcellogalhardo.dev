@@ -15,12 +15,12 @@ tags:
 
 1. Brittle Tests. Mocks tend to create tests that are fragile and easily break, hampering our ability to deliver quickly.
 2. Change-Detector Tests. Tests built with mocks often emphasise implementation details, causing them to break even when the system's behaviour remains unchanged.
-3. Slow Test Execution[^1]. Reflection and proxies used by mock libraries can lead to sluggish test execution, slowing down the overall testing process when they scale.
+3. Slow Test Execution[^1]. Reflection and proxies used by mock libraries can lead to sluggish test execution, slowing down the test suite when they increase in quantity.
 4. False Sense of Security. High test coverage achieved through extensive mocking, can create a false sense of security. When all dependencies are mocked, we may overlook the fact that no real behavior is being tested.
 
 The primary purpose of a mock library is to aid developers in their work. If a codebase relies solely on the presence of mocks for testability, it indicates potential design flaws[^2].
 
-To address this issue, we need to focus on making our System Under Test (SUT) genuinely testable. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used throughout the application, or a data model that the SUT doesn't own.
+To address this issue, we need to focus on making our [System Under Test (SUT)](http://xunitpatterns.com/SUT.html) genuinely testable. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used throughout the application, or a data model that the SUT doesn't own.
 
 Now, let's explore a practical example to illustrate these concepts[^4].
 
@@ -152,11 +152,11 @@ Where to go from here?
 
 - [Ports and Adapters Architecture](http://wiki.c2.com/?PortsAndAdaptersArchitecture)
 - [Ports And Adapters / Hexagonal Architecture](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
-- [Do Not Mock](https://joeblu.com/blog/2023_06_mocks/)
-- [Do Not Overuse Mocks](https://testing.googleblog.com/2013/05/testing-on-toilet-dont-overuse-mocks.html)
-- [Test Behaviour, Not Implementation](https://testing.googleblog.com/2013/08/testing-on-toilet-test-behavior-not.html)
-- [Change Detector Tests](https://testing.googleblog.com/2015/01/testing-on-toilet-change-detector-tests.html)
-- [Jetpack Team: Do Not Mock](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-core-core-role-release/docs/do_not_mock.md)
+- [Testing on the Toilet: Do Not Overuse Mocks](https://testing.googleblog.com/2013/05/testing-on-toilet-dont-overuse-mocks.html)
+- [Testing on the Toilet: Test Behaviour, Not Implementation](https://testing.googleblog.com/2013/08/testing-on-toilet-test-behavior-not.html)
+- [Testing on the Toilet: Change-Detector Tests Considered Harmful](https://testing.googleblog.com/2015/01/testing-on-toilet-change-detector-tests.html)
+- [Jetpack: Do Not Mock](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-core-core-role-release/docs/do_not_mock.md)
+- [Joe Blubaugh: Do Not Mock](https://joeblu.com/blog/2023_06_mocks/)
 - [Fakes Are Great, But Mocks I Hate](https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/)
 - [Testing Without Mocks](https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks)
 - [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests)
