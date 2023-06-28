@@ -64,7 +64,7 @@ data class Employee(
 
 The view is already implemented, our task is to develop the `ViewModel` that acts as the bridge between the `View` and the `Repository`.
 
-A naive implementation of the `BirthdayViewModel` could be as follows:
+A **naive** implementation of the `BirthdayViewModel` could be as follows:
 
 ```kotlin
 class BirthdayViewModel(
@@ -125,7 +125,7 @@ val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 		val repository = application.employeeRepository
 		
 		// `findEmployeeNamesBornToday` implementation.
-		//   can be a class, a top-level function, whatever.
+		//   Could be a class, a top-level function, whatever.
 		val findEmployeeNamesBornToday = suspend {
 			val today = LocalDateTime.now()
 			repository
@@ -148,17 +148,7 @@ This approach offers several advantages over the previous implementation:
 
 In conclusion, relying excessively on them can lead to various pitfalls. By minimizing dependencies, we can achieve more robust and maintainable code. This architectural approach, known as "Ports & Adapters," allows for interchangeable adapters, enabling different implementations for production and testing scenarios. Embracing testable design principles ensures that our tests accurately reflect the desired behaviour of the system, fostering a more reliable and efficient software development process.
 
-### Credits
-
-Special thanks to [Jacob Rein](https://twitter.com/deathssouls),  [Fabricio Vergara](https://www.linkedin.com/in/fabriciovergal) , [Thiago Souto](https://twitter.com/othiagosouto) and [Guilherme Baptista](https://github.com/guilhermesgb) proofread review! 🔍
-
-And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the [Twitter thread](https://twitter.com/n_haarman/status/1610908251553501184) that motivated me to write the blog post.
-
----
-
-> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
-
-#### References: 
+Where to go from here?
 
 - [Mockito-Kotlin's original author: Niek Haarman](https://twitter.com/n_haarman/status/1610569197112770561?s=20)
 - [Ports and Adapters Architecture](http://wiki.c2.com/?PortsAndAdaptersArchitecture)
@@ -172,9 +162,21 @@ And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the
 - [Testing Without Mocks](https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks)
 - [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests)
 
+### Credits
+
+Special thanks to [Jacob Rein](https://twitter.com/deathssouls),  [Fabricio Vergara](https://www.linkedin.com/in/fabriciovergal) , [Thiago Souto](https://twitter.com/othiagosouto) and [Guilherme Baptista](https://github.com/guilhermesgb) proofread review! 🔍
+
+And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the [Twitter thread](https://twitter.com/n_haarman/status/1610908251553501184) that motivated me to write the blog post.
+
+---
+
+> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
+
+#### References: 
+
 [^1]: Any testing framework or library can introduce overhead. It's not exclusive to Mocks.
 [^2]: See [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests) for more examples.
 [^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
 [^4]: Birthday example is inspired by [Birthday Greetings Kata](http://matteo.vaccari.name/blog/archives/154).
 [^5]: Alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
-[^6]: I know that is a too simple example, there isn't much to test but I hope you get the point.
+[^6]: I know the example is a too simple, there isn't much to test. But I hope you get the point.
