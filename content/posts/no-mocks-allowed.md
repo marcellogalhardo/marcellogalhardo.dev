@@ -124,6 +124,7 @@ val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 	initializer {
 		val application = (this[APPLICATION_KEY] as MyApplication)
 		val repository = application.employeeRepository
+		
 		// `findEmployeeNamesBornToday` implementation.
 		//   can be a class, a function, or whatever.
 		val findEmployeeNamesBornToday = suspend {
@@ -132,6 +133,7 @@ val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 				.findEmployeesBornOn(today.month, day = today.day)
 				.map { it.name }
 		}
+		
 		BirthdayViewModel(findEmployeeNamesBornToday)
 	}
 }
