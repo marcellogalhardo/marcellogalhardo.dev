@@ -99,7 +99,7 @@ Revisiting our requirements, we realize that we only need two things:
 1. Retrieve the names of employees whose birthday is today.
 2. Obtain the current day.
 
-Kotlin's support for  [high-order function](https://kotlinlang.org/docs/lambdas.html) allows us to treat any [function as an interface](https://fsharpforfunandprofit.com/posts/convenience-functions-as-interfaces/). This concept enables us to achieve loose coupling.
+Kotlin's support for  [high-order function](https://kotlinlang.org/docs/lambdas.html) allows us to treat any [function as an interface](https://fsharpforfunandprofit.com/posts/convenience-functions-as-interfaces/). This concept enables us to achieve loose coupling[^4].
 
 Here's an improved version of `BirthdayViewModel` leveraging a function as an interface:
 
@@ -136,8 +136,6 @@ This approach offers several advantages over the previous implementation:
 - `BirthdayViewModel` has access only to the specific function or property it requires, promoting better encapsulation.
 - `BirthdayViewModel` achieves stability since changes to `EmployeeRepository` or `Employee` no longer directly impact it.
 
-**Note:** alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need to distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
-
 ## Wrap Up
 
 In conclusion, relying excessively on them can lead to various pitfalls. By minimizing dependencies, we can achieve more robust and maintainable code. This architectural approach, known as "Ports & Adapters," allows for interchangeable adapters, enabling different implementations for production and testing scenarios. Embracing testable design principles ensures that our tests accurately reflect the desired behaviour of the system, fostering a more reliable and efficient software development process.
@@ -147,6 +145,7 @@ In conclusion, relying excessively on them can lead to various pitfalls. By mini
 [^1]: Any testing framework or library can introduce overhead. It's not exclusive to Mocks.
 [^2]: See [How to Write Good Tests]([https://github.com/mockito/mockito/wiki/How-to-write-good-tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests "https://github.com/mockito/mockito/wiki/How-to-write-good-tests")) for more examples.
 [^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
+[^4]: alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need to distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
 
 ## References: 
 
