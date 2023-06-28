@@ -150,7 +150,6 @@ In conclusion, relying excessively on them can lead to various pitfalls. By mini
 
 Where to go from here?
 
-- [Mockito-Kotlin's original author: Niek Haarman](https://twitter.com/n_haarman/status/1610569197112770561?s=20)
 - [Ports and Adapters Architecture](http://wiki.c2.com/?PortsAndAdaptersArchitecture)
 - [Ports & Adapters](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
 - [Do Not Mock](https://joeblu.com/blog/2023_06_mocks/)
