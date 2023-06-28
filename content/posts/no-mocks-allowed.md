@@ -118,8 +118,6 @@ class BirthdayViewModel(
 	}
 }
 
-
-
 val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 	initializer {
 		val application = (this[APPLICATION_KEY] as MyApplication)
