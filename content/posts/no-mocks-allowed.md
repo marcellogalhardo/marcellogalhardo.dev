@@ -119,13 +119,20 @@ class BirthdayViewModel(
 }
 
 
-// `findEmployeeNamesBornToday` implementation, or whatever way you prefer.
-fun createFindEmployeeNamesBornToday(repository: EmployeeRepository): suspend () -> List<String> {
-	val today = LocalDateTime.now()
-	return suspend {
-		_employeeBirthdays.value = repository
-			.findEmployeesBornOn(today.month, day = today.day)
-			.map { it.name }
+
+val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
+	initializer {
+		val application = (this[APPLICATION_KEY] as MyApplication)
+		val repository = application.employeeRepository
+		// `findEmployeeNamesBornToday` implementation.
+		//   can be a class, a function, or whatever.
+		val findEmployeeNamesBornToday = suspend {
+			val today = LocalDateTime.now()
+			repository
+				.findEmployeesBornOn(today.month, day = today.day)
+				.map { it.name }
+		}
+		BirthdayViewModel(findEmployeeNamesBornToday)
 	}
 }
 ```
@@ -136,18 +143,18 @@ This approach offers several advantages over the previous implementation:
 - `BirthdayViewModel` has access only to the specific function or property it requires, promoting better encapsulation.
 - `BirthdayViewModel` achieves stability since changes to `EmployeeRepository` or `Employee` no longer directly impact it.
 
-## Wrap Up
+### Wrapping Up
 
 In conclusion, relying excessively on them can lead to various pitfalls. By minimizing dependencies, we can achieve more robust and maintainable code. This architectural approach, known as "Ports & Adapters," allows for interchangeable adapters, enabling different implementations for production and testing scenarios. Embracing testable design principles ensures that our tests accurately reflect the desired behaviour of the system, fostering a more reliable and efficient software development process.
 
-### Foot Notes
+#### Foot Notes
 
 [^1]: Any testing framework or library can introduce overhead. It's not exclusive to Mocks.
 [^2]: See [How to Write Good Tests]([https://github.com/mockito/mockito/wiki/How-to-write-good-tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests "https://github.com/mockito/mockito/wiki/How-to-write-good-tests")) for more examples.
 [^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
 [^4]: alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need to distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
 
-## References: 
+#### References: 
 
 - [Mockito-Kotlin's original author: Niek Haarman](https://twitter.com/n_haarman/status/1610569197112770561?s=20)
 - [Ports and Adapters Architecture](http://wiki.c2.com/?PortsAndAdaptersArchitecture)
@@ -160,6 +167,10 @@ In conclusion, relying excessively on them can lead to various pitfalls. By mini
 - [Fakes Are Great, But Mocks I Hate]([https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/](https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/ "https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/"))
 - [Testing Without Mocks]([https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks](https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks "https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks")
 - [How to Write Good Tests]([https://github.com/mockito/mockito/wiki/How-to-write-good-tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests "https://github.com/mockito/mockito/wiki/How-to-write-good-tests"))
+
+### Credits
+
+Special thanks to [Maria Chietera](https://twitter.com/mchietera), and [Jacob Rein](https://twitter.com/deathssouls) proofread review! 🔍
 
 ---
 
