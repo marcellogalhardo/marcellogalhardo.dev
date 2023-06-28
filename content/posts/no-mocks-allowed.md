@@ -151,7 +151,7 @@ In conclusion, relying excessively on them can lead to various pitfalls. By mini
 Where to go from here?
 
 - [Ports and Adapters Architecture](http://wiki.c2.com/?PortsAndAdaptersArchitecture)
-- [Ports-And-Adapters / Hexagonal Architecture](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
+- [Ports And Adapters / Hexagonal Architecture](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
 - [Do Not Mock](https://joeblu.com/blog/2023_06_mocks/)
 - [Do Not Overuse Mocks](https://testing.googleblog.com/2013/05/testing-on-toilet-dont-overuse-mocks.html)
 - [Test Behaviour, Not Implementation](https://testing.googleblog.com/2013/08/testing-on-toilet-test-behavior-not.html)
