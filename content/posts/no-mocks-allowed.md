@@ -11,101 +11,155 @@ tags:
 - kotlin
 ---
 
-There is a simple rule I follow to improve my code design: any "new" code I should be unit testable without requiring any additional library.
+---
+title: "No Mocks Allowed"
+date: 2023-05-01T09:02:50+01:00
+draft: true
+toc: false
+images:
+- /logo.png
+categories:
+- software development
+tags:
+- kotlin
+---
 
-In other words:
+Testable code plays a crucial role in app development. When we neglect designing code for testability, we often resort to using Mocks as a means to achieve test coverage. Mocks have become a dominant presence in the Android testing ecosystem today. However, the practical implications of relying heavily on Mocks reveal several drawbacks:
 
-1. You must be able to test a piece of code without using any Mocking or Assertion library.
-2. You may use an xUnit Library (i.e., JUnit).
+1. Brittle Tests: Mocks tend to create tests that are fragile and easily break, hampering our ability to deliver quickly.
+2. Implementation Focus: Tests built with Mocks often emphasise implementation details, causing them to break even when the system's behaviour remains unchanged.
+3. Slow Test Execution: Reflection and proxies used by Mock libraries can lead to sluggish test execution, slowing down the overall testing process when they scale.
+4. False Sense of Security: High test coverage achieved through extensive mocking can create a false sense of security. When all dependencies are mocked, we may overlook the fact that no real behavior is being tested.
 
-That may sound intimidating at first, but bear with me while I guide you in a step by step example.
+The primary purpose of a Mock library is to aid developers in their work. If a codebase relies solely on the presence of Mocks for testability, it indicates potential design flaws.
 
-Heads-up: I will be using source code I got from [Now In Android](https://github.com/android/nowinandroid).
+To address this issue, we need to focus on making our System Under Test (SUT) genuinely testable. The key is to minimize dependencies, ideally reducing them to zero. We should aim to eliminate dependencies on components like a class used throughout the application, or data model that the SUT doesn't own.
 
-# Settings Sample
+Now, let's explore a practical example to illustrate these concepts.
 
-Let's imagine we have a simple settings screen. After a user performs a change, it will be persisted in disk using a repository.
+### The Birthday Feature
 
-The repository may look like the following [UserDataRepository](https://github.com/android/nowinandroid/blob/d9057010282c48d257cd742701350108c27daa5d/core/data/src/main/java/com/google/samples/apps/nowinandroid/core/data/repository/UserDataRepository.kt#L24):
+Suppose we want to introduce a new feature in our app: a listing of employees' birthdays. The feature has two requirements:
+1. Retrieve a set of employee records from a database.
+2. Display a list of employee records whose birthday falls on the current day.
+
+To achieve this, we notice that we can reuse the existing `EmployeeRepository` shared across the application. We only need to add a new method that filters employees based on their birthdate.
+
+Here's an example of the modified `EmployeeRepository`:
 
 ```kotlin
-interface UserDataRepository {
-    val userData: Flow<UserData>
-    suspend fun setFollowedTopicIds(followedTopicIds: Set<String>)
-    suspend fun toggleFollowedTopicId(followedTopicId: String, followed: Boolean)
-    suspend fun updateNewsResourceBookmark(newsResourceId: String, bookmarked: Boolean)
-    suspend fun setNewsResourceViewed(newsResourceId: String, viewed: Boolean)
-    suspend fun setThemeBrand(themeBrand: ThemeBrand)
-    suspend fun setDarkThemeConfig(darkThemeConfig: DarkThemeConfig)
-    suspend fun setDynamicColorPreference(useDynamicColor: Boolean)
-    suspend fun setShouldHideOnboarding(shouldHideOnboarding: Boolean)
+class EmployeeRepository {
+
+	// New method!
+	suspend fun findEmployeesBornOn(month: Int, day: Int): List<Employee> =
+		findEmployees()
+			.filter { it.month == month && it.day == day }
+
+	// Old method, reused.
+	suspend fun findEmployees(): List<Employee> =
+		TODO("Load employees from a DB")
+		
+	// 20+ unrelated methods...
 }
 ```
 
-And the [SettingsViewModel](https://github.com/android/nowinandroid/blob/819dd494ad3d95f9dc742947500ee2f7b461360b/feature/settings/src/main/java/com/google/samples/apps/nowinandroid/feature/settings/SettingsViewModel.kt) may look like this one:
+And here is an example of its model:
 
 ```kotlin
-class SettingsViewModel @Inject constructor(
-    private val userDataRepository: UserDataRepository,
+data class Employee(
+	val id: EmployeeId,
+	val birthday: LocalDateTime,
+	
+	// 20+ unrelated properties...
+)
+```
+
+The view is already implemented, our task is to develop the `ViewModel` that acts as the bridge between the `View` and the `Repository`.
+
+A naive implementation of the `BirthdayViewModel` could be as follows:
+
+```kotlin
+class BirthdayViewModel(
+	repository: EmployeeRepository,
 ) : ViewModel() {
-    
-    val settingsUiState: StateFlow<SettingsUiState> =
-        userDataRepository.userData
-            .map { userData ->
-                Success(
-                    settings = UserEditableSettings(
-                        brand = userData.themeBrand,
-                        useDynamicColor = userData.useDynamicColor,
-                        darkThemeConfig = userData.darkThemeConfig,
-                    ),
-                )
-            }
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.Eagerly,
-                initialValue = Loading,
-            )
 
-    fun updateThemeBrand(themeBrand: ThemeBrand) {
-        viewModelScope.launch {
-            userDataRepository.setThemeBrand(themeBrand)
-        }
-    }
+	private val _employeeBirthdays = MutableStateFlow(emptyListOf<Employee>())
+	val employeeBirthdays = _birthdays.asStateFlow()
 
-    fun updateDarkThemeConfig(darkThemeConfig: DarkThemeConfig) {
-        viewModelScope.launch {
-            userDataRepository.setDarkThemeConfig(darkThemeConfig)
-        }
-    }
-
-    fun updateDynamicColorPreference(useDynamicColor: Boolean) {
-        viewModelScope.launch {
-            userDataRepository.setDynamicColorPreference(useDynamicColor)
-        }
-    }
+	init {
+		viewModelScope.launch {
+			val today = LocalDateTime.now()
+			_employeeBirthdays.value = repository
+				.findEmployeesBornOn(today.month, day = today.day)
+		}
+	}
 }
 ```
 
-TODO: Sample relying on mocks, direct dependency.
+However, this approach has a few issues:
+- `BirthdayViewModel` depends on a `Repository` that is used everywhere. If the `Repository` changes, you need to modify the `ViewModel`. Except by `findEmployeesBornOn`, the `ViewModel` does not use any other method.
+- `BirthdayViewModel` depends on `Employee`, a data class it does not own. Except by `birthday`, the `ViewModel` does not use any other property.
+- `EmployeeBirthdayViewModel` is unstable. It depends on both `EmployeeRepository` or `Employee`, and any change will directly affect it.
+- The usage of `LocalDateTime.now()` as a static function makes it challenging to replace during testing.
 
-TODO: Sample inverting the dependency, Ports & Adapters.
+Rather than coupling our feature with the `EmployeeRepository` and `Employee` data model, let's aim for loose coupling and invert the control.
 
-TODO: Functional Interfaces, Typealiases.
+### Function as an Interface
 
-# Good practices
+Revisiting our requirements, we realize that we only need two things:
 
-1. Refuse depending on large contracts (i.e., an interface declaring multiple functions). They are painful to mock and will force you back to mocks.
-2. Avoid depending on any class your SUT does not own (i.e., a shared repository or use case).
-3. 
+1. Retrieve the names of employees whose birthday is today.
+2. Obtain the current day.
+
+Kotlin's support for higher-order functions allows us to treat any [function as an interface](https://fsharpforfunandprofit.com/posts/convenience-functions-as-interfaces/).. This concept enables us to achieve loose coupling.
+
+Here's an improved version of `BirthdayViewModel` leveraging a function as an interface:
+
+```kotlin
+class BirthdayViewModel(
+	findEmployeeNamesBornToday: suspend () -> List<String>,
+) : ViewModel() {
+
+	private val _employeeBirthdays = MutableStateFlow(emptyListOf<String>())
+	val employeeBirthdays = _birthdays.asStateFlow()
+
+	init {
+		viewModelScope.launch {
+			_birthdays.value = repository.findEmployeeNamesBornToday()
+		}
+	}
+}
 
 
-The main point is that these libraries are there to support you in your job. If your code is only testable with their presence, that is a smell something went wrong in your design.
+// `findEmployeeNamesBornToday` implementation
+fun createFindEmployeeNamesBornToday(repository: EmployeeRepository): suspend () -> List<String> {
+	val today = LocalDateTime.now()
+	return suspend {
+		_employeeBirthdays.value = repository
+			.findEmployeesBornOn(today.month, day = today.day)
+			.map { it. }
+	}
+}
 
-Disclaimer: there are people with strong opinions in favor or against mocks. I stand in the midpoint. Mocks are great as an intermediate step when refactoring Legacy code, but the goal should be to remove it eventually. No testing strategy should have a mock library as their final solution for quality. That is why I intentionally suggest that you "must be able" to do it. You don't have to if the library brings value for you.
+```
 
-If you don't trust me, you may want to trust [Mockito-Kotlin's original author: Niek Haarman](https://twitter.com/n_haarman/status/1610569197112770561?s=20).
+This approach offers several advantages over the previous implementation:
 
-References:
-- a
-- b
-- c
+- During testing, it becomes straightforward to provide a trivial fake implementation of the `findEmployeeNamesBornToday` method.
+- `BirthdayViewModel` has access only to the specific function or property it requires, promoting better encapsulation.
+- `BirthdayViewModel` achieves stability since changes to `EmployeeRepository` or `Employee` no longer directly impact it.
+
+## Wrap Up
+
+In conclusion, relying excessively on them can lead to various pitfalls. By minimizing dependencies, we can achieve more robust and maintainable code. This architectural approach, known as "Ports & Adapters," allows for interchangeable adapters, enabling different implementations for production and testing scenarios. Embracing testable design principles ensures that our tests accurately reflect the desired behavior of the system, fostering a more reliable and efficient software development process.
+
+## References: 
+
+- [Mockito-Kotlin's original author: Niek Haarman](https://twitter.com/n_haarman/status/1610569197112770561?s=20)
+- [Ports and Adapters Architecture](http://wiki.c2.com/?PortsAndAdaptersArchitecture)
+- [Ports & Adapters](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
+- [Do Not Mock](https://joeblu.com/blog/2023_06_mocks/)
+
+---
+
+> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
