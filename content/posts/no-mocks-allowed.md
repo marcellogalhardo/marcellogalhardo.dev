@@ -149,13 +149,15 @@ This approach offers several advantages over the previous implementation:
 
 In conclusion, relying excessively on them can lead to various pitfalls. By minimizing dependencies, we can achieve more robust and maintainable code. This architectural approach, known as "Ports & Adapters," allows for interchangeable adapters, enabling different implementations for production and testing scenarios. Embracing testable design principles ensures that our tests accurately reflect the desired behaviour of the system, fostering a more reliable and efficient software development process.
 
-#### Foot Notes
+### Credits
 
-[^1]: Any testing framework or library can introduce overhead. It's not exclusive to Mocks.
-[^2]: See [How to Write Good Tests]([https://github.com/mockito/mockito/wiki/How-to-write-good-tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests "https://github.com/mockito/mockito/wiki/How-to-write-good-tests")) for more examples.
-[^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
-[^4]: Birthday example is inspired by [Birthday Greetings Kata](http://matteo.vaccari.name/blog/archives/154).
-[^5]: Alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need to distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
+Special thanks to [Jacob Rein](https://twitter.com/deathssouls),  [Fabricio Vergara](https://www.linkedin.com/in/fabriciovergal) , [Thiago Souto](https://twitter.com/othiagosouto) and [Guilherme Baptista](https://github.com/guilhermesgb) proofread review! 🔍
+
+And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the [Twitter thread](https://twitter.com/n_haarman/status/1610908251553501184) that motivated me to write the blog post.
+
+---
+
+> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
 
 #### References: 
 
@@ -171,12 +173,8 @@ In conclusion, relying excessively on them can lead to various pitfalls. By mini
 - [Testing Without Mocks](https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks)
 - [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests)
 
-### Credits
-
-Special thanks to [Jacob Rein](https://twitter.com/deathssouls),  [Fabricio Vergara](https://www.linkedin.com/in/fabriciovergal) , [Thiago Souto](https://twitter.com/othiagosouto) and [Guilherme Baptista](https://github.com/guilhermesgb) proofread review! 🔍
-
-And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the [Twitter thread](https://twitter.com/n_haarman/status/1610908251553501184) that motivated me to write the blog post.
-
----
-
-> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
+[^1]: Any testing framework or library can introduce overhead. It's not exclusive to Mocks.
+[^2]: See [How to Write Good Tests]([https://github.com/mockito/mockito/wiki/How-to-write-good-tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests "https://github.com/mockito/mockito/wiki/How-to-write-good-tests")) for more examples.
+[^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
+[^4]: Birthday example is inspired by [Birthday Greetings Kata](http://matteo.vaccari.name/blog/archives/154).
+[^5]: Alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need to distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
