@@ -18,9 +18,9 @@ tags:
 3. Slow Test Execution[^1]. Reflection and proxies used by mock libraries can lead to sluggish test execution, slowing down the overall testing process when they scale.
 4. False Sense of Security. High test coverage achieved through extensive mocking, can create a false sense of security. When all dependencies are mocked, we may overlook the fact that no real behavior is being tested.
 
-The primary purpose of a mock library is to aid developers in their work. If a codebase relies solely on the presence of mocks for testability, it indicates potential design flaws.
+The primary purpose of a mock library is to aid developers in their work. If a codebase relies solely on the presence of mocks for testability, it indicates potential design flaws[^2].
 
-To address this issue, we need to focus on making our System Under Test (SUT) genuinely testable. The key is to minimize dependencies, ideally reducing them to zero[^2]. We should aim to eliminate dependencies on components like a class that is used throughout the application, or a data model that the SUT doesn't own.
+To address this issue, we need to focus on making our System Under Test (SUT) genuinely testable. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used throughout the application, or a data model that the SUT doesn't own.
 
 Now, let's explore a practical example to illustrate these concepts.
 
@@ -145,7 +145,8 @@ In conclusion, relying excessively on them can lead to various pitfalls. By mini
 ### Foot Notes
 
 [^1]: Any testing framework or library can introduce overhead. It's not exclusive to Mocks.
-[^2]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
+[^2]: See [How to Write Good Tests]([https://github.com/mockito/mockito/wiki/How-to-write-good-tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests "https://github.com/mockito/mockito/wiki/How-to-write-good-tests")) for more examples.
+[^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
 
 ## References: 
 
@@ -154,11 +155,12 @@ In conclusion, relying excessively on them can lead to various pitfalls. By mini
 - [Ports & Adapters](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
 - [Do Not Mock](https://joeblu.com/blog/2023_06_mocks/)
 - [Do Not Overuse Mocks](https://testing.googleblog.com/2013/05/testing-on-toilet-dont-overuse-mocks.html)
-- [Test Behaviour, not Implementation](https://testing.googleblog.com/2013/08/testing-on-toilet-test-behavior-not.html)
+- [Test Behaviour, Not Implementation](https://testing.googleblog.com/2013/08/testing-on-toilet-test-behavior-not.html)
 - [Change Detector Tests](https://testing.googleblog.com/2015/01/testing-on-toilet-change-detector-tests.html)
 - [Jetpack Team: Do Not Mock](https://android.googlesource.com/platform/frameworks/support/+/refs/heads/androidx-core-core-role-release/docs/do_not_mock.md)
-- [Fakes Are Great, but Mocks I Hate]([https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/](https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/ "https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/"))
+- [Fakes Are Great, But Mocks I Hate]([https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/](https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/ "https://www.billjings.com/posts/title/fakes-are-great-but-mocks-i-hate/"))
 - [Testing Without Mocks]([https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks](https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks "https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks")
+- [How to Write Good Tests]([https://github.com/mockito/mockito/wiki/How-to-write-good-tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests "https://github.com/mockito/mockito/wiki/How-to-write-good-tests"))
 
 ---
 
