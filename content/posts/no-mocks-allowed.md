@@ -1,6 +1,6 @@
 ---
 title: "No Mocks Allowed"
-date: 2023-06-28T12:00:00+00:00
+date: 2023-06-28T18:34:00+01:00
 draft: false
 toc: false
 images:
@@ -101,7 +101,7 @@ Revisiting our requirements, we realize that we only need two things:
 
 Kotlin's support for  [high-order function](https://kotlinlang.org/docs/lambdas.html) allows us to treat any [function as an interface](https://fsharpforfunandprofit.com/posts/convenience-functions-as-interfaces/). This concept enables us to achieve loose coupling[^5].
 
-Here's an improved version of `BirthdayViewModel` leveraging a function as an interface:
+Here's an improved version of `BirthdayViewModel` leveraging a function as an interface[^6]:
 
 ```kotlin
 class BirthdayViewModel(
@@ -118,13 +118,14 @@ class BirthdayViewModel(
 	}
 }
 
+// For simplicity, will do all wiring in the factory:
 val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 	initializer {
 		val application = (this[APPLICATION_KEY] as MyApplication)
 		val repository = application.employeeRepository
 		
 		// `findEmployeeNamesBornToday` implementation.
-		//   can be a class, a function, or whatever.
+		//   can be a class, a top-level function, whatever.
 		val findEmployeeNamesBornToday = suspend {
 			val today = LocalDateTime.now()
 			repository
@@ -172,7 +173,8 @@ And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the
 - [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests)
 
 [^1]: Any testing framework or library can introduce overhead. It's not exclusive to Mocks.
-[^2]: See [How to Write Good Tests]([https://github.com/mockito/mockito/wiki/How-to-write-good-tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests "https://github.com/mockito/mockito/wiki/How-to-write-good-tests")) for more examples.
+[^2]: See [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests) for more examples.
 [^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
 [^4]: Birthday example is inspired by [Birthday Greetings Kata](http://matteo.vaccari.name/blog/archives/154).
 [^5]: Alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
+[^6]: I know that is a too simple example, there isn't much to test but I hope you get the point.
