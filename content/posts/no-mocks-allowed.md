@@ -1,7 +1,7 @@
 ---
 title: "No Mocks Allowed"
 date: 2023-06-28T09:02:50+01:00
-draft: true
+draft: false
 toc: false
 images:
 - /logo.png
@@ -22,7 +22,7 @@ The primary purpose of a mock library is to aid developers in their work. If a c
 
 To address this issue, we need to focus on making our System Under Test (SUT) genuinely testable. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used throughout the application, or a data model that the SUT doesn't own.
 
-Now, let's explore a practical example to illustrate these concepts.
+Now, let's explore a practical example to illustrate these concepts[^4].
 
 ### The Birthday Feature
 
@@ -99,7 +99,7 @@ Revisiting our requirements, we realize that we only need two things:
 1. Retrieve the names of employees whose birthday is today.
 2. Obtain the current day.
 
-Kotlin's support for  [high-order function](https://kotlinlang.org/docs/lambdas.html) allows us to treat any [function as an interface](https://fsharpforfunandprofit.com/posts/convenience-functions-as-interfaces/). This concept enables us to achieve loose coupling[^4].
+Kotlin's support for  [high-order function](https://kotlinlang.org/docs/lambdas.html) allows us to treat any [function as an interface](https://fsharpforfunandprofit.com/posts/convenience-functions-as-interfaces/). This concept enables us to achieve loose coupling[^5].
 
 Here's an improved version of `BirthdayViewModel` leveraging a function as an interface:
 
@@ -154,7 +154,8 @@ In conclusion, relying excessively on them can lead to various pitfalls. By mini
 [^1]: Any testing framework or library can introduce overhead. It's not exclusive to Mocks.
 [^2]: See [How to Write Good Tests]([https://github.com/mockito/mockito/wiki/How-to-write-good-tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests "https://github.com/mockito/mockito/wiki/How-to-write-good-tests")) for more examples.
 [^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
-[^4]: alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need to distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
+[^4]: Birthday example is inspired by [Birthday Greetings Kata](http://matteo.vaccari.name/blog/archives/154).
+[^5]: Alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need to distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
 
 #### References: 
 
@@ -172,7 +173,9 @@ In conclusion, relying excessively on them can lead to various pitfalls. By mini
 
 ### Credits
 
-Special thanks to [Maria Chietera](https://twitter.com/mchietera), and [Jacob Rein](https://twitter.com/deathssouls) proofread review! 🔍
+Special thanks to [Jacob Rein](https://twitter.com/deathssouls),  [Fabricio Vergara](https://www.linkedin.com/in/fabriciovergal) , [Thiago Souto](https://twitter.com/othiagosouto) and [Guilherme Baptista](https://github.com/guilhermesgb) proofread review! 🔍
+
+And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the [Twitter thread](https://twitter.com/n_haarman/status/1610908251553501184) that motivated me to write the blog post.
 
 ---
 
