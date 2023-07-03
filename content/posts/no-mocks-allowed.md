@@ -126,21 +126,23 @@ val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 	initializer {
 		val application = (this[APPLICATION_KEY] as MyApplication)
 		val repository = application.employeeRepository
-		val findEmployeeNamesBornToday = createFindEmployeeNamesBornToday(repository, LocalDate::now)
+		val findEmployeeNamesBornToday = createFindEmployeeNamesBornToday(
+            findEmployees = repository::findEmployees,
+            now = LocalDate::now,
+        )
 		BirthdayViewModel(findEmployeeNamesBornToday)
 	}
 }
 
 // Creates an implementation of `findEmployeeNamesBornToday`. Could be a class or whatever.
 fun createFindEmployeeNamesBornToday(
-    repository: EmployeeRepository,
+    findEmployees: () -> List<Employee>,
     now: () -> LocalDate,
-) = suspend {
+): suspend () -> BirthdayViewModel.Employee = suspend {
     val today = now()
-    repository
-        .findEmployees()
-        .filter { it.birthday.month == month && it.birthday.dayOfMonth == today.dayOfMonth }
-        .map { it.name }
+    findEmployees()
+        .filter { it -> it.birthday.month == month && it.birthday.dayOfMonth == today.dayOfMonth }
+        .map { it -> BirthdayViewModel.Employee(it.name, it.birthday) }
 }
 ```
 
@@ -149,7 +151,7 @@ This approach offers several advantages over the previous implementation:
 - During testing, it becomes straightforward to provide a trivial fake implementation of the `findEmployeeNamesBornToday` method.
 - `BirthdayViewModel` has access only to the specific function or property it requires, promoting better encapsulation.
 - `BirthdayViewModel` achieves stability since changes to `EmployeeRepository` or `Employee` no longer directly impact it.
-- Both `BirthdayViewModel` and `createFindEmployeeBirthday` can be tested in isolation.
+- Both `BirthdayViewModel` and `createFindEmployeeBirthday` can be tested in isolation without mocks or any complicated architecture, as easy as passing custom functions during your test set-up.
 
 ### Wrapping Up
 
@@ -168,6 +170,12 @@ If you want to learn more testing without mocks, here are a few links that can h
 - [Testing Without Mocks](https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks)
 - [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests)
 
+### Frequently Asked Questions
+
+1. That is an article about tests, why there is not a single test?
+
+Good question. I did plan to write a before and after with tests, but the draft of my article got featured on Android Weekly and I really want to play Final Fantasy 16 so I guess this is now the final version.
+
 ### Credits
 
 Special thanks to [Jacob Rein](https://twitter.com/deathssouls),  [Fabricio Vergara](https://www.linkedin.com/in/fabriciovergal) , [Thiago Souto](https://twitter.com/othiagosouto) and [Guilherme Baptista](https://github.com/guilhermesgb) proofread review! 🔍
@@ -177,8 +185,6 @@ And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the
 ---
 
 > ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
-
-#### References: 
 
 [^1]: Any testing framework or library can introduce overhead. It's not exclusive to mocks.
 [^2]: See [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests) for more examples.
