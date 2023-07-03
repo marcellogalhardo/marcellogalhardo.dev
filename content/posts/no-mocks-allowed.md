@@ -1,7 +1,7 @@
 ---
 title: "No Mocks Allowed"
 date: 2023-06-28T18:34:00+01:00
-draft: true
+draft: false
 toc: false
 images:
 - /logo.png
@@ -10,8 +10,6 @@ categories:
 tags:
 - kotlin
 ---
-
-**Disclaimer:** the article is currently a draft and is not completed.
 
 [Testable code](http://xunitpatterns.com/design%20for%20testability.html) plays a crucial role in app development. When we neglect designing code for testability, we often resort to using a [mock](http://xunitpatterns.com/Mock%20Object.html) library as a mean to achieve test coverage. Mocks have become a dominant presence in the Android testing ecosystem today. However, there are drawbacks:
 
@@ -172,9 +170,13 @@ If you want to learn more testing without mocks, here are a few links that can h
 
 ### Frequently Asked Questions
 
-1. That is an article about tests, why there is not a single test?
+1. That is an article about tests. Why is there, not a single test?
 
-Good question. I did plan to write a before and after with tests, but the draft of my article got featured on Android Weekly and I really want to play Final Fantasy 16 so I guess this is now the final version.
+Good question. I did plan to write a before and after with tests, but the draft of my article got featured on [Android Weekly #557](https://androidweekly.net/issues/issue-577), and I __really-really want to play Final Fantasy 16__ so I guess this is now the final version.
+
+2. Should I do that for everything?
+
+Software engineering is about trade-offs. I recommend you to follow the [Principle of Least Power](https://www.lihaoyi.com/post/StrategicScalaStylePrincipleofLeastPower.html) and build up as your requirements force you to introduce more complexity.
 
 ### Credits
 
