@@ -13,18 +13,17 @@ tags:
 
 **Disclaimer:** the article is currently a draft and is not completed.
 
-[Testable code](http://xunitpatterns.com/design%20for%20testability.html) plays a crucial role in app development. When we neglect designing code for testability, we often resort to using a [mock](http://xunitpatterns.com/Mock%20Object.html) library as a means to achieve test coverage. Mocks have become a dominant presence in the Android testing ecosystem today. However, the practical implications of overusing mocks reveal several drawbacks:
+[Testable code](http://xunitpatterns.com/design%20for%20testability.html) plays a crucial role in app development. When we neglect designing code for testability, we often resort to using a [mock](http://xunitpatterns.com/Mock%20Object.html) library as a mean to achieve test coverage. Mocks have become a dominant presence in the Android testing ecosystem today. However, there are drawbacks:
 
-1. Brittle Tests. Mocks tend to create tests that are fragile and easily break, hampering our ability to deliver quickly.
-2. Change-Detector Tests. Tests built with mocks often emphasise implementation details, causing them to break even when the system's behaviour remains unchanged.
+1. Brittle & [Change-Detector Tests](https://testing.googleblog.com/2015/01/testing-on-toilet-change-detector-tests.html). Tests built with mocks often emphasise implementation details, causing them to break even when the system's behaviour remains unchanged.
+2. False Sense of Security. High test coverage achieved through extensive mocking, can create a false sense of security. When all dependencies are mocked, we may overlook the fact that no real behavior is being tested.
 3. Slow Test Execution[^1]. Reflection and proxies used by mock libraries can lead to sluggish test execution, slowing down the test suite when they increase in quantity.
-4. False Sense of Security. High test coverage achieved through extensive mocking, can create a false sense of security. When all dependencies are mocked, we may overlook the fact that no real behavior is being tested.
 
 The primary purpose of a mock library is to aid developers in their work. If a codebase relies solely on the presence of mocks for testability, it indicates potential design flaws[^2].
 
 To address this issue, we need to focus on making our [System Under Test (SUT)](http://xunitpatterns.com/SUT.html) genuinely testable. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used throughout the application, or a data model that the SUT doesn't own.
 
-Now, let's explore a practical example to illustrate these concepts[^4].
+Now, let's look an example[^4].
 
 ### The Birthday Feature
 
@@ -74,7 +73,7 @@ class BirthdayViewModel(
 ) : ViewModel() {
 
 	private val _employeeBirthdays = MutableStateFlow(emptyListOf<Employee>())
-	val employeeBirthdays = _birthdays.asStateFlow()
+	val employeeBirthdays = _employeeBirthdays.asStateFlow()
 
 	init {
 		viewModelScope.launch {
@@ -92,7 +91,7 @@ However, this approach has a few issues:
 - `EmployeeBirthdayViewModel` is unstable. It depends on both `EmployeeRepository` or `Employee`, and any change will directly affect it.
 - The usage of `LocalDate.now()` as a static function makes it challenging to replace during testing.
 
-Rather than coupling our feature with the `EmployeeRepository` and `Employee` data model, let's aim for loose coupling and invert the control.
+Rather than coupling our feature with the `EmployeeRepository` and `Employee` data model, let's aim for loose coupling and [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control).
 
 ### Function as an Interface
 
@@ -111,7 +110,7 @@ class BirthdayViewModel(
 ) : ViewModel() {
 
 	private val _employeeBirthdays = MutableStateFlow(emptyListOf<String>())
-	val employeeBirthdays = _birthdays.asStateFlow()
+	val employeeBirthdays = _employeeBirthdays.asStateFlow()
 
 	init {
 		viewModelScope.launch {
@@ -127,13 +126,13 @@ val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 	initializer {
 		val application = (this[APPLICATION_KEY] as MyApplication)
 		val repository = application.employeeRepository
-		val findEmployeeNamesBornToday = createFindEmployeeBirthday(repository, LocalDate::now)
+		val findEmployeeNamesBornToday = createFindEmployeeNamesBornToday(repository, LocalDate::now)
 		BirthdayViewModel(findEmployeeNamesBornToday)
 	}
 }
 
 // Creates an implementation of `findEmployeeNamesBornToday`. Could be a class or whatever.
-fun createFindEmployeeBirthday(
+fun createFindEmployeeNamesBornToday(
     repository: EmployeeRepository,
     now: () -> LocalDate,
 ) = suspend {
@@ -154,9 +153,9 @@ This approach offers several advantages over the previous implementation:
 
 ### Wrapping Up
 
-In conclusion, relying excessively on them can lead to various pitfalls. By minimizing dependencies, we can achieve more robust and maintainable code. This architectural approach, known as "Ports & Adapters," allows for interchangeable adapters, enabling different implementations for production and testing scenarios. Embracing testable design principles ensures that our tests accurately reflect the desired behaviour of the system, fostering a more reliable and efficient software development process.
+In conclusion, relying excessively on mocks can lead to various pitfalls. By minimizing dependencies, we can achieve more robust and maintainable code. This architectural approach, known as "Ports & Adapters," allows for interchangeable adapters, enabling different implementations for production and testing scenarios. Embracing testable design principles ensures that our tests accurately reflect the desired behaviour of the system, fostering a more reliable and efficient software development process.
 
-Where to go from here?
+If you want to learn more testing without mocks, here are a few links that can help you in your journey:
 
 - [Ports and Adapters Architecture](http://wiki.c2.com/?PortsAndAdaptersArchitecture)
 - [Ports And Adapters / Hexagonal Architecture](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
@@ -181,7 +180,7 @@ And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the
 
 #### References: 
 
-[^1]: Any testing framework or library can introduce overhead. It's not exclusive to Mocks.
+[^1]: Any testing framework or library can introduce overhead. It's not exclusive to mocks.
 [^2]: See [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests) for more examples.
 [^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
 [^4]: Birthday example is inspired by [Birthday Greetings Kata](http://matteo.vaccari.name/blog/archives/154).
