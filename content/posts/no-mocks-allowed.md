@@ -173,7 +173,7 @@ If you want to learn more testing without mocks, here are a few links that can h
 
 1. That is an article about tests. Why is there, not a single test?
 
-Good question. I did plan to write a before and after with tests, but the draft of my article got featured on [Android Weekly #557](https://androidweekly.net/issues/issue-577), and I _really-really want to play Final Fantasy 16_ so I guess this is now the final version.
+Good question. I did plan to write a before and after with tests, but the draft of my article got featured on [Android Weekly #557](https://androidweekly.net/issues/issue-577) (?), and I _really-really want to play Final Fantasy 16_ so I guess this is now the final version.
 
 2. That is interesting but how does it look in practice?
 
