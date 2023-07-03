@@ -153,7 +153,7 @@ This approach offers several advantages over the previous implementation:
 
 ### Wrapping Up
 
-In conclusion, relying excessively on mocks can lead to various pitfalls. By minimizing dependencies, we can achieve more robust and maintainable code. This architectural approach, known as "Ports & Adapters," allows for interchangeable adapters, enabling different implementations for production and testing scenarios. Embracing testable design principles ensures that our tests accurately reflect the desired behaviour of the system, fostering a more reliable and efficient software development process.
+In conclusion, relying excessively on mocks can lead to various pitfalls. By minimizing dependencies, we can achieve more robust and maintainable code. This architectural approach, known as "Ports & Adapters,"[^7] allows for interchangeable adapters, enabling different implementations for production and testing scenarios. Embracing testable design principles ensures that our tests accurately reflect the desired behaviour of the system, fostering a more reliable and efficient software development process.
 
 If you want to learn more testing without mocks, here are a few links that can help you in your journey:
 
@@ -174,13 +174,23 @@ If you want to learn more testing without mocks, here are a few links that can h
 
 Good question. I did plan to write a before and after with tests, but the draft of my article got featured on [Android Weekly #557](https://androidweekly.net/issues/issue-577), and I _really-really want to play Final Fantasy 16_ so I guess this is now the final version.
 
-2. Should I do that for everything?
+2. That is interesting but how does it look in practice?
+
+One of the article's review has been kind, and shared a real use case from their production project:
+
+![Sign-Up Form](/images/no-mocks-allowed-example.jpeg)
+
+3. Should I do that for everything?
 
 Software engineering is about trade-offs. I recommend you to follow the [Principle of Least Power: Dependency Injection](https://www.lihaoyi.com/post/StrategicScalaStylePrincipleofLeastPower.html#dependency-injection) and build up as your requirements force you to introduce more complexity.
 
+4. You could achieve Ports & Adapters by introducing an interface to the repository. What is the advantage?
+
+True, but repositories are often shared between multiple features creating a coupling between the components of our system. Alternatively, you can create a repository interface in your module but again: [function as an interface](https://fsharpforfunandprofit.com/posts/convenience-functions-as-interfaces/) solves the problem with ease.
+
 ### Credits
 
-Special thanks to [Jacob Rein](https://twitter.com/deathssouls),  [Fabricio Vergara](https://www.linkedin.com/in/fabriciovergal) , [Thiago Souto](https://twitter.com/othiagosouto) and [Guilherme Baptista](https://github.com/guilhermesgb) proofread review! 🔍
+Special thanks to [Jacob Rein](https://twitter.com/deathssouls), [Stojan Anastasov](https://twitter.com/s_anastasov), [Fabricio Vergara](https://www.linkedin.com/in/fabriciovergal), [Thiago Souto](https://twitter.com/othiagosouto) and [Guilherme Baptista](https://github.com/guilhermesgb) proofread review! 🔍
 
 And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the [Twitter thread](https://twitter.com/n_haarman/status/1610908251553501184) that motivated me to write the blog post.
 
@@ -194,3 +204,4 @@ And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the
 [^4]: Birthday example is inspired by [Birthday Greetings Kata](http://matteo.vaccari.name/blog/archives/154).
 [^5]: Alternatively, you can use a nested [Functional Interface](https://kotlinlang.org/docs/fun-interfaces.html) instead of a [high-order function](https://kotlinlang.org/docs/lambdas.html). That is useful when you need distinguished types, such as when using libraries such as [Dagger](https://dagger.dev/) or [Koin](https://insert-koin.io/).
 [^6]: I know the example is a too simple, there isn't much to test. But I hope you get the point.
+[^7]: `BirthdayViewModel` is the system, `findEmployeeNamesBornToday` is a port, and `createFindEmployeeNamesBornToday` creates the adapter. Mastering Ports & Adapters is a powerful skill which can be applied to *any level of abstraction* (functions, classes, or entire modules!) as you see fit.
