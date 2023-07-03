@@ -58,7 +58,7 @@ And here is an example of its model:
 data class Employee(
 	val id: EmployeeId,
 	val name: String,
-	val birthday: LocalDateTime,
+	val birthday: LocalDate,
 	
 	// 20+ unrelated properties...
 )
@@ -78,9 +78,9 @@ class BirthdayViewModel(
 
 	init {
 		viewModelScope.launch {
-			val today = LocalDateTime.now()
+			val today = LocalDate.now()
 			_employeeBirthdays.value = repository
-				.findEmployeesBornOn(today.month, day = today.day)
+				.findEmployeesBornOn(today.month, dayOfMonth = today.dayOfMonth)
 		}
 	}
 }
@@ -88,9 +88,9 @@ class BirthdayViewModel(
 
 However, this approach has a few issues:
 - `BirthdayViewModel` depends on a `Repository` that is used everywhere. If the `Repository` changes, you need to modify the `ViewModel`. Except by `findEmployeesBornOn`, the `ViewModel` does not use any other method.
-- `BirthdayViewModel` depends on `Employee`, a data class it does not own. Except by `birthday`, the `ViewModel` does not use any other property.
+- `BirthdayViewModel` depends on `Employee`, a data class it does not own. Except by `employeeBirthdays`, the `ViewModel` does not use any other property.
 - `EmployeeBirthdayViewModel` is unstable. It depends on both `EmployeeRepository` or `Employee`, and any change will directly affect it.
-- The usage of `LocalDateTime.now()` as a static function makes it challenging to replace during testing.
+- The usage of `LocalDate.now()` as a static function makes it challenging to replace during testing.
 
 Rather than coupling our feature with the `EmployeeRepository` and `Employee` data model, let's aim for loose coupling and invert the control.
 
@@ -107,7 +107,7 @@ Here's an improved version of `BirthdayViewModel` leveraging a function as an in
 
 ```kotlin
 class BirthdayViewModel(
-	findEmployeeNamesBornToday: suspend () -> List<String>,
+	findEmployeeNamesBornToday: suspend () -> List<Employee>,
 ) : ViewModel() {
 
 	private val _employeeBirthdays = MutableStateFlow(emptyListOf<String>())
@@ -118,6 +118,8 @@ class BirthdayViewModel(
 			_employeeBirthdays.value = findEmployeeNamesBornToday()
 		}
 	}
+
+    data class Employee(val name: String, val birthday: LocalDate)
 }
 
 // For simplicity, will do all wiring in the factory:
@@ -125,19 +127,21 @@ val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 	initializer {
 		val application = (this[APPLICATION_KEY] as MyApplication)
 		val repository = application.employeeRepository
-		
-		// `findEmployeeNamesBornToday` implementation.
-		//   Could be a class, a top-level function, whatever.
-		val findEmployeeNamesBornToday = suspend {
-			val today = LocalDateTime.now()
-			repository
-				.findEmployees()
-				.filter { it.month == month && it.day == day }
-				.map { it.name }
-		}
-		
+		val findEmployeeNamesBornToday = createFindEmployeeBirthday(repository, LocalDate::now)
 		BirthdayViewModel(findEmployeeNamesBornToday)
 	}
+}
+
+// Creates an implementation of `findEmployeeNamesBornToday`. Could be a class or whatever.
+fun createFindEmployeeBirthday(
+    repository: EmployeeRepository,
+    now: () -> LocalDate,
+) = suspend {
+    val today = now()
+    repository
+        .findEmployees()
+        .filter { it.birthday.month == month && it.birthday.dayOfMonth == today.dayOfMonth }
+        .map { it.name }
 }
 ```
 
@@ -146,6 +150,7 @@ This approach offers several advantages over the previous implementation:
 - During testing, it becomes straightforward to provide a trivial fake implementation of the `findEmployeeNamesBornToday` method.
 - `BirthdayViewModel` has access only to the specific function or property it requires, promoting better encapsulation.
 - `BirthdayViewModel` achieves stability since changes to `EmployeeRepository` or `Employee` no longer directly impact it.
+- Both `BirthdayViewModel` and `createFindEmployeeBirthday` can be tested in isolation.
 
 ### Wrapping Up
 
