@@ -199,7 +199,7 @@ And a special thank you to [Niek Haarman](https://twitter.com/n_haarman) for the
 
 > ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
 
-[^1]: Any testing framework or library can introduce overhead. It's not exclusive to mocks.
+[^1]: That is a stretch, I know. Any testing framework or library can introduce overhead. It's not exclusive to mocks.
 [^2]: See [How to Write Good Tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests) for more examples.
 [^3]: While it is important to minimize unnecessary dependencies, in practical scenarios, it is not always possible or even desirable to have zero dependencies.
 [^4]: Birthday example is inspired by [Birthday Greetings Kata](http://matteo.vaccari.name/blog/archives/154).
