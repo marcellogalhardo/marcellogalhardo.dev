@@ -177,7 +177,7 @@ Good question. I did plan to write a before and after with tests, but the draft 
 
 2. That is interesting but how does it look in practice?
 
-One of the article's review has been kind, and shared a real use case from their production project:
+One of the article's reviewer has been kind, and shared a real use case from their production project:
 
 ![Sign-Up Form](/images/no-mocks-allowed-example.jpeg)
 
