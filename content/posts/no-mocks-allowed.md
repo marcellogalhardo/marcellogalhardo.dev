@@ -22,7 +22,7 @@ tags:
 2. False Sense of Security. High test coverage achieved through extensive mocking, can create a false sense of security. When all dependencies are mocked, we may overlook the fact that no real behavior is being tested.
 3. Slow Test Execution[^1]. Reflection and proxies used by mock libraries can lead to sluggish test execution, slowing down the test suite when they increase in quantity.
 
-The primary purpose of a mock library is to aid developers in their work. If a codebase relies solely on the presence of mocks for testability, it indicates potential design flaws[^2].
+The primary purpose of a mock library (such as Mockito Kotlin, also know as "auto-mockers") is to aid developers in their work. If a codebase relies solely on the presence of mocks for testability, it indicates potential design flaws[^2].
 
 In this article we'll dive into how [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) using [high-order functions](https://kotlinlang.org/docs/lambdas.html) or [Functional Interfaces](https://kotlinlang.org/docs/fun-interfaces.html) can help you achieve testable code without the needs for mocks. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used _throughout the application_, or a _shared data model_ that the [System Under Test (SUT)](http://xunitpatterns.com/SUT.html) doesn't own.
 
