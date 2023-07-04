@@ -187,7 +187,7 @@ Software engineering is about trade-offs. I recommend you to follow the [Princip
 
 4. You could achieve Ports & Adapters by introducing an interface to the repository. What is the advantage?
 
-True, but repositories are often shared between multiple features creating a coupling between the components of our system. Alternatively, you can create a repository interface in your module but again: [function as an interface](https://fsharpforfunandprofit.com/posts/convenience-functions-as-interfaces/) solves the problem with ease.
+True. A single repository interface is less complex. But they are often shared between multiple features creating a coupling between the components of our system. That is not necessary a problem, it is a trade-off.
 
 ### Credits
 
