@@ -24,7 +24,7 @@ tags:
 
 The primary purpose of a mock library is to aid developers in their work. If a codebase relies solely on the presence of mocks for testability, it indicates potential design flaws[^2].
 
-To address this issue, we need to focus on making our [System Under Test (SUT)](http://xunitpatterns.com/SUT.html) genuinely testable. In this article we'll dive into how [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) using [high-order functions](https://kotlinlang.org/docs/lambdas.html) or [Functional Interfaces](https://kotlinlang.org/docs/fun-interfaces.html) can help you achieve testable code without the needs for mocks. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used throughout the application, or a data model that the SUT doesn't own.
+In this article we'll dive into how [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) using [high-order functions](https://kotlinlang.org/docs/lambdas.html) or [Functional Interfaces](https://kotlinlang.org/docs/fun-interfaces.html) can help you achieve testable code without the needs for mocks. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used _throughout the application_, or a _shared data model_ that the [System Under Test (SUT)](http://xunitpatterns.com/SUT.html) doesn't own.
 
 **Shared understanding:**  I'm using the word dependency to refer to a link between two functions, classes or modules. For simplicity, let's say it is a direct import.
 
