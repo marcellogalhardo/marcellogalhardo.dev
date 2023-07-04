@@ -12,7 +12,7 @@ tags:
   - kotlin
 ---
 
-**Disclaimer:** Stojan has highlighted to me the title is a little click bait. That wasn't my intention and I'm sorry. I actually wanted reference the Fallout game series and their amazing community [No Mutants Allowed](https://www.nma-fallout.com/).
+**Disclaimer:** Stojan has pointed out to me the title is a little click bait. That wasn't my intention and I'm sorry. I actually wanted reference the Fallout game series and their amazing community [No Mutants Allowed](https://www.nma-fallout.com/).
 
 [Testable code](http://xunitpatterns.com/design%20for%20testability.html) plays a crucial role in app development. When we neglect designing code for testability, we often resort to using a [mock](http://xunitpatterns.com/Mock%20Object.html) library as a mean to achieve test coverage. Mocks have become a dominant presence in the Android testing ecosystem today. However, there are drawbacks:
 
