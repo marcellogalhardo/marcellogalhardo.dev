@@ -131,6 +131,7 @@ class BirthdayViewModel(
 
 // For simplicity, will do all wiring in the factory.
 // Keep in mind they can be placed in different files and/or Gradle modules.
+// In a **real world project**, you will want to use Dagger Hilt or Koin Android for doing the wiring and bindings.
 val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 	initializer {
 		val application = (this[APPLICATION_KEY] as MyApplication)
