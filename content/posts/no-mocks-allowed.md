@@ -138,9 +138,9 @@ val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 		// Pay attention in the `findEmployees` argument, that is the point of the article.
 		BirthdayViewModel(
 			findEmployees = suspend {
-				// Creates an implementation of `findEmployees`. A map function.
+				// Creates a map from `Repository.findEmployees` to `BirthdayViewModel.Employee`.
 				// Could be a class or high-order function if you want to test it in isolation too.
-				// The implementation here is NOT the point of the article but a way to show the point.
+				// The implementation here is NOT the point of the article, but a way to show the point.
 				repository
 					.findEmployees()
 					.map { it -> BirthdayViewModel.Employee(it.name, it.birthday) }
@@ -156,7 +156,7 @@ This approach offers a few advantages over the previous implementation:
 - During testing, it becomes straightforward to provide a trivial fake implementation of the `findEmployees` and `now` method.
 - `BirthdayViewModel` has access only to the specific function or property it requires.
 - `BirthdayViewModel` achieves stability since changes to `EmployeeRepository` or `Employee` no longer directly impact it.
-- Both `BirthdayViewModel` and `createFindEmployeeBirthday` can be tested in isolation without mocks or any complicated architecture, as easy as passing custom functions during your test set-up.
+- Both `BirthdayViewModel` can be tested in isolation without mocks or any complicated architecture, as easy as passing custom functions during your test set-up. 
 
 ### Wrapping Up
 
