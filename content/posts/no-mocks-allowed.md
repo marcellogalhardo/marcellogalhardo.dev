@@ -26,6 +26,8 @@ The primary purpose of a mock library is to aid developers in their work. If a c
 
 To address this issue, we need to focus on making our [System Under Test (SUT)](http://xunitpatterns.com/SUT.html) genuinely testable. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used throughout the application, or a data model that the SUT doesn't own.
 
+**Shared understanding:**  I'm using the word dependency to refer to a link between two functions, classes or modules. For simplicity, let's say it is a direct import.
+
 Now, let's look an example[^4].
 
 ### The Birthday Feature
@@ -109,7 +111,8 @@ Here's an improved version of `BirthdayViewModel` leveraging a function as an in
 
 ```kotlin
 class BirthdayViewModel(
-	findEmployeeNamesBornToday: suspend () -> List<Employee>,
+    findEmployees: suspend () -> List<Employee>,
+    now: () -> LocalDate,
 ) : ViewModel() {
 
 	private val _employeeBirthdays = MutableStateFlow(emptyListOf<String>())
@@ -117,42 +120,41 @@ class BirthdayViewModel(
 
 	init {
 		viewModelScope.launch {
-			_employeeBirthdays.value = findEmployeeNamesBornToday()
+			val today = now()
+			_employeeBirthdays.value = findEmployees()
+				.filter { it -> it.birthday.month == month && it.birthday.dayOfMonth == today.dayOfMonth }
 		}
 	}
 
     data class Employee(val name: String, val birthday: LocalDate)
 }
 
-// For simplicity, will do all wiring in the factory:
+// For simplicity, will do all wiring in the factory.
+// Keep in mind they can be placed in different files and/or Gradle modules.
 val BirthdayViewModelFactory: ViewModelProvider.Factory = viewModelFactory {
 	initializer {
 		val application = (this[APPLICATION_KEY] as MyApplication)
 		val repository = application.employeeRepository
-		val findEmployeeNamesBornToday = createFindEmployeeNamesBornToday(
-            findEmployees = repository::findEmployees,
-            now = LocalDate::now,
-        )
-		BirthdayViewModel(findEmployeeNamesBornToday)
+		// Pay attention in the `findEmployees` argument, that is the point of the article.
+		BirthdayViewModel(
+			findEmployees = suspend {
+				// Creates an implementation of `findEmployees`. A map function.
+				// Could be a class or high-order function if you want to test it in isolation too.
+				// The implementation here is NOT the point of the article but a way to show the point.
+				repository
+					.findEmployees()
+					.map { it -> BirthdayViewModel.Employee(it.name, it.birthday) }
+			},
+			now = LocalDate::now,
+		)
 	}
-}
-
-// Creates an implementation of `findEmployeeNamesBornToday`. Could be a class or whatever.
-fun createFindEmployeeNamesBornToday(
-    findEmployees: () -> List<Employee>,
-    now: () -> LocalDate,
-): suspend () -> BirthdayViewModel.Employee = suspend {
-    val today = now()
-    findEmployees()
-        .filter { it -> it.birthday.month == month && it.birthday.dayOfMonth == today.dayOfMonth }
-        .map { it -> BirthdayViewModel.Employee(it.name, it.birthday) }
 }
 ```
 
-This approach offers several advantages over the previous implementation:
+This approach offers a few advantages over the previous implementation:
 
-- During testing, it becomes straightforward to provide a trivial fake implementation of the `findEmployeeNamesBornToday` method.
-- `BirthdayViewModel` has access only to the specific function or property it requires, promoting better encapsulation.
+- During testing, it becomes straightforward to provide a trivial fake implementation of the `findEmployees` and `now` method.
+- `BirthdayViewModel` has access only to the specific function or property it requires.
 - `BirthdayViewModel` achieves stability since changes to `EmployeeRepository` or `Employee` no longer directly impact it.
 - Both `BirthdayViewModel` and `createFindEmployeeBirthday` can be tested in isolation without mocks or any complicated architecture, as easy as passing custom functions during your test set-up.
 
@@ -163,7 +165,7 @@ In conclusion, relying excessively on mocks can lead to various pitfalls. By min
 If you want to learn more testing without mocks, here are a few links that can help you in your journey:
 
 - [Ports and Adapters Architecture](http://wiki.c2.com/?PortsAndAdaptersArchitecture)
-- [Ports And Adapters / Hexagonal Architecture](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
+- [Ports and Adapters / Hexagonal Architecture](https://www.dossier-andreas.net/software_architecture/ports_and_adapters.html)
 - [Testing on the Toilet: Do Not Overuse Mocks](https://testing.googleblog.com/2013/05/testing-on-toilet-dont-overuse-mocks.html)
 - [Testing on the Toilet: Test Behaviour, Not Implementation](https://testing.googleblog.com/2013/08/testing-on-toilet-test-behavior-not.html)
 - [Testing on the Toilet: Change-Detector Tests Considered Harmful](https://testing.googleblog.com/2015/01/testing-on-toilet-change-detector-tests.html)
