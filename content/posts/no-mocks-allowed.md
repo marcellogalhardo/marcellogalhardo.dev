@@ -12,7 +12,7 @@ tags:
   - kotlin
 ---
 
-**Disclaimer:** It has been brought to my attention the title can be seem as a click bait. That wasn't my intention and I'm sorry. I actually wanted reference the Fallout game series and their amazing community [No Mutants Allowed](https://www.nma-fallout.com/).
+**Disclaimer:** It has been brought to my attention the title can be seem as a click bait. That wasn't my intention and I'm sorry. I wanted to reference the Fallout game series and their amazing community [No Mutants Allowed](https://www.nma-fallout.com/).
 
 ![Sign-Up Form](/images/no-mutants-allowed.png)
 
