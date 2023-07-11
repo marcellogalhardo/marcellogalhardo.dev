@@ -99,6 +99,10 @@ However, this approach has a few issues:
 - `EmployeeBirthdayViewModel` is unstable. It depends on both `EmployeeRepository` or `Employee`, and any change will directly affect it.
 - The usage of `LocalDate.now()` as a static function makes it challenging to replace during testing.
 
+The following diagram provides a visual representation of the relationship between units:
+
+![no-mocks-allowed-diagram-before](/images/no-mocks-allowed-diagram-before.png)
+
 Rather than coupling our feature with the `EmployeeRepository` and `Employee` data model, let's aim for loose coupling and [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control).
 
 ### Function as an Interface
@@ -160,7 +164,11 @@ This approach offers a few advantages over the previous implementation:
 - During testing, it becomes straightforward to provide a trivial fake implementation of the `findEmployees` and `now` method.
 - `BirthdayViewModel` has access only to the specific function or property it requires.
 - `BirthdayViewModel` achieves stability since changes to `EmployeeRepository` or `Employee` no longer directly impact it.
-- Both `BirthdayViewModel` can be tested in isolation without mocks or any complicated architecture, as easy as passing custom functions during your test set-up. 
+- Both `BirthdayViewModel` can be tested in isolation without mocks or any complicated architecture, as easy as passing custom functions during your test set-up.
+
+The following diagram provides a visual representation of the relationship between units:
+
+![no-mocks-allowed-diagram-after](/images/no-mocks-allowed-diagram-after.png)
 
 ### Wrapping Up
 
