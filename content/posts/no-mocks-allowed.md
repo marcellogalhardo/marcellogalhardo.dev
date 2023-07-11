@@ -12,9 +12,9 @@ tags:
   - kotlin
 ---
 
-**Disclaimer:** It has been brought to my attention the title can be seen as a click bait. That wasn't my intention and I'm sorry. I wanted to reference the Fallout game series and their amazing community [No Mutants Allowed](https://www.nma-fallout.com/).
+**Disclaimer:** It has been brought to my attention the title can be seen as a click bait. That wasn't my intention and I'm sorry. I wanted to reference the Fallout game series and the [No Mutants Allowed](https://www.nma-fallout.com/) community.
 
-![Sign-Up Form](/images/no-mutants-allowed.png)
+![no-mutants-allowed](/images/no-mutants-allowed.png)
 
 [Testable code](http://xunitpatterns.com/design%20for%20testability.html) plays a crucial role in app development. When we neglect designing code for testability, we often resort to using a [mock](http://xunitpatterns.com/Mock%20Object.html) library (such as Mockito Kotlin, also know as “auto-mockers”) as a mean to achieve test coverage. Mocks have become a dominant presence in the Android testing ecosystem today. However, there are drawbacks:
 
@@ -23,6 +23,9 @@ tags:
 3. Slow Test Execution[^1]. Reflection and proxies used by mock libraries can lead to sluggish test execution, slowing down the test suite when they increase in quantity.
 
 The primary purpose of a mock library is to aid developers in their work. If a codebase relies solely on the presence of mocks for testability, it indicates potential design flaws[^2].
+
+> "There is a deep synergy between testability and good design. All of the pain that we fell when writing unit tests points at underlying design problems."
+> -- Michael Feathers
 
 In this article we'll dive into how [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control) using [high-order functions](https://kotlinlang.org/docs/lambdas.html) or [Functional Interfaces](https://kotlinlang.org/docs/fun-interfaces.html) can help you achieve testable code without the needs for mocks. The key is to minimize dependencies, ideally reducing them to zero[^3]. We should aim to eliminate dependencies on components like a class that is used _throughout the application_, or a _shared data model_ that the [System Under Test (SUT)](http://xunitpatterns.com/SUT.html) doesn't own.
 
