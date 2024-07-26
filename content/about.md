@@ -16,5 +16,5 @@ I am a moderator of the [Android Dev BR](https://androiddevbr.org) community, th
 - [Mastodon](https://androiddev.social/@mg)
 - [Twitter](https://twitter.com/marcellogalhard)
 - [LinkedIn](https://www.linkedin.com/in/marcellogalhardo/)
-- [SpeakerDeck](https://speakerdeck.com/marcellogalhardo)
 - [GitHub](https://github.com/marcellogalhardo)
+- [SpeakerDeck](https://speakerdeck.com/marcellogalhardo)
