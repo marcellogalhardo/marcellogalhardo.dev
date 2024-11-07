@@ -56,7 +56,7 @@ With this setup:
 - It enables stricter types for shadowed members (e.g., changing `key: String?` to `key: String` since the types are compatible).
 - The new type alias remains backwards compatible with existing APIs.
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wmvc69m96nl1df0zcm1b.png)
+![extension-shadowing-for-actual-declarations-in-kmp](/images/extension-shadowing-for-actual-declarations-in-kmp.png)
 
 The `EXTENSION_SHADOWED_BY_MEMBER` warning is expected to be removed in Kotlin version 2.1.0. I hope to see more documentation on extension shadowing for actual declarations and clarification on what we can expect from the final bytecode on platforms where methods are shadowed — will the method be fully removed, or will it simply adjust the namespace?
 
