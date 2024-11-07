@@ -1,7 +1,7 @@
 ---
 title: "Extension Shadowing for Actual Declarations in KMP"
 date: 2024-11-07T15:49:00+01:00
-draft: true
+draft: false
 toc: false
 images:
 - /logo.png
