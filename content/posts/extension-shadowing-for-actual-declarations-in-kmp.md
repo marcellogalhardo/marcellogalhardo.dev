@@ -62,3 +62,5 @@ With this setup:
 The `EXTENSION_SHADOWED_BY_MEMBER` warning is expected to be removed in Kotlin version 2.1.0. I hope to see more documentation on extension shadowing for actual declarations and clarification on what we can expect from the final bytecode on platforms where methods are shadowed — will the method be fully removed, or will it simply adjust the namespace?
 
 For now, however, it remains an interesting concept to explore in side projects.
+
+[^1]: Commonization refers to making an API available in the Kotlin Multiplatform `common` source sets across multiple platforms.
