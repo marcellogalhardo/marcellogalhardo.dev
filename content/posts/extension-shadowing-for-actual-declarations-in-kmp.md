@@ -33,7 +33,7 @@ expect fun Bundle.putBoolean(key: String, value: Boolean)
 // Android
 actual typealias Bundle = android.os.Bundle
 actual inline fun Bundle.putBoolean(key: String, value: Boolean) {
-  putBoolean(key, value)
+  error("Extension shadowed by member")
 }
 
 // Non-Android
@@ -47,12 +47,10 @@ Let’s break this down:
 
 1. `expect class Bundle` is an opaque type with no members in `commonMain`.
 2. `expect fun Bundle.putBoolean(key, value)` matches the signature of the original `putBoolean` method, but changes the first parameter from `String?` to `String`.
-3. On Android, the actual extension function is an inline function and will not exist at runtime.
-4. On non-Android platforms, the actual extension function is a regular function.
 
 With this setup:
 
-- On Android, `putBoolean` won't exist at runtime and will always be superseded by the member function.
+- On Android, `putBoolean` won't exist at runtime and will always be superseded by the original member function.
 - On other platforms, the extension function will be utilized instead.
 - It enables stricter types for shadowed members (e.g., changing `key: String?` to `key: String` since the types are compatible).
 - The new type alias remains backward compatible with existing APIs.
