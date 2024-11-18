@@ -4,14 +4,14 @@ draft: false
 ---
 
 ### Software
-- File Manager: [Marta](https://marta.sh)
-- Window Manager: [Magnet](https://magnet.crowdcafe.com/)
-- Window Switcher: [Contexts](https://contexts.co)
 - App Launcher: [Alfred](https://www.alfredapp.com)
 - Diagrams, Personal: [Diagrams](https://diagrams.app)
 - Diagrams, Work: [PlantUML](https://plantuml.com)
+- File Manager: [Marta](https://marta.sh)
 - IDE: [IntelliJ IDEA](https://www.jetbrains.com/idea)
 - Note-taking: [UpNotes](https://getupnote.com)
+- Window Manager: [Magnet](https://magnet.crowdcafe.com/)
+- Window Switcher: [Contexts](https://contexts.co)
 
 ### Hardware
 
