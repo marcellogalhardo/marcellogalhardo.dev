@@ -11,7 +11,6 @@ draft: false
 - Diagrams, Personal: [Diagrams](https://diagrams.app)
 - Diagrams, Work: [PlantUML](https://plantuml.com)
 - IDE: [IntelliJ IDEA](https://www.jetbrains.com/idea)
-- ---Knowledge Management: [Obsidian](https://obsidian.md)---
 - Note-taking: [UpNotes](https://getupnote.com)
 
 ### Hardware
