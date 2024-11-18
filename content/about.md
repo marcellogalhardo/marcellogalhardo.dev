@@ -13,8 +13,7 @@ I am a moderator of the [Android Dev BR](https://androiddevbr.org) community, th
 
 ### Contact me
 
-- [Mastodon](https://androiddev.social/@mg)
-- [Twitter](https://twitter.com/marcellogalhard)
+- [Bluesky](https://bsky.app/profile/marcellogalhardo.dev)
 - [LinkedIn](https://www.linkedin.com/in/marcellogalhardo/)
 - [GitHub](https://github.com/marcellogalhardo)
 - [SpeakerDeck](https://speakerdeck.com/marcellogalhardo)
