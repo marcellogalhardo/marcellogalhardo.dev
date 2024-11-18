@@ -8,12 +8,11 @@ draft: false
 - Window Manager: [Magnet](https://magnet.crowdcafe.com/)
 - Window Switcher: [Contexts](https://contexts.co)
 - App Launcher: [Alfred](https://www.alfredapp.com)
-- Dock: [uBar](https://ubarapp.com)
-- Calendar & Tasks: [Hypercal](https://hypercal.app)
 - Diagrams, Personal: [Diagrams](https://diagrams.app)
 - Diagrams, Work: [PlantUML](https://plantuml.com)
-- IDE: [IntelliJ IDEA](https://www.jetbrains.com/idea) with [Dracula Pro](https://draculatheme.com/pro)
-- Knowledge Management: [Obsidian](https://obsidian.md)
+- IDE: [IntelliJ IDEA](https://www.jetbrains.com/idea)
+- ---Knowledge Management: [Obsidian](https://obsidian.md)---
+- Note-taking: [UpNotes](https://getupnote.com)
 
 ### Hardware
 
