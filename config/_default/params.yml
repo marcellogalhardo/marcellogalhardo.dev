@@ -20,10 +20,6 @@ cover:
 socialIcons:
   - name: "bluesky"
     url: "https://bsky.app/profile/marcellogalhardo.dev"
-  - name: "mastodon"
-    url: "https://androiddev.social/@mg"
-  - name: "twitter"
-    url: "https://twitter.com/marcellogalhard"
   - name: "linkedin"
     url: "https://www.linkedin.com/in/marcellogalhardo/"
   - name: "github"
