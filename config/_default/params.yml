@@ -24,3 +24,5 @@ socialIcons:
     url: "https://www.linkedin.com/in/marcellogalhardo/"
   - name: "github"
     url: "https://github.com/marcellogalhardo/"
+  - name: "rss"
+    url: "https://marcellogalhardo.dev/index.xml"
