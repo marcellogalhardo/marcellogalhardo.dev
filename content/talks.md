@@ -3,6 +3,7 @@ title: "Talks"
 draft: false
 ---
 
+- August 9, 2024: [Lifecycle path to Multiplatform](https://www.youtube.com/watch?v=k1PIzEIO6jo)
 - April 29, 2021: [Anvil na Prática (PT-BR)](https://www.youtube.com/watch?v=AVZlStXTJJg)
 - June 05, 2019: [Railway Oriented Programming with Kotlin](https://speakerdeck.com/marcellogalhardo/railway-oriented-programming-with-kotlin)
 - April 17, 2019: [Effective Kotlin](https://speakerdeck.com/marcellogalhardo/effective-kotlin)
