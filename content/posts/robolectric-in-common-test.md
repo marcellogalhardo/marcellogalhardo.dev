@@ -43,7 +43,7 @@ In `androidTest`, provide the actual implementation using `Robolectric`:
 ```kotlin
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE)
-internal actual abstract class RobolectricTest actual constructor()
+actual abstract class RobolectricTest actual constructor()
 ```
 
 For other platforms, provide an empty actual implementation:
