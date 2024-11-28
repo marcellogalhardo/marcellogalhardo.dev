@@ -17,7 +17,9 @@ Sharing tests across Kotlin Multiplatform (KMP) projects can be tricky when deal
 
 ### The Solution
 
-The ideal solution is to avoid platform-specific APIs in `commonTest`. However, if that’s not an option, you can use Robolectric in your `commonTest` source set to access functional Android classes. This approach:
+The ideal solution is to avoid platform-specific APIs in `commonTest`.
+
+However, if that’s not an option, you can use Robolectric in your `commonTest` source set to access functional Android classes. This approach:
 
 - Allows testing of platform-specific code in `commonTest`.
 - Eliminates the need to duplicate tests in `androidTest`.
