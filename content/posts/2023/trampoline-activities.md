@@ -32,9 +32,10 @@ To create a Trampoline Activity, you need an activity without a UI that closes i
 You can write your logic in the `onCreate` method of `MyTrampolineActivity` and launch the next activity as soon as possible. Remember to finish the `MyTrampolineActivity` at the end of the `onCreate` method:
 
 ```kotlin
-class MyTrampolineActivity : Activity() {
-  fun onCreate() {
-    super.onCreate()
+class MyTrampolineActivity : ComponentActivity() {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
     // Start your next activity.
     finish()
   }
