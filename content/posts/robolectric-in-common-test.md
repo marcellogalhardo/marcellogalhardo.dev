@@ -1,5 +1,5 @@
 ---
-title: "Robolectric in `commonTest`"
+title: "Robolectric in commonTest"
 date: 2024-11-28T16:15:00+01:00
 draft: false
 toc: false
@@ -13,7 +13,7 @@ tags:
   - kmp
 ---
 
-## Robolectric in commonTest
+## Robolectric in `commonTest`
 
 Sharing tests across Kotlin Multiplatform (KMP) projects can be tricky when dealing with platform-specific APIs like Android's `Bundle`. `commonTest` on Android relies on the `androidTest` source set, which uses an empty `android.jar`, leading to test failures.
 
