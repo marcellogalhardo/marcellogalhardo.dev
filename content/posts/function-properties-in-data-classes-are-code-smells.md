@@ -101,7 +101,7 @@ For example, using an assertion library? You might encounter:
 
 > "(non-equal value with same string representation)"
 
-This happens because function properties can't be meaningfully compared or represented, causing `equals` and `toString` to behave unpredictably.
+This happens because function properties can't be meaningfully compared or represented, causing `equals` and `toString` to behave inconsistently.
 
 ### The Solution
 
