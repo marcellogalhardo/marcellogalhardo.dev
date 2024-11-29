@@ -85,8 +85,8 @@ println(s1.hashCode() == s2.hashCode()) // false
 println(s2.hashCode() == s3.hashCode()) // false
 
 // toString
-println(s1.toString() == s2.toString()) // false 
-println(s2.toString() == s3.toString()) // false
+println(s1.toString() == s2.toString()) // true 
+println(s2.toString() == s3.toString()) // true
 ```
 
 You can find the example above at [this link](https://pl.kotl.in/pZmKMjxCy).
