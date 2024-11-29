@@ -79,10 +79,9 @@ This happens because function properties can't be meaningfully compared or repre
 
 ### The Solution
 
-**Use data classes only for data.** If you need to include functions or behaviors like callbacks:
+**Use data classes only for data.** If you need to include functions or behaviors like callbacks: use a regular `class` and override `equals()`, `hashCode()`, and `toString()` manually.
 
-- Use a regular `class`.
-- Override `equals()`, `hashCode()`, and `toString()` manually.
+By using a regular class, you clarify intent, avoid unintended behavior from generated methods, and uphold the principle that data classes should only hold data.
 
 ### References
 
