@@ -44,7 +44,7 @@ val p1 = Person("John", "Doe", 22)
 // Person(name=John, surname=Doe, age=22)
 val p2 = Person("John", "Doe", 22)
 // Person(name=John, surname=Doe, age=22)
-val p2 = Person("John", "Doe", 44)
+val p3 = Person("John", "Doe", 44)
 // Person(name=John, surname=Doe, age=44)
 
 // equals
@@ -89,7 +89,7 @@ println(s1.toString() == s2.toString()) // true
 println(s2.toString() == s3.toString()) // true
 ```
 
-You can find the example above at [this link](https://pl.kotl.in/pZmKMjxCy).
+You can find the example above at [this link](https://pl.kotl.in/49cN7r5Wu).
 
 ### Issues in Detail
 
