@@ -114,9 +114,13 @@ By using a regular class, you clarify intent, avoid unintended behavior from gen
 
 ### F.A.Q.
 
-#### 1. Functions are considered equal if they refer to the same instance. You can assign them to a `val`.
+#### Functions are considered equal if they refer to the same instance. You can assign them to a `val`.
 
 Exactly. Data is compared based on their content, not their instance reference.
+
+#### You can override `equals()`, `hashCode()`, and `toString()` in a `data class`.
+
+Yes, but my point is about what constitutes a "data class" semantically, and how the default assumptions about what `data` is by the compiler can lead to issues with the generated methods.
 
 ### References
 
