@@ -40,10 +40,10 @@ data class Person(
   val age: Int,
 )
 
-val p1 = Person("John", "Doe", 30)
-// Person(name=John, surname=Doe, age=30)
-val p2 = Person("John", "Doe", 30)
-// Person(name=John, surname=Doe, age=30)
+val p1 = Person("John", "Doe", 22)
+// Person(name=John, surname=Doe, age=22)
+val p2 = Person("John", "Doe", 22)
+// Person(name=John, surname=Doe, age=22)
 val p2 = Person("John", "Doe", 44)
 // Person(name=John, surname=Doe, age=44)
 
