@@ -33,7 +33,7 @@ When you add functions as properties, you breaks the `data class` contract of ho
 
 #### Expected Behavior: Data Class with Data.
 
-```
+```kotlin
 data class Person(
   val name: String,
   val surname: String,
@@ -49,7 +49,7 @@ println(p1.toString()) // Person(name=John, surname=Doe, age=30)
 
 #### Unexpected Behavior: Data Class with Functions
 
-```
+```kotlin
 data class UiState(
   val people: List<Person>,
   val eventSink: (UiEvent) -> Unit,
