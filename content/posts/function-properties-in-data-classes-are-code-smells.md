@@ -93,9 +93,9 @@ You can find the example above at [this link](https://pl.kotl.in/pZmKMjxCy).
 
 ### Issues in Detail
 
-1. **Equality (`equals`)**: Functions are never equal, even if they are duplicates of each other. 
-2. **Hash Codes (`hashCode`)**: Different instances with same data generates different hashes.
-3. **String Representation (`toString`)**: Functions produce generic output, leading to misleading comparisons.
+1. **Equality** (`equals`): Functions are never equal, even if they are duplicates of each other. 
+2. **Hash Codes** (`hashCode`): Different instances with same data generates different hashes.
+3. **String Representation** (`toString`): Functions produce generic output, leading to misleading comparisons.
 
 For example, using an assertion library? You might encounter:
 
