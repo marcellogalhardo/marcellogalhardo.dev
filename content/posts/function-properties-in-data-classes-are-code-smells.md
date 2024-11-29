@@ -112,6 +112,12 @@ This happens because function properties can't be meaningfully compared or repre
 
 By using a regular class, you clarify intent, avoid unintended behavior from generated methods, and uphold the principle that **data classes should only hold data**.
 
+### F.A.Q.
+
+#### 1. Functions are considered equal if they refer to the same instance. You can assign them to a `val`.
+
+Exactly. Data is compared based on their content, not their instance reference.
+
 ### References
 
 - [Kotlin Data Classes Documentation](https://kotlinlang.org/docs/data-classes.html)
