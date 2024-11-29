@@ -65,16 +65,16 @@ println(p2.toString() == p3.toString()) // false
 ```kotlin
 data class UiState(
   val people: List<Person>,
-  val onEvent: (UiEvent) -> Unit,
+  val eventSink: (UiEvent) -> Unit,
 )
 sealed class UiEvent
 
-val s1 = UiState(listOf(), onEvent = {})
-// UiState(people=[], onEvent=Function1<UiEvent, kotlin.Unit>)
-val s2 = UiState(listOf(), onEvent = {})
-// UiState(people=[], onEvent=Function1<UiEvent, kotlin.Unit>)
-val s3 = UiState(listOf(), onEvent = { println("Effect") })
-// UiState(people=[], onEvent=Function1<UiEvent, kotlin.Unit>)
+val s1 = UiState(listOf(), eventSink = {})
+// UiState(people=[], eventSink=Function1<UiEvent, kotlin.Unit>)
+val s2 = UiState(listOf(), eventSink = {})
+// UiState(people=[], eventSink=Function1<UiEvent, kotlin.Unit>)
+val s3 = UiState(listOf(), eventSink = { println("Effect") })
+// UiState(people=[], eventSink=Function1<UiEvent, kotlin.Unit>)
 
 // equals
 println(s1 == s2) // false
@@ -89,7 +89,7 @@ println(s1.toString() == s2.toString()) // true
 println(s2.toString() == s3.toString()) // true
 ```
 
-You can find the example above at [this link](https://pl.kotl.in/H4FHnvSzk).
+You can find the example above at [this link](https://pl.kotl.in/49cN7r5Wu).
 
 ### Issues in Detail
 
