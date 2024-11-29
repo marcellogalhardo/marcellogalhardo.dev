@@ -81,7 +81,7 @@ This happens because function properties can't be meaningfully compared or repre
 
 **Use data classes only for data.** If you need to include functions or behaviors like callbacks:
 
-- Use a regular class.
+- Use a regular `class`.
 - Override `equals()`, `hashCode()`, and `toString()` manually.
 
 ### References
