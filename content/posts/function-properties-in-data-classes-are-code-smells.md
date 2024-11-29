@@ -1,7 +1,7 @@
 ---
 title: "Function Properties in Data Classes are Code Smells"
 date: 2024-11-29T15:34:00+01:00
-draft: false
+draft: true
 toc: false
 images:
 - /logo.png
