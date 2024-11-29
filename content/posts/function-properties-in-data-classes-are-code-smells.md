@@ -18,7 +18,7 @@ To me, using functions as properties in the primary constructor of a data class 
 - **Data classes represent data.** Data is a value. Data is never executed.
 - **Functions are not data.** They produce values when executed.
 
-**Note:** A **function** returns a value. A **procedure** runs commands. In either case, **these are not data**.
+**Note:** by the book a **function** returns a value while a **procedure** runs commands. In either case, **these are not data**.
 
 ### Why It Matters
 
