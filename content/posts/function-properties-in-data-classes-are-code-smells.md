@@ -41,10 +41,23 @@ data class Person(
 )
 
 val p1 = Person("John", "Doe", 30)
+// Person(name=John, surname=Doe, age=30)
 val p2 = Person("John", "Doe", 30)
+// Person(name=John, surname=Doe, age=30)
+val p2 = Person("John", "Doe", 44)
+// Person(name=John, surname=Doe, age=44)
+
+// equals
 println(p1 == p2) // true
+println(p2 == p3) // false
+
+// hashCode
 println(p1.hashCode() == p2.hashCode()) // true
-println(p1.toString()) // Person(name=John, surname=Doe, age=30)
+println(p2.hashCode() == p3.hashCode()) // false
+
+// toString
+println(p1.toString() == p2.toString()) // true 
+println(p2.toString() == p3.toString()) // false
 ```
 
 #### Unexpected Behavior: Data Class with Functions
@@ -57,10 +70,23 @@ data class UiState(
 sealed class UiEvent
 
 val s1 = UiState(listOf(), eventSink = {})
+// UiState(people=[], eventSink=Function1<UiEvent, kotlin.Unit>)
 val s2 = UiState(listOf(), eventSink = {})
+// UiState(people=[], eventSink=Function1<UiEvent, kotlin.Unit>)
+val s3 = UiState(listOf(), eventSink = { println("Effect") })
+// UiState(people=[], eventSink=Function1<UiEvent, kotlin.Unit>)
+
+// equals
 println(s1 == s2) // false
+println(s2 == s3) // false
+
+// hashCode
 println(s1.hashCode() == s2.hashCode()) // false
-println(s1.toString()) // UiState(people=[], eventSink=Function1<UiEvent, kotlin.Unit>)
+println(s2.hashCode() == s3.hashCode()) // false
+
+// toString
+println(s1.toString() == s2.toString()) // false 
+println(s2.toString() == s3.toString()) // false
 ```
 
 You can find the example above at [this link](https://pl.kotl.in/pZmKMjxCy).
