@@ -122,6 +122,12 @@ Exactly. Data is compared based on their content, not their instance reference. 
 
 Yes, but my point is about the semantic definition of a "data class" and how the compiler's assumptions about what is `data` can lead to issues with the generated methods.
 
+#### 3. The example you put forth looks a lot like what we do in Circuit, was that what part of prompted this?
+
+No. I'm not familiar with Circuit, so I don’t feel qualified to comment on it. My focus was to discuss `data class` as a Kotlin construct, separate from Compose or any specific library.
+
+That said, Zac Sweers (Slack/Circuit) has reached out to confirm that Circuit leverages the Compose compiler [Strong Skipping](https://developer.android.com/develop/ui/compose/performance/stability/strongskipping#lambda-memoization) for lambda memoization, preventing the issues in this article. You can find his comment [here](https://bsky.app/profile/zacsweers.dev/post/3lc42yw76cc2f).
+
 ### References
 
 - [Kotlin Data Classes Documentation](https://kotlinlang.org/docs/data-classes.html)
