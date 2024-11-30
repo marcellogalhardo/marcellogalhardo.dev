@@ -64,6 +64,8 @@ class SavedStateTest : RobolectricTest()
 
 Robolectric will simulate the Android environment and allow a `commonTest` to run platform-specific code.
 
+> ℹ️ If you enjoyed the article you might enjoy following me on [Bluesky](https://bsky.app/profile/marcellogalhardo.dev). ℹ️
+
 ### References
 
 - [commonTest/androidx/savedstate/SavedStateTest.kt](https://cs.android.com/androidx/platform/frameworks/support/+/7dc24cd1eb1889c2b9234a32bb5852dc0d263995:savedstate/savedstate/src/commonTest/kotlin/androidx/savedstate/SavedStateTest.kt;l=23)
