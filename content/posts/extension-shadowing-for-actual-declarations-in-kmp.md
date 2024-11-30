@@ -61,4 +61,6 @@ The `EXTENSION_SHADOWED_BY_MEMBER` warning is expected to be removed in Kotlin v
 
 For now, however, it remains an interesting concept to explore in side projects.
 
+> ℹ️ If you enjoyed the article you might enjoy following me on [Bluesky](https://bsky.app/profile/marcellogalhardo.dev). ℹ️
+
 [^1]: Commonization refers to making an API available in the Kotlin Multiplatform `common` source sets across multiple platforms.
