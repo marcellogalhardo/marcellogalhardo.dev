@@ -126,7 +126,7 @@ Yes, but my point is about the semantic definition of a "data class" and how the
 
 No. I'm not familiar with Circuit, so I don’t feel qualified to comment on it. My goal was to discuss `data class` as a Kotlin construct, separate from Compose or any library.
 
-That said, Zac Sweers (Slack/Circuit) has reached out to confirm that Circuit leverages the Compose compiler [Strong Skipping](https://developer.android.com/develop/ui/compose/performance/stability/strongskipping#lambda-memoization) for lambda memoization, preventing the issues in this article. You can find his comment [here](https://bsky.app/profile/zacsweers.dev/post/3lc42yw76cc2f).
+That said, Zac Sweers (Slack/Circuit) has reached out to clarify that Circuit leverages the Compose compiler [Strong Skipping](https://developer.android.com/develop/ui/compose/performance/stability/strongskipping#lambda-memoization) for lambda memoization. You can find his comment [here](https://bsky.app/profile/zacsweers.dev/post/3lc42yw76cc2f).
 
 > ℹ️ If you enjoyed the article you might enjoy following me on [Bluesky](https://bsky.app/profile/marcellogalhardo.dev). ℹ️
 
