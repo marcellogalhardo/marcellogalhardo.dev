@@ -12,13 +12,14 @@ tags:
 - kotlin
 ---
 
-When talking about Factory Methods, extension functions tend to be favored in Kotlin - but it might be a challenge to name these functions in a discoverable way without polluting your project's namespace. A good source of inspiration is Kotlin's Standard library: it contains many examples we can use as a base when deciding how to design a function.
+When discussing Factory Methods, extension functions are often preferred in Kotlin. However, naming these functions in a discoverable way without cluttering your project's namespace can be challenging. A great source of inspiration is Kotlin's Standard Library, which offers numerous examples to guide function design.
 
-## Wrapping an instance
+## Wrapping an Instance
 
-If you intend to get a given instance and adapt to one different object to follow another contract, for example, creating a `ViewModelProvider.Factory` that internally uses a `javax.inject.Provider`: you want a wrapper. Looking inside Kotlin's Standard library, we can find [asExecutor](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/as-executor.html) which does the same.
+If you want to take an existing instance and adapt it to a different object to meet another contract—such as creating a `ViewModelProvider.Factory` that internally uses a `javax.inject.Provider`—you’ll need a wrapper. An example from Kotlin's Standard Library is [asExecutor](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/as-executor.html), which performs a similar role.
 
-Here is an example on how it could look like:
+Here’s an example of how such a wrapper could look:
+
 ```kotlin
 fun <VM : ViewModel> Provider<out VM>.asViewModelProviderFactory(): ViewModelProvider.Factory {
     return object : ViewModelProvider.Factory {
@@ -30,9 +31,9 @@ fun <VM : ViewModel> Provider<out VM>.asViewModelProviderFactory(): ViewModelPro
 }
 ```
 
-## Mapping data
+## Mapping Data
 
-If you intend to get a given instance and copy its data to a different format, for example, a `UserResponse` (DTO) to a `User` (domain entity): you want a mapper. Again, Kotlin's Standard library gives us a good example with [toList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html?_ga=2.130355144.672183661.1577982073-802284527.1577800392).
+When you need to transform an instance by copying its data into a different format—like converting a `UserResponse` (DTO) into a `User` (domain entity) — a mapper is the right tool. Kotlin's Standard Library provides a great example with [toList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/to-list.html).
 
 ```kotlin
 fun UserDto.toUser(): User {
@@ -47,9 +48,9 @@ fun UserDto.toUser(): User {
 }
 ```
 
-## Vararg constructors
+## Vararg Constructors
 
-If you need to provide a secondary constructor which accepts an unknown number of elements: you want a collection wrapper. For that, you can use a `vararg` method that returns the new composed object without polluting your class definition with an optional requirement. Kotlin's Standard Library offers us the convenient [listOf](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/list-of.html?_ga=2.139095028.672183661.1577982073-802284527.1577800392) as an example.
+If you need a secondary constructor that accepts an unknown number of elements, use a collection wrapper. A `vararg` method allows you to create a new object without overloading your class definition. Kotlin's Standard Library provides the [listOf](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/list-of.html) function as an example.
 
 ```kotlin
 fun controllerOf(vararg controllers: Controller): Controller {
@@ -59,7 +60,7 @@ fun controllerOf(vararg controllers: Controller): Controller {
 
 ## Builders
 
-Kotlin's constructor combined with the named parameter covers most use cases of the Builder Design Pattern. However, sometimes you might want to create an instance where constructors are not suitable, with many optional parameters and configurable attributes where developers should be able to create alternative combinations highly configurable. Then, we can look to [buildString](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/build-string.html).
+Kotlin’s constructors combined with named parameters cover most use cases for the Builder Design Pattern. However, when creating instances with many optional parameters or highly configurable attributes, builders become necessary. The [buildString](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/build-string.html) function is a good reference.
 
 ```kotlin
 inline fun buildImageLoader(
@@ -69,13 +70,11 @@ inline fun buildImageLoader(
 data class ImageLoaderBuilder(
     var uri: URI,
     @DrawableRes var loadingPlaceholder: Int?,
-    @DrawableRes var loadingPlaceholder: Int?,
+    @DrawableRes var errorPlaceholder: Int?
     // ...
 )
 
-class ImageLoader
-
-// usage example
+// Usage example
 fun main() {
     val imageLoader = buildImageLoader {
         uri = validUri
@@ -86,9 +85,9 @@ fun main() {
 }
 ```
 
-## Fake Constructors (aka, Factory Methods)
+## Fake Constructors (Factory Methods)
 
-Sometimes you need to provide a secondary constructor that takes advantage of `reified` or exposes an interface as a concrete type and hides the implementation: we can use a function named a class. Let's have a look into [MutableStateFlow](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/common/src/flow/StateFlow.kt#L187).
+Sometimes, you need a secondary constructor that leverages `reified` types or provides a concrete type while exposing an interface. In such cases, a function named after the class serves as a Factory Method. Consider this example from [MutableStateFlow](https://github.com/Kotlin/kotlinx.coroutines/blob/master/kotlinx-coroutines-core/common/src/flow/StateFlow.kt#L187).
 
 ```kotlin
 interface MutableStateFlow<T> {
@@ -101,10 +100,10 @@ fun <T> MutableStateFlow(value: T): MutableStateFlow<T> {
 }
 ```
 
-# Conclusion
+## Conclusion
 
-As you can see, the Kotlin Standard library can be a good source of inspiration when designing code aiming for better discoverability between Kotlin Developers. Kotlin is a consistent language, and we can use it in our favor. Why not take advantage of that?
+As demonstrated, Kotlin’s Standard Library is an excellent resource for designing code that enhances discoverability for Kotlin developers. Kotlin’s consistency can be a powerful advantage — why not leverage it?
 
 ---
 
-> ℹ️ To stay up to date with my writing, follow me on [Twitter](https://twitter.com/marcellogalhard) or [Mastodon](http://androiddev.social/@mg). If you have any questions or I missed something, feel free to reach out to me! ℹ️
+> ℹ️ If you enjoyed the article you might enjoy following me on [Bluesky](https://bsky.app/profile/marcellogalhardo.dev). ℹ️
