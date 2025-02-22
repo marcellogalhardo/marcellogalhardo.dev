@@ -25,7 +25,7 @@ With [ViewModelScenario](https://cs.android.com/androidx/platform/frameworks/sup
 
 ## How to Use
 
-```
+```kotlin
 class MyViewModel(
   scope: CoroutineScope,
   private val handle: SavedStateHandle,
