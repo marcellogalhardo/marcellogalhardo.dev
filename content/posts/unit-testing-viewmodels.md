@@ -36,8 +36,8 @@ class MyViewModel(
 class MyViewModelTest {
 
   @Test
-  fun testStateRestoration() = runTest { this: TestScope
-    viewModelScenario { this: CreationExtras
+  fun testStateRestoration() = runTest { // this: TestScope
+    viewModelScenario { // this: CreationExtras
         MyViewModel(
           scope = this@runTest,
           handle = createSavedStateHandle(),
