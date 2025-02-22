@@ -16,7 +16,7 @@ Lifecycle [2.9.0-alpha01](https://developer.android.com/jetpack/androidx/release
 
 ## Why It Matters
 
-Normally, you can test a [ViewModel](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModel.kt;l=99 "https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModel.kt;l=99") by just creating an instance. But there was no (easy) way to:
+Normally, you can test a [ViewModel](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModel.kt;l=99) by creating an instance with its constructor in your test code. But there wasn’t an easy way to:
 
 - Trigger `ViewModelStore.clear()` / `ViewModel.onCleared()`.
 - Simulate a system process death state restoration.
