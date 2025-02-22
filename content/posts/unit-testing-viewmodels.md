@@ -25,6 +25,14 @@ With [`ViewModelScenario`](https://cs.android.com/androidx/platform/frameworks/s
 
 ## How to Use
 
+First, add the dependency to your Gradle file:
+
+```groovy
+implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0-alpha10")
+```
+
+Next, define your ViewModel:
+
 ```kotlin
 class MyViewModel(
   scope: CoroutineScope,
@@ -32,7 +40,11 @@ class MyViewModel(
 ) : ViewModel(scope) {
   // TODO("not implemented")
 }
+```
 
+Now, write a unit test for your `ViewModel` using a `ViewModelScenario`:
+
+```kotlin
 class MyViewModelTest {
 
   @Test
