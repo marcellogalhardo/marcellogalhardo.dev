@@ -28,7 +28,7 @@ With [`ViewModelScenario`](https://cs.android.com/androidx/platform/frameworks/s
 First, add the dependency to your Gradle file:
 
 ```groovy
-implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.0-alpha10")
+implementation("androidx.lifecycle:lifecycle-viewmodel-testing:2.9.0-alpha10")
 ```
 
 Next, define your ViewModel:
