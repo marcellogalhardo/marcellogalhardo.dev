@@ -19,7 +19,7 @@ Lifecycle [2.9.0-alpha01](https://developer.android.com/jetpack/androidx/release
 You can test a [`ViewModel`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModel.kt;l=99) by simply creating an instance using its constructor in your test code. However, this approach has limitations — there is no straightforward way to:
 
 - Trigger [`ViewModelStore.clear()`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModelStore.kt;l=56)/[`ViewModel.onCleared()`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModel.kt;l=167).
-- Simulate system process death and state restoration.
+- Simulate a (system process death) state restoration.
 
 With [`ViewModelScenario`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel-testing/src/commonMain/kotlin/androidx/lifecycle/viewmodel/testing/ViewModelScenario.kt;l=128-131), these scenarios are now easy to test, helping you catch errors related to ViewModel clean-up and saved state.
 
