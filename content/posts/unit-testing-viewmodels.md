@@ -36,9 +36,9 @@ Next, define your [`ViewModel`](https://cs.android.com/androidx/platform/framewo
 ```kotlin
 class MyViewModel(
   scope: CoroutineScope,
-  private val handle: SavedStateHandle,
+  val handle: SavedStateHandle,
 ) : ViewModel(scope) {
-  // TODO("not implemented")
+  // collapsed for simplicity
 }
 ```
 
@@ -55,7 +55,7 @@ class MyViewModelTest {
           handle = createSavedStateHandle(),
         )
     }.use { viewModel: MyViewModel ->
-      // Set a ViewModel state.
+      // Set a `ViewModel` state.
       recreate()
       // Assert state is restored correctly.
     }
