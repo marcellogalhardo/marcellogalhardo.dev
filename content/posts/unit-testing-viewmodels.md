@@ -65,8 +65,6 @@ class MyViewModelTest {
 
 ## Test in Details
 
-Here’s the cleaned-up version with fixed markdown links and no bold text:
-
 - [`ViewModelScenario.recreate()`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel-testing/src/commonMain/kotlin/androidx/lifecycle/viewmodel/testing/ViewModelScenario.kt;l=92) simulates Android’s state saving and restoring, including parceling (see [Save UI states](https://developer.android.com/topic/libraries/architecture/saving-states#onsaveinstancestate)).
   - It verifies that data in [`SavedStateHandle`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel-savedstate/src/androidMain/kotlin/androidx/lifecycle/SavedStateHandle.android.kt;l=30) is correctly persisted.
 - [`AutoCloseable.use {}`](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-auto-closeable.html) ensures [`ViewModelStore.clear()`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModelStore.kt;l=56)/[`ViewModel.onCleared()`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModel.kt;l=167) runs after the test.
