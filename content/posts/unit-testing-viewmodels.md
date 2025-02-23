@@ -56,7 +56,7 @@ class MyViewModelTest {
         )
     }.use { scenario: ViewModelScenario ->
       // Set a `ViewModel` state.
-      recreate()
+      scenario.recreate()
       // Assert state is restored correctly.
     }
   }
