@@ -54,7 +54,7 @@ class MyViewModelTest {
           scope = this@runTest,
           handle = createSavedStateHandle(),
         )
-    }.use { viewModel: MyViewModel ->
+    }.use { scenario: ViewModelScenario ->
       // Set a `ViewModel` state.
       recreate()
       // Assert state is restored correctly.
