@@ -40,6 +40,9 @@ class MyViewModel(
 ) : ViewModel(scope) {
   // collapsed for simplicity
 }
+
+@Parcelize
+data class MyData(val name: String, val surname: String)
 ```
 
 Now, write a unit test for your [`ViewModel`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModel.kt;l=99) using a [`ViewModelScenario`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel-testing/src/commonMain/kotlin/androidx/lifecycle/viewmodel/testing/ViewModelScenario.kt;l=128-131):
@@ -54,10 +57,15 @@ class MyViewModelTest {
           scope = this@runTest,
           handle = createSavedStateHandle(),
         )
-    }.use { scenario: ViewModelScenario ->
-      // Set a `ViewModel` state.
-      scenario.recreate()
-      // Assert state is restored correctly.
+    }.use { it: ViewModelScenario ->
+      // Set a ViewModel state.  
+      it.viewModel.handle["key"] = MyData("John", "Doe")
+
+      // Recreate ViewModel, simulating a state restoration (including parcelize).  
+      it.recreate()
+
+      // Verify state is restored correctly after parcelize.  
+      assertThat(it.viewModel.handle["key"]).isEqualTo(MyData("John", "Doe"))
     }
   }
 }
