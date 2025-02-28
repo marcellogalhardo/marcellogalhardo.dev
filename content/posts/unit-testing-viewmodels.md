@@ -42,7 +42,10 @@ class MyViewModel(
 }
 
 @Parcelize
-data class MyData(val name: String, val surname: String)
+data class MyData(
+  val name: String,
+  val surname: String,
+) : Parcelable
 ```
 
 Now, write a unit test for your [`ViewModel`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel/src/commonMain/kotlin/androidx/lifecycle/ViewModel.kt;l=99) using a [`ViewModelScenario`](https://cs.android.com/androidx/platform/frameworks/support/+/a775989d0657e5fcbd86bf7949d95a190deb2334:lifecycle/lifecycle-viewmodel-testing/src/commonMain/kotlin/androidx/lifecycle/viewmodel/testing/ViewModelScenario.kt;l=128-131):
