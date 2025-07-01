@@ -3,6 +3,7 @@ title: "Talks"
 draft: false
 ---
 
+- May 23, 2025: [Lessons learned decoupling Architecture Components from platform specific code](https://youtu.be/jDz_yNZkEzk)
 - August 9, 2024: [Lifecycle path to Multiplatform](https://www.youtube.com/watch?v=k1PIzEIO6jo)
 - April 29, 2021: [Anvil na Prática (PT-BR)](https://www.youtube.com/watch?v=AVZlStXTJJg)
 - June 05, 2019: [Railway Oriented Programming with Kotlin](https://speakerdeck.com/marcellogalhardo/railway-oriented-programming-with-kotlin)
