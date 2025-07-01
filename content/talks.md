@@ -3,7 +3,7 @@ title: "Talks"
 draft: false
 ---
 
-- May 23, 2025: [Lessons learned decoupling Architecture Components from platform specific code](https://youtu.be/jDz_yNZkEzk)
+- May 23, 2025: [Lessons learned decoupling Architecture Components from platform specific code (KotlinConf)](https://youtu.be/jDz_yNZkEzk)
 - August 9, 2024: [Lifecycle path to Multiplatform (Android Developers)](https://www.youtube.com/watch?v=k1PIzEIO6jo)
 - September 5, 2024: [Lifecycle path to Multiplaform (Droidcon Lisbon)](https://youtu.be/Fd7jJaMN968)
 - July 4, 2024: [Lifecycle path to Multiplatform (Droidcon Berlin)](https://www.droidcon.com/2024/08/30/androidx-lifecycles-path-to-multiplatform)
