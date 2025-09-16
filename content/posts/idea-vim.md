@@ -1,5 +1,5 @@
 ---
-title: "IDEA Vim"
+title: "IdeaVim"
 date: 2025-09-16T11:27:02+01:00
 draft: false
 toc: false
