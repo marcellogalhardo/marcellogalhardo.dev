@@ -1,5 +1,5 @@
 ---
-title: "IdeaVim"
+title: "IDEA Vim"
 date: 2025-09-16T11:27:02+01:00
 draft: false
 toc: false
@@ -15,7 +15,7 @@ tags:
   - Productivity
 ---
 
-I've been using the [IdeaVim plugin](https://www.jetbrains.com/help/idea/using-product-as-the-vim-editor.html) in Android Studio for a while. I only ever learned the basics with [Practical Vim](https://www.goodreads.com/book/show/13607232-practical-vim), but that's been enough.
+I've been using the [IDEA Vim plugin](https://www.jetbrains.com/help/idea/using-product-as-the-vim-editor.html) in Android Studio for a while. I only ever learned the basics with [Practical Vim](https://www.goodreads.com/book/show/13607232-practical-vim), but that's been enough.
 
 The best part is that even this small amount of Vim carries over everywhere: I can use the same workflow in [Android Studio](https://developer.android.com/studio), [VS Code](https://code.visualstudio.com), [iTerm](https://iterm2.com), or [Obsidian](https://obsidian.md). Most editor shortcuts I used to know are gone, and I don’t miss them.
 
