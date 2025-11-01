@@ -1,7 +1,7 @@
 ---
 title: "NavigationEvent Info"
 date: 2025-11-01T22:22:22+22:22
-draft: true
+draft: false
 toc: false
 images:
 - /logo.png
@@ -10,9 +10,10 @@ categories:
 tags:
   - android
   - kotlin
+  - kmp
 ---
 
-[NavigationEvent](https://developer.android.com/jetpack/androidx/releases/navigationevent) is a Kotlin Multiplatform library for handling system gestures - back and forward - on all platforms. It works on Android today, with Compose Multiplatform (CMP) integration coming next.
+[NavigationEvent](https://developer.android.com/jetpack/androidx/releases/navigationevent) is a Kotlin Multiplatform library for handling system gestures - back and forward - on all platforms. It works on Android today, with out-of-the-box Compose Multiplatform (CMP) integration coming next.
 
 Android used to rely on `OnBackPressedDispatcher` from `androidx.activity`. That handled back presses, and that was enough. But once you target more than Android, you also need forward navigation - like on the web.
 
