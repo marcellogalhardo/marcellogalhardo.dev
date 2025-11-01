@@ -15,7 +15,7 @@ tags:
 
 [NavigationEvent](https://developer.android.com/jetpack/androidx/releases/navigationevent) is a Kotlin Multiplatform library for handling system gestures - back and forward - on all platforms. It works on Android, iOS and Desktop with Web support coming next.
 
-Android used to rely on `OnBackPressedDispatcher` from `androidx.activity`. That handled back presses, and that was enough. But once you target more than Android, you also need forward navigation - like on the web.
+Android rely on `OnBackPressedDispatcher` from `androidx.activity`. It handles back presses, and that was enough. But once you target more than Android, you also need forward navigation - like on the web.
 
 That's why `NavigationEvent` exists: one event system that works everywhere.
 
