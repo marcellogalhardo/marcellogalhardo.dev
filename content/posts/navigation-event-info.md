@@ -28,9 +28,9 @@ Back handling gets messy fast. Multiple handlers register, each hoping to own th
 That's what the [NavigationEventInfo](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:navigationevent/navigationevent/src/commonMain/kotlin/androidx/navigationevent/NavigationEventInfo.kt;l=38;drc=dc470c5b7ac70789fd921279f9f7f804046f3826) API answers.
 
 Every `NavigationEventDispatcher` keeps a [history](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:navigationevent/navigationevent/src/commonMain/kotlin/androidx/navigationevent/NavigationEventDispatcher.kt;l=223;drc=6341049232684807b94d9d9030e9eef6ced75a38)    which exposes:
-- [currentInfo](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:navigationevent/navigationevent/src/commonMain/kotlin/androidx/navigationevent/NavigationEventHandler.kt;l=72;drc=c71c22d74fceb646111a069ef577022b155a14b6): what's active now
-- [backInfo](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:navigationevent/navigationevent/src/commonMain/kotlin/androidx/navigationevent/NavigationEventHandler.kt;l=82;drc=c71c22d74fceb646111a069ef577022b155a14b6): where “back” would go
-- [forwardInfo](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:navigationevent/navigationevent/src/commonMain/kotlin/androidx/navigationevent/NavigationEventHandler.kt;l=92;drc=c71c22d74fceb646111a069ef577022b155a14b6): where “forward” would go
+
+- [mergedHistory](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:navigationevent/navigationevent/src/commonMain/kotlin/androidx/navigationevent/NavigationEventHistory.kt;l=41;drc=779427e77c889737dd69e4e10f6bd30c48ef10cb): a single flattened list combining all nested navigation info.
+- [currentIndex](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:navigationevent/navigationevent/src/commonMain/kotlin/androidx/navigationevent/NavigationEventHistory.kt;l=43;drc=779427e77c889737dd69e4e10f6bd30c48ef10cb): the position of the active entry within that merged history.
 
 Inspect these to see who's active and what happens next.
 
