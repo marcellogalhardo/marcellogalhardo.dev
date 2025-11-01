@@ -13,13 +13,13 @@ tags:
   - kmp
 ---
 
-[NavigationEvent](https://developer.android.com/jetpack/androidx/releases/navigationevent) is a Kotlin Multiplatform library for handling system gestures - back and forward - on all platforms. It works on Android today, with out-of-the-box Compose Multiplatform (CMP) integration coming next.
+[NavigationEvent](https://developer.android.com/jetpack/androidx/releases/navigationevent) is a Kotlin Multiplatform library for handling system gestures - back and forward - on all platforms. It works on Android, iOS and Desktop - with Web integration coming next.
 
 Android used to rely on `OnBackPressedDispatcher` from `androidx.activity`. That handled back presses, and that was enough. But once you target more than Android, you also need forward navigation - like on the web.
 
 That's why `NavigationEvent` exists: one event system that works everywhere.
 
-It's in beta now, and [OnBackPressedDispatcher](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:activity/activity/src/main/java/androidx/activity/OnBackPressedDispatcher.kt;l=70;drc=b36ffe4ae230e4bb1845223bcbb74e4849952144) already delegates to [NavigationEventDispatcher](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:activity/activity/src/main/java/androidx/activity/OnBackPressedDispatcher.kt;l=84;drc=b36ffe4ae230e4bb1845223bcbb74e4849952144) under the hood.
+It's in [beta01](https://developer.android.com/jetpack/androidx/releases/navigationevent#1.0.0-beta01) on Android, and [OnBackPressedDispatcher](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:activity/activity/src/main/java/androidx/activity/OnBackPressedDispatcher.kt;l=70;drc=b36ffe4ae230e4bb1845223bcbb74e4849952144) already delegates to [NavigationEventDispatcher](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:activity/activity/src/main/java/androidx/activity/OnBackPressedDispatcher.kt;l=84;drc=b36ffe4ae230e4bb1845223bcbb74e4849952144) under the hood.
 
 ## Debugging Back State
 
