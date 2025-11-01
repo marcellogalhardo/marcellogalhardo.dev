@@ -1,5 +1,5 @@
 ---
-title: "Who Handles Back?"
+title: "NavigationEvent Info"
 date: 2025-11-01T22:22:22+22:22
 draft: true
 toc: false
