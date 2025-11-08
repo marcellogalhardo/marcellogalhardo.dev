@@ -43,6 +43,8 @@ You'll also find [OnBackPressedCallbackInfo](https://cs.android.com/androidx/pla
 You can define your own `Info` to make debugging clearer in your app or library. In Compose:
 
 ```kotlin
+class YourCustomInfo : NavigationEventInfo()
+
 @Composable
 fun Sample() {
   NavigationBackHandler(
