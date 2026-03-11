@@ -3,6 +3,7 @@ title: "Talks"
 draft: false
 ---
 
+- September 25, 2025: [Custom Codecs with KotlinX Serialization (Droidcon Berlin)](https://www.youtube.com/watch?v=qkbrtlIhrR8)
 - May 23, 2025: [Lessons learned decoupling Architecture Components from platform specific code (KotlinConf)](https://youtu.be/jDz_yNZkEzk)
 - September 6, 2024: [Lifecycle path to Multiplaform (Droidcon Lisbon)](https://youtu.be/Fd7jJaMN968)
 - August 9, 2024: [Lifecycle path to Multiplatform (Android Developers)](https://www.youtube.com/watch?v=k1PIzEIO6jo)
