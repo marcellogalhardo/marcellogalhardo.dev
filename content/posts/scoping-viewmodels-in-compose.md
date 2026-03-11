@@ -59,7 +59,7 @@ HorizontalPager(pageCount = pages.size) { page ->
 }
 ```
 
-The same pattern applies to `LazyColumn` for per-item `ViewModel` scoping.
+The same approach works for any composable that needs its own scoped `ViewModel` state, such as a `LazyList`.
 
 ## What Gets Propagated
 
