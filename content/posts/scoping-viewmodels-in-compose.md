@@ -18,7 +18,7 @@ Lifecycle ViewModel [2.11.0-alpha02](https://developer.android.com/jetpack/andro
 
 ## Why It Matters
 
-Until now, `ViewModelStore` scoping was tied to navigation destinations, activities or fragments. There was no clean way to scope a `ViewModel` to an arbitrary part of your UI—such as a `Pager` page, a `LazyList` item, or a custom layout—without building your own `ViewModelStoreOwner` from scratch.
+Until now, `ViewModelStore` scoping was tied to navigation destinations, activities or fragments. There was no clean way to scope a `ViewModel` to an arbitrary part of your UI (such as a `Pager` page, a `LazyList` item, or a custom layout) without building your own `ViewModelStoreOwner` from scratch.
 
 `rememberViewModelStoreOwner` closes that gap.
 
