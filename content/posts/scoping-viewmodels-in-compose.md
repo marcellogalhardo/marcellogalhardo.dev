@@ -39,6 +39,7 @@ val childViewModel = viewModel<ChildViewModel>(childOwner)
 // Optionally propagate the owner down the composition tree.
 CompositionLocalProvider(LocalViewModelStoreOwner provides childOwner) {
     // Composables here resolve ViewModels from childOwner.
+    val childViewModel = viewModel<MyViewModel>()
 }
 ```
 
