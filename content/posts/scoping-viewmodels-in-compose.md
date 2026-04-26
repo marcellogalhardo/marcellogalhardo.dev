@@ -52,7 +52,7 @@ For cases where you need per-page or per-item `ViewModel` scoping, use `remember
 val storeProvider = rememberViewModelStoreProvider()
 
 HorizontalPager(pageCount = pages.size) { page ->
-    val pageOwner = storeProvider.rememberViewModelStoreOwner(page)
+    val pageOwner = rememberViewModelStoreOwner(storeProvider, page)
 
     CompositionLocalProvider(LocalViewModelStoreOwner provides pageOwner) {
         val pageViewModel = viewModel<PageViewModel>()
@@ -84,7 +84,7 @@ val storeProvider = rememberViewModelStoreProvider()
 
 HorizontalPager(pageCount = pages.size) { page ->
     saveableStateHolder.SaveableStateProvider(page) {
-        val pageOwner = storeProvider.rememberViewModelStoreOwner(page)
+        val pageOwner = rememberViewModelStoreOwner(storeProvider, page)
         CompositionLocalProvider(LocalViewModelStoreOwner provides pageOwner) {
             val pageViewModel = viewModel<PageViewModel>()
             PageContent(pageViewModel)
