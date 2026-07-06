@@ -3,6 +3,7 @@ title: "Talks"
 draft: false
 ---
 
+- May 21, 2026: [Peeling back the Layers: A Navigation3 Deep Dive (KotlinConf)](https://youtu.be/6g2mjgljn7M)
 - September 25, 2025: [Custom Codecs with KotlinX Serialization (Droidcon Berlin)](https://www.youtube.com/watch?v=qkbrtlIhrR8)
 - May 23, 2025: [Lessons learned decoupling Architecture Components from platform specific code (KotlinConf)](https://youtu.be/jDz_yNZkEzk)
 - September 6, 2024: [Lifecycle path to Multiplaform (Droidcon Lisbon)](https://youtu.be/Fd7jJaMN968)
